@@ -1,0 +1,88 @@
+﻿<HTML>
+  <HEAD>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <TITLE>Editing using a custom form</TITLE>
+    <LINK REL="stylesheet" TYPE="text/css" HREF="http://help.esri.com/en/sdk/10.0/common/style/esri_sdk_web.css">
+  </HEAD>
+  <BODY topmargin="0" id="bodyID" class="dtBODY">
+    <div id="nsbanner" esri_sdk_guid="0f75f3f7-7de0-4f21-a009-cb22b0dcbe15" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+      <div id="TitleRow" class="bannertitle">
+        <table class="titleWithBackground">
+          <td>
+            <H1>Editing using a custom form<a name="ICallout"></a></H1>
+          </td>
+        </table>
+      </div>
+    </div><br xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><div class="main">
+      <fieldset class="Property" style="width: auto" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+        <legend class="PropertyName">Purpose</legend><span class="PropertyValue">This sample demonstrates how to hide the complexity of editing in an ArcGIS Engine application by presenting a simple editing interface to users. It also shows how to impose business rules on the editing process by listening to ArcGIS Engine edit events. </span></fieldset><br xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><h4>How to use</h4>
+      <p>See 
+        <a href="http://help.esri.com/EN/sdk/10.0/arcobjects_net/conceptualhelp/index.htm#/d/0001000001W2000000/">How to use ArcGIS samples</a>
+        for help running the sample.</p>
+      <ol>
+        <li>Compile and run the sample.</li>
+        <li>Click the launch editor form command (blue square, white E).</li>
+        <li>Click Edit on the EditorForm to start editing the Highways layer.</li>
+        <li>On the EditorForm, try the Create, Modify, and Reshape tools.</li>
+        <li>Perform an action to intersect a lake, for example, digitize a new road through a lake (the application should not allow you to do this).</li>
+        <li>Try the undo and redo functionality.</li>
+        <li>Click Finish to stop editing (save or discard edits). See the following screen shot:</li><br><br xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><img src="./bitmaps/0f75f3f7-7de0-4f21-a009-cb22b0dcbe151.png" alt="Screen shot of the EditorForm used to edit the Highways layer." xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><br xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><br xmlns:MSHelp="http://msdn.microsoft.com/mshelp"></ol>
+      <h4>Additional information</h4>
+    <div>Applications that allow users to edit data often attempt to simplify the editing process and maintain data integrity through business rules. The following shows how this sample achieves this in an ArcGIS Engine application:</div>
+    <ul style="" type="disc">
+      <li>Present a simple user interface (UI) for editing. Users can only edit the Highways layer and do not have to understand what a target layer is, or have to select an appropriate edit task.</li>
+      <li>Use out-of-the-box tools and edit tasks. Users can create highways, modify (move, insert, and delete vertices), and reshape highways.</li>
+      <li>Impose business rules on the editing process. For demonstration purposes, a hypothetical rule has been created that states highways cannot intersect lakes. </li>
+    </ul>
+    <div> </div>
+    <div>
+      <strong>Presenting a simple UI for editing</strong>
+    </div>
+    <div>The MainForm form provides viewing capabilities for the application and the EditorForm (shown in the previous screen shot) presents a simple UI dedicated to editing the Highways layer.  </div>
+    <div> </div>
+    <div>To start an edit session, click the E command (EditCmd) on the MainForm, then click Edit in the EditorForm. The target layer is set to Highways using the IEngineEditLayers.SetTargetLayer method. Clicking one of the editing buttons (Create, Modify, and Reshape) adds an appropriate ToolbarControl to the flowLayoutPanel1 and sets the edit task using the IEngineEditor.CurrentTask property. Each ToolbarControl contains out-of-the-box editing commands or sample commands.  </div>
+    <div> </div>
+    <div>
+      <strong>Buddying controls hosted on separate forms</strong>
+    </div>
+    <div>Buddying the ToolbarControls hosted on the EditorForm with the axMapControl1 on the MainForm has been achieved through the use of the EditHelper class.</div>
+    <ul style="" type="disc">
+      <li>In the MainForm_Load event procedure, the EditHelper.TheMainForm property is set to reference the MainForm. This property can be called without an instance of the EditHelper class as it is marked as static. An internal instance of the EditHelper class is created the first time the property is called (acts like a singleton object).</li>
+      <li>In the EditorForm_Load event procedure, a reference to the MainForm is available through the EditHelper.TheMainForm property. The MainForm.MapControl property is then used to return an axMapControl1 reference to the EditorForm.</li>
+    </ul>
+    <div> </div>
+    <div>
+      <strong>Imposing business rules on the editing process</strong>
+    </div>
+    <div>The EditorForm listens to the IEngineEditEvents.OnSketchModified event to check whether an  edit is valid or invalid. A spatial query is performed in the IsHighWaysEditValid function to determine whether the highway feature being edited intersects the Lakes layer. If the function returns false, the edit is rolled back by calling the IOperationStack.Undo method—an Invalid Edit warning appears on the EditorForm.</div>
+  <br><br><br><br><hr tabIndex="-1" xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><br xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><fieldset class="Property" style="width: auto" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+        <legend class="PropertyName">Additional Requirements</legend><span class="PropertyValue"><ul>
+            <li>Designed to run with a display setting of 96 dots per inch (dpi).</li>
+            <li>This sample uses two other samples in the software development kit (SDK): Reshape polyline edit task and Custom vertex editing commands. Ensure that the C# version of these samples is compiled before running this sample.</li>
+          </ul></span></fieldset><br xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><table class="dtTable" cellspacing="0" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+        <tr>
+          <th>Development licensing</th>
+          <th>Deployment licensing</th>
+        </tr>
+        <tr style="empty-cells:show">
+          <td>Engine Developer Kit</td>
+          <td>Engine Runtime</td>
+        </tr>
+        <tr style="empty-cells:show">
+          <td>
+          </td>
+          <td>ArcView</td>
+        </tr>
+        <tr style="empty-cells:show">
+          <td>
+          </td>
+          <td>ArcEditor</td>
+        </tr>
+        <tr style="empty-cells:show">
+          <td>
+          </td>
+          <td>ArcInfo</td>
+        </tr>
+      </table><br xmlns:MSHelp="http://msdn.microsoft.com/mshelp"><br><br></div>
+  </BODY>
+</HTML>
