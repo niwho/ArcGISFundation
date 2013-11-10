@@ -304,7 +304,7 @@ namespace ArcGISFoundation
             }
             else
             {
-                this.max.Image = Image.FromFile(@".\images\max.png");
+                this.max.Image = Image.FromFile(@"..\images\max.png");
                 this.WindowState = FormWindowState.Normal;
             }
 

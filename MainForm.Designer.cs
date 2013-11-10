@@ -54,8 +54,10 @@ namespace ArcGISFoundation
             this.xPanderPanel_tree = new BSE.Windows.Forms.XPanderPanel();
             this.xPanderPanel_query = new BSE.Windows.Forms.XPanderPanel();
             this.panel_container = new System.Windows.Forms.Panel();
-            this.panel_left = new System.Windows.Forms.Panel();
+            this.panel_right_map = new System.Windows.Forms.Panel();
             this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
+            this.panel_toolbar = new System.Windows.Forms.Panel();
+            this.panel_left = new System.Windows.Forms.Panel();
             this.panel_title_bar = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -75,8 +77,10 @@ namespace ArcGISFoundation
             this.xPanderPanelList1.SuspendLayout();
             this.xPanderPanel_tree.SuspendLayout();
             this.panel_container.SuspendLayout();
-            this.panel_left.SuspendLayout();
+            this.panel_right_map.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
+            this.panel_toolbar.SuspendLayout();
+            this.panel_left.SuspendLayout();
             this.panel_title_bar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -112,18 +116,19 @@ namespace ArcGISFoundation
             // 
             // axEditorToolbar
             // 
-            this.axEditorToolbar.Location = new System.Drawing.Point(209, 22);
+            this.axEditorToolbar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axEditorToolbar.Location = new System.Drawing.Point(0, 0);
             this.axEditorToolbar.Margin = new System.Windows.Forms.Padding(2);
             this.axEditorToolbar.Name = "axEditorToolbar";
             this.axEditorToolbar.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axEditorToolbar.OcxState")));
-            this.axEditorToolbar.Size = new System.Drawing.Size(466, 28);
+            this.axEditorToolbar.Size = new System.Drawing.Size(768, 28);
             this.axEditorToolbar.TabIndex = 12;
             // 
             // panel_map_tree
             // 
             this.panel_map_tree.BackColor = System.Drawing.Color.Transparent;
             this.panel_map_tree.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.panel_map_tree.CaptionFont = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Bold);
+            this.panel_map_tree.CaptionFont = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 10.5F, System.Drawing.FontStyle.Bold);
             this.panel_map_tree.CaptionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_map_tree.CloseIconForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_map_tree.CollapsedCaptionForeColor = System.Drawing.SystemColors.ControlText;
@@ -137,6 +142,7 @@ namespace ArcGISFoundation
             this.panel_map_tree.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel_map_tree.Image = null;
             this.panel_map_tree.InnerBorderColor = System.Drawing.Color.White;
+            this.panel_map_tree.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.panel_map_tree.Location = new System.Drawing.Point(0, 0);
             this.panel_map_tree.Name = "panel_map_tree";
             this.panel_map_tree.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
@@ -163,7 +169,7 @@ namespace ArcGISFoundation
             // 
             this.xPanderPanel_tree.BackColor = System.Drawing.Color.Transparent;
             this.xPanderPanel_tree.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.xPanderPanel_tree.CaptionFont = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Bold);
+            this.xPanderPanel_tree.CaptionFont = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 8F, System.Drawing.FontStyle.Bold);
             this.xPanderPanel_tree.CaptionForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_tree.CloseIconForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.xPanderPanel_tree.ColorCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
@@ -184,8 +190,9 @@ namespace ArcGISFoundation
             // 
             // xPanderPanel_query
             // 
+            this.xPanderPanel_query.BackColor = System.Drawing.Color.Transparent;
             this.xPanderPanel_query.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.xPanderPanel_query.CaptionFont = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Bold);
+            this.xPanderPanel_query.CaptionFont = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 8F, System.Drawing.FontStyle.Bold);
             this.xPanderPanel_query.CaptionForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_query.CloseIconForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.xPanderPanel_query.ColorCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
@@ -205,9 +212,9 @@ namespace ArcGISFoundation
             // panel_container
             // 
             this.panel_container.BackColor = System.Drawing.Color.Transparent;
+            this.panel_container.Controls.Add(this.panel_right_map);
+            this.panel_container.Controls.Add(this.panel_toolbar);
             this.panel_container.Controls.Add(this.panel_left);
-            this.panel_container.Controls.Add(this.axEditorToolbar);
-            this.panel_container.Controls.Add(this.axMapControl1);
             this.panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_container.Location = new System.Drawing.Point(0, 102);
             this.panel_container.Name = "panel_container";
@@ -215,6 +222,33 @@ namespace ArcGISFoundation
             this.panel_container.Size = new System.Drawing.Size(974, 480);
             this.panel_container.TabIndex = 0;
             this.panel_container.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_container_Paint);
+            // 
+            // panel_right_map
+            // 
+            this.panel_right_map.Controls.Add(this.axMapControl1);
+            this.panel_right_map.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_right_map.Location = new System.Drawing.Point(203, 28);
+            this.panel_right_map.Name = "panel_right_map";
+            this.panel_right_map.Size = new System.Drawing.Size(768, 449);
+            this.panel_right_map.TabIndex = 22;
+            // 
+            // axMapControl1
+            // 
+            this.axMapControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axMapControl1.Location = new System.Drawing.Point(0, 0);
+            this.axMapControl1.Name = "axMapControl1";
+            this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
+            this.axMapControl1.Size = new System.Drawing.Size(768, 449);
+            this.axMapControl1.TabIndex = 20;
+            // 
+            // panel_toolbar
+            // 
+            this.panel_toolbar.Controls.Add(this.axEditorToolbar);
+            this.panel_toolbar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_toolbar.Location = new System.Drawing.Point(203, 0);
+            this.panel_toolbar.Name = "panel_toolbar";
+            this.panel_toolbar.Size = new System.Drawing.Size(768, 28);
+            this.panel_toolbar.TabIndex = 21;
             // 
             // panel_left
             // 
@@ -224,14 +258,6 @@ namespace ArcGISFoundation
             this.panel_left.Name = "panel_left";
             this.panel_left.Size = new System.Drawing.Size(200, 477);
             this.panel_left.TabIndex = 0;
-            // 
-            // axMapControl1
-            // 
-            this.axMapControl1.Location = new System.Drawing.Point(209, 63);
-            this.axMapControl1.Name = "axMapControl1";
-            this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
-            this.axMapControl1.Size = new System.Drawing.Size(728, 292);
-            this.axMapControl1.TabIndex = 20;
             // 
             // panel_title_bar
             // 
@@ -260,6 +286,7 @@ namespace ArcGISFoundation
             // 
             // pictureBox5
             // 
+            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox5.Image = global::ArcGISFoundation.Properties.Resources.tools_help_title;
@@ -272,6 +299,7 @@ namespace ArcGISFoundation
             // 
             // pictureBox4
             // 
+            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::ArcGISFoundation.Properties.Resources.tools_help;
@@ -284,6 +312,7 @@ namespace ArcGISFoundation
             // 
             // pictureBox_querytitle
             // 
+            this.pictureBox_querytitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_querytitle.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_querytitle.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox_querytitle.Image = global::ArcGISFoundation.Properties.Resources.tools_query_title;
@@ -296,6 +325,7 @@ namespace ArcGISFoundation
             // 
             // pictureBox_query
             // 
+            this.pictureBox_query.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_query.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_query.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox_query.Image = global::ArcGISFoundation.Properties.Resources.tools_query;
@@ -308,6 +338,7 @@ namespace ArcGISFoundation
             // 
             // pictureBox3
             // 
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::ArcGISFoundation.Properties.Resources.tools_query_title;
             this.pictureBox3.Location = new System.Drawing.Point(523, 35);
@@ -319,6 +350,7 @@ namespace ArcGISFoundation
             // 
             // pictureBox_tools1
             // 
+            this.pictureBox_tools1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_tools1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_tools1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox_tools1.Image = global::ArcGISFoundation.Properties.Resources.tools1;
@@ -417,8 +449,10 @@ namespace ArcGISFoundation
             this.xPanderPanelList1.ResumeLayout(false);
             this.xPanderPanel_tree.ResumeLayout(false);
             this.panel_container.ResumeLayout(false);
-            this.panel_left.ResumeLayout(false);
+            this.panel_right_map.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).EndInit();
+            this.panel_toolbar.ResumeLayout(false);
+            this.panel_left.ResumeLayout(false);
             this.panel_title_bar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -459,6 +493,8 @@ namespace ArcGISFoundation
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox_querytitle;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Panel panel_toolbar;
+        private System.Windows.Forms.Panel panel_right_map;
     }
 }
 
