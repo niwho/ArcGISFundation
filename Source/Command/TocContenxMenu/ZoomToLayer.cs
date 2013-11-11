@@ -11,7 +11,7 @@ namespace ArcGISFoundation
 
 		public ZoomToLayer()
 		{
-			base.m_caption = "Zoom To Layer";
+			base.m_caption = "缩放至当前图层";
 		}
 	
 		public override void OnClick()

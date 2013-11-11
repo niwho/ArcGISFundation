@@ -11,7 +11,7 @@ namespace ArcGISFoundation
 
 		public RemoveLayer()
 		{
-			base.m_caption = "Remove Layer";
+			base.m_caption = "ÒÆ³ý";
 		}
 	
 		public override void OnClick()

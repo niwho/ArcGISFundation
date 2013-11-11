@@ -65,9 +65,9 @@ namespace ArcGISFoundation
 			get
 			{
 				if (m_subType == 1) 
-                    return "Layer Selectable";
+                    return "可选";
 				else  
-                    return "Layer Unselectable";
+                    return "不可选";
 			}
 		}
 	}

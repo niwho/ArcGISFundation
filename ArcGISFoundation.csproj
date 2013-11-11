@@ -129,6 +129,7 @@
     <Compile Include="Source\Command\TocContenxMenu\TocLayerContextMenu.cs" />
     <Compile Include="Source\Command\TocContenxMenu\TocMapContextMenu.cs" />
     <Compile Include="Source\Command\TocContenxMenu\ZoomToLayer.cs" />
+    <Compile Include="Source\Command\MapControlContextMenu.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>MainForm.cs</DependentUpon>

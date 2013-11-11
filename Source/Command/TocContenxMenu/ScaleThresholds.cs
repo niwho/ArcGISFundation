@@ -51,11 +51,11 @@ namespace ArcGISFoundation
 			get
 			{
 				if (m_subType == 1) 
-                    return "Set Maximum Scale";
+                    return "设置最大比例";
 				else if (m_subType == 2) 
-                    return "Set Minimum Scale";
+                    return "设置最小比例";
 				else 
-                    return "Remove Scale Thresholds";
+                    return "移除比例阈值";
 			}
 		}
 	
