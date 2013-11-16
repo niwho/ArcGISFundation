@@ -47,7 +47,7 @@ namespace ArcGISFoundation
 
         private void close_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void close_MouseEnter(object sender, EventArgs e)

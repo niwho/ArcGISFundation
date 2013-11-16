@@ -111,7 +111,7 @@ namespace ArcGISFoundation
             this.toccontrol.Location = new System.Drawing.Point(0, 25);
             this.toccontrol.Name = "toccontrol";
             this.toccontrol.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("toccontrol.OcxState")));
-            this.toccontrol.Size = new System.Drawing.Size(198, 0);
+            this.toccontrol.Size = new System.Drawing.Size(198, 400);
             this.toccontrol.TabIndex = 12;
             this.toccontrol.OnMouseDown += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnMouseDownEventHandler(this.axTOCControl1_OnMouseDown);
             // 
@@ -201,12 +201,13 @@ namespace ArcGISFoundation
             this.xPanderPanel_tree.ColorFlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.xPanderPanel_tree.ColorFlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.xPanderPanel_tree.Controls.Add(this.toccontrol);
+            this.xPanderPanel_tree.Expand = true;
             this.xPanderPanel_tree.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_tree.Image = null;
             this.xPanderPanel_tree.InnerBorderColor = System.Drawing.Color.White;
             this.xPanderPanel_tree.Name = "xPanderPanel_tree";
             this.xPanderPanel_tree.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel_tree.Size = new System.Drawing.Size(198, 25);
+            this.xPanderPanel_tree.Size = new System.Drawing.Size(198, 425);
             this.xPanderPanel_tree.TabIndex = 0;
             this.xPanderPanel_tree.Text = "Í¼²ã¹ÜÀí";
             // 
@@ -223,13 +224,12 @@ namespace ArcGISFoundation
             this.xPanderPanel_query.ColorFlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.xPanderPanel_query.ColorFlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.xPanderPanel_query.Controls.Add(this.treeView_all_cao);
-            this.xPanderPanel_query.Expand = true;
             this.xPanderPanel_query.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_query.Image = null;
             this.xPanderPanel_query.InnerBorderColor = System.Drawing.Color.White;
             this.xPanderPanel_query.Name = "xPanderPanel_query";
             this.xPanderPanel_query.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel_query.Size = new System.Drawing.Size(198, 425);
+            this.xPanderPanel_query.Size = new System.Drawing.Size(198, 25);
             this.xPanderPanel_query.TabIndex = 1;
             this.xPanderPanel_query.Text = "ÄÁ²ÝµØÍ¼ÇÐ»»";
             // 
@@ -253,7 +253,7 @@ namespace ArcGISFoundation
             treeNode5.Text = "ËùÓÐÄÁ²Ý";
             this.treeView_all_cao.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode5});
-            this.treeView_all_cao.Size = new System.Drawing.Size(198, 400);
+            this.treeView_all_cao.Size = new System.Drawing.Size(198, 0);
             this.treeView_all_cao.TabIndex = 0;
             this.treeView_all_cao.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_all_cao_DrawNode);
             this.treeView_all_cao.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_all_cao_NodeMouseDoubleClick);
