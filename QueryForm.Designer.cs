@@ -81,6 +81,7 @@
             this.listView_data.TabIndex = 0;
             this.listView_data.UseCompatibleStateImageBehavior = false;
             this.listView_data.View = System.Windows.Forms.View.Details;
+            this.listView_data.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_data_ColumnClick);
             // 
             // query_panel_container
             // 

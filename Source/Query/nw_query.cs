@@ -42,6 +42,10 @@ namespace ArcGISFoundation
             IFeatureCursor pFeatureCursor = featureClass.Search(pQueryFilter, true);
             //遍历FeatureCursor
             IFeature pFeature = pFeatureCursor.NextFeature(); 
+          
+              ESRI.ArcGIS.Controls.ControlsLayerListToolControl dfsafdsfa =
+                        (ESRI.ArcGIS.Controls.ControlsLayerListToolControl)(maintoolbar.GetItem(maintoolbar.Find("esriControls.ControlsLayerListToolControl"))).Command;
+              string ss = dfsafdsfa.ToString();
             QueryForm qf =new QueryForm(m_bin_path);
             System.Windows.Forms.ListView listView_data = qf.nw_getListView();
             listView_data.Columns.Add("省名", 120,HorizontalAlignment.Left);//省名,,
@@ -74,7 +78,7 @@ namespace ArcGISFoundation
 
          
            qf.Show();
-            MessageBox.Show(pList.Count.ToString());
+           
             if (pFeature != null)
             {
                 axMapControl1.Map.SelectFeature(axMapControl1.get_Layer(0), pFeature);
