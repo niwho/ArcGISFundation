@@ -341,6 +341,7 @@ namespace ArcGISFoundation
             if (e.Node.Level != 0 &&
                 m_datasource.Switch(e.Node.Text))
             {
+                
                 DataNode datanode= m_datasource.GetActiveNode();
 
                 this.xPanderPanel_tree.Text = "Õº≤„π‹¿Ì--" + datanode.strName;

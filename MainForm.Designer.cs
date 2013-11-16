@@ -53,6 +53,7 @@ namespace ArcGISFoundation
             this.xPanderPanelList1 = new BSE.Windows.Forms.XPanderPanelList();
             this.xPanderPanel_tree = new BSE.Windows.Forms.XPanderPanel();
             this.xPanderPanel_query = new BSE.Windows.Forms.XPanderPanel();
+            this.treeView_all_cao = new System.Windows.Forms.TreeView();
             this.panel_container = new System.Windows.Forms.Panel();
             this.panel_right_map = new System.Windows.Forms.Panel();
             this.panel_toolbar = new System.Windows.Forms.Panel();
@@ -69,7 +70,6 @@ namespace ArcGISFoundation
             this.min = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.treeView_all_cao = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.licensecontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
@@ -231,7 +231,31 @@ namespace ArcGISFoundation
             this.xPanderPanel_query.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
             this.xPanderPanel_query.Size = new System.Drawing.Size(198, 425);
             this.xPanderPanel_query.TabIndex = 1;
-            this.xPanderPanel_query.Text = "牧草查询";
+            this.xPanderPanel_query.Text = "牧草地图切换";
+            // 
+            // treeView_all_cao
+            // 
+            this.treeView_all_cao.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView_all_cao.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView_all_cao.ItemHeight = 24;
+            this.treeView_all_cao.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
+            this.treeView_all_cao.Location = new System.Drawing.Point(0, 25);
+            this.treeView_all_cao.Name = "treeView_all_cao";
+            treeNode1.Name = "节点1";
+            treeNode1.Text = "白三叶";
+            treeNode2.Name = "节点2";
+            treeNode2.Text = "臂形草";
+            treeNode3.Name = "节点3";
+            treeNode3.Text = "扁穗牛鞭草";
+            treeNode4.Name = "节点4";
+            treeNode4.Text = "紫花苜蓿";
+            treeNode5.Name = "节点0";
+            treeNode5.Text = "所有牧草";
+            this.treeView_all_cao.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode5});
+            this.treeView_all_cao.Size = new System.Drawing.Size(198, 400);
+            this.treeView_all_cao.TabIndex = 0;
+            this.treeView_all_cao.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_all_cao_NodeMouseDoubleClick);
             // 
             // panel_container
             // 
@@ -444,30 +468,6 @@ namespace ArcGISFoundation
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // treeView_all_cao
-            // 
-            this.treeView_all_cao.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.treeView_all_cao.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView_all_cao.ItemHeight = 24;
-            this.treeView_all_cao.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
-            this.treeView_all_cao.Location = new System.Drawing.Point(0, 25);
-            this.treeView_all_cao.Name = "treeView_all_cao";
-            treeNode1.Name = "节点1";
-            treeNode1.Text = "白三叶";
-            treeNode2.Name = "节点2";
-            treeNode2.Text = "臂形草";
-            treeNode3.Name = "节点3";
-            treeNode3.Text = "扁穗牛鞭草";
-            treeNode4.Name = "节点4";
-            treeNode4.Text = "紫花苜蓿";
-            treeNode5.Name = "节点0";
-            treeNode5.Text = "所有牧草";
-            this.treeView_all_cao.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5});
-            this.treeView_all_cao.Size = new System.Drawing.Size(198, 400);
-            this.treeView_all_cao.TabIndex = 0;
-            this.treeView_all_cao.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_all_cao_NodeMouseDoubleClick);
             // 
             // MainForm
             // 
