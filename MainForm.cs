@@ -347,6 +347,21 @@ namespace ArcGISFoundation
             return;
         }
 
+        private void pictureBox_query_Click(object sender, EventArgs e)
+        {
+            string strImageName = @"MapPrameter";
+            string strImageType = @"JPG";
+            string strImageDir  = @"../Output";
+
+            string strImagePath = @"../Output/Map.JPG";
+
+            Size size = new Size(3474,1479);
+
+            Print printer = new Print();
+            printer.ExportActiveView(m_mapControl.ActiveView,size,strImagePath);
+            printer.ExportActiveView(m_mapControl.ActiveView, 300, 5,strImageType, strImageDir, strImageName);
+        }
+
         private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Button == MouseButtons.Left &&
@@ -422,27 +437,5 @@ namespace ArcGISFoundation
         }
 
         #endregion
-
-       /* private void panel_right_map_Paint(object sender, PaintEventArgs e)
-        {
-
-        }*/
-
-        /*private void pictureBox_tools1_Click(object sender, EventArgs e)
-        {
-            //queryForm = new QueryForm();
-           // queryForm.Show();
-            m_isQuery = true;
-            return;
-        }
-
-        private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            if (e.Node.Level != 0) {
-                this.xPanderPanel_tree.Expand = true;
-                this.xPanderPanel_query.Expand = false;
-            }
-           
-        }*/
     }
 }
