@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using System.Drawing;
 
 using ESRI.ArcGIS.esriSystem;
 using ESRI.ArcGIS.Carto;
@@ -68,7 +69,9 @@ namespace ArcGISFoundation
 
             m_tree.EndUpdate();
 
-            Switch(m_dataNodes[0].strName);
+            //
+            m_activenode = m_dataNodes[0];
+            
         }
 
         public DataNode GetActiveNode()
@@ -110,6 +113,27 @@ namespace ArcGISFoundation
                 m_mapcontrol.Map = map;
 
                 mapDoc.Close();
+
+                //////////////////////////////////////////////////////////////////////////
+                TreeNode node = m_tree.Nodes[0];
+                TreeNode first = node.FirstNode;
+                TreeNode last = node.LastNode;
+                TreeNode current = first;
+                while (current != last)
+                {
+                    if (current.Text == strName)
+                        current.ForeColor = Color.BlueViolet;
+                    else
+                        current.ForeColor = Color.Black;
+
+                     current = current.NextNode;
+                }
+
+                if (last.Text == strName)
+                    last.ForeColor = Color.BlueViolet;
+                else
+                    last.ForeColor = Color.Black;
+
                 return true;
             }
 

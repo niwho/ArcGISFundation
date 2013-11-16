@@ -105,13 +105,18 @@ namespace ArcGISFoundation
         //init data source
         private void InitDataSouce()
         {
+            DataNode activenode;
             string strDataRoot = @"..\data";
+            string strInitData = @"白三叶";
             m_datasource = new DataSource();
             m_datasource.Init(strDataRoot, m_mapControl, treeView_all_cao);
             m_datasource.Refresh();
 
-            this.xPanderPanel_tree.Text = 
-                "图层管理--" + m_datasource.GetActiveNode().strName;
+            if (m_datasource.Switch(strInitData))
+            {
+                this.xPanderPanel_tree.Text =
+               "图层管理--" + strInitData;
+            }
         }
 
         //toc context menu
