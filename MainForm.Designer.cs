@@ -34,16 +34,13 @@ namespace ArcGISFoundation
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources =
-                new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.licensecontrol = new ESRI.ArcGIS.Controls.AxLicenseControl();
             this.toccontrol = new ESRI.ArcGIS.Controls.AxTOCControl();
             this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
             this.maintoolbar = new ESRI.ArcGIS.Controls.AxToolbarControl();
             this.mainstatusbar = new System.Windows.Forms.StatusBar();
             this.xystatusbar = new System.Windows.Forms.StatusBarPanel();
-
             this.panel_map_tree = new BSE.Windows.Forms.Panel();
             this.xPanderPanelList1 = new BSE.Windows.Forms.XPanderPanelList();
             this.xPanderPanel_tree = new BSE.Windows.Forms.XPanderPanel();
@@ -64,13 +61,19 @@ namespace ArcGISFoundation
             this.min = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-
-            ((System.ComponentModel.ISupportInitialize)(this.xystatusbar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.licensecontrol)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maintoolbar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
-
+            ((System.ComponentModel.ISupportInitialize)(this.maintoolbar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xystatusbar)).BeginInit();
+            this.panel_map_tree.SuspendLayout();
+            this.xPanderPanelList1.SuspendLayout();
+            this.xPanderPanel_tree.SuspendLayout();
+            this.panel_container.SuspendLayout();
+            this.panel_right_map.SuspendLayout();
+            this.panel_toolbar.SuspendLayout();
+            this.panel_left.SuspendLayout();
+            this.panel_title_bar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_querytitle)).BeginInit();
@@ -82,40 +85,7 @@ namespace ArcGISFoundation
             ((System.ComponentModel.ISupportInitialize)(this.min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-
-            this.panel_map_tree.SuspendLayout();
-            this.xPanderPanelList1.SuspendLayout();
-            this.xPanderPanel_tree.SuspendLayout();
-            this.panel_container.SuspendLayout();
-            this.panel_right_map.SuspendLayout();
-            this.panel_toolbar.SuspendLayout();
-            this.panel_left.SuspendLayout();
-            this.panel_title_bar.SuspendLayout();
-
             this.SuspendLayout();
-            // 
-            // toccontrol
-            // 
-            this.toccontrol.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.toccontrol.Location = new System.Drawing.Point(0, 25);
-            this.toccontrol.Name = "toccontrol";
-            this.toccontrol.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("toccontrol.OcxState")));
-            this.toccontrol.Size = new System.Drawing.Size(198, 400);
-            this.toccontrol.TabIndex = 12;
-            this.toccontrol.OnMouseDown += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnMouseDownEventHandler(this.axTOCControl1_OnMouseDown);
-            // 
-            // axMapControl1
-            // 
-            this.axMapControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axMapControl1.Location = new System.Drawing.Point(0, 0);
-            this.axMapControl1.Name = "axMapControl1";
-            this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
-            this.axMapControl1.Size = new System.Drawing.Size(768, 449);
-            this.axMapControl1.TabIndex = 20;
-            this.axMapControl1.OnMouseDown +=
-                new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseDownEventHandler(this.axMapControl1_OnMouseDown);
-            this.axMapControl1.OnMouseMove +=
-                new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseMoveEventHandler(this.axMapControl1_OnMouseMove);
             // 
             // licensecontrol
             // 
@@ -125,6 +95,27 @@ namespace ArcGISFoundation
             this.licensecontrol.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("licensecontrol.OcxState")));
             this.licensecontrol.Size = new System.Drawing.Size(32, 32);
             this.licensecontrol.TabIndex = 5;
+            // 
+            // toccontrol
+            // 
+            this.toccontrol.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toccontrol.Location = new System.Drawing.Point(0, 25);
+            this.toccontrol.Name = "toccontrol";
+            this.toccontrol.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("toccontrol.OcxState")));
+            this.toccontrol.Size = new System.Drawing.Size(198, 376);
+            this.toccontrol.TabIndex = 12;
+            this.toccontrol.OnMouseDown += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnMouseDownEventHandler(this.axTOCControl1_OnMouseDown);
+            // 
+            // axMapControl1
+            // 
+            this.axMapControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axMapControl1.Location = new System.Drawing.Point(0, 0);
+            this.axMapControl1.Name = "axMapControl1";
+            this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
+            this.axMapControl1.Size = new System.Drawing.Size(768, 425);
+            this.axMapControl1.TabIndex = 20;
+            this.axMapControl1.OnMouseDown += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseDownEventHandler(this.axMapControl1_OnMouseDown);
+            this.axMapControl1.OnMouseMove += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseMoveEventHandler(this.axMapControl1_OnMouseMove);
             // 
             // maintoolbar
             // 
@@ -138,12 +129,12 @@ namespace ArcGISFoundation
             // 
             // mainstatusbar
             // 
-            this.mainstatusbar.Location = new System.Drawing.Point(0, 542);
+            this.mainstatusbar.Location = new System.Drawing.Point(0, 558);
             this.mainstatusbar.Name = "mainstatusbar";
             this.mainstatusbar.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
             this.xystatusbar});
             this.mainstatusbar.ShowPanels = true;
-            this.mainstatusbar.Size = new System.Drawing.Size(784, 24);
+            this.mainstatusbar.Size = new System.Drawing.Size(974, 24);
             this.mainstatusbar.TabIndex = 5;
             // 
             // xystatusbar
@@ -169,11 +160,10 @@ namespace ArcGISFoundation
             this.panel_map_tree.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel_map_tree.Image = null;
             this.panel_map_tree.InnerBorderColor = System.Drawing.Color.White;
-            this.panel_map_tree.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.panel_map_tree.Location = new System.Drawing.Point(0, 0);
             this.panel_map_tree.Name = "panel_map_tree";
             this.panel_map_tree.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.panel_map_tree.Size = new System.Drawing.Size(200, 477);
+            this.panel_map_tree.Size = new System.Drawing.Size(200, 453);
             this.panel_map_tree.TabIndex = 10;
             this.panel_map_tree.Text = "功能菜单";
             // 
@@ -188,7 +178,7 @@ namespace ArcGISFoundation
             this.xPanderPanelList1.Name = "xPanderPanelList1";
             this.xPanderPanelList1.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
             this.xPanderPanelList1.ShowExpandIcon = true;
-            this.xPanderPanelList1.Size = new System.Drawing.Size(198, 450);
+            this.xPanderPanelList1.Size = new System.Drawing.Size(198, 426);
             this.xPanderPanelList1.TabIndex = 0;
             this.xPanderPanelList1.Text = "xPanderPanelList1";
             // 
@@ -211,13 +201,12 @@ namespace ArcGISFoundation
             this.xPanderPanel_tree.InnerBorderColor = System.Drawing.Color.White;
             this.xPanderPanel_tree.Name = "xPanderPanel_tree";
             this.xPanderPanel_tree.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel_tree.Size = new System.Drawing.Size(198, 425);
+            this.xPanderPanel_tree.Size = new System.Drawing.Size(198, 401);
             this.xPanderPanel_tree.TabIndex = 0;
             this.xPanderPanel_tree.Text = "图层管理";
             // 
             // xPanderPanel_query
             // 
-            this.xPanderPanel_query.BackColor = System.Drawing.Color.Transparent;
             this.xPanderPanel_query.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.xPanderPanel_query.CaptionFont = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Bold);
             this.xPanderPanel_query.CaptionForeColor = System.Drawing.SystemColors.ControlText;
@@ -246,7 +235,7 @@ namespace ArcGISFoundation
             this.panel_container.Location = new System.Drawing.Point(0, 102);
             this.panel_container.Name = "panel_container";
             this.panel_container.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.panel_container.Size = new System.Drawing.Size(974, 480);
+            this.panel_container.Size = new System.Drawing.Size(974, 456);
             this.panel_container.TabIndex = 0;
             this.panel_container.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_container_Paint);
             // 
@@ -256,7 +245,7 @@ namespace ArcGISFoundation
             this.panel_right_map.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_right_map.Location = new System.Drawing.Point(203, 28);
             this.panel_right_map.Name = "panel_right_map";
-            this.panel_right_map.Size = new System.Drawing.Size(768, 449);
+            this.panel_right_map.Size = new System.Drawing.Size(768, 425);
             this.panel_right_map.TabIndex = 22;
             // 
             // panel_toolbar
@@ -274,7 +263,7 @@ namespace ArcGISFoundation
             this.panel_left.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_left.Location = new System.Drawing.Point(3, 0);
             this.panel_left.Name = "panel_left";
-            this.panel_left.Size = new System.Drawing.Size(200, 477);
+            this.panel_left.Size = new System.Drawing.Size(200, 453);
             this.panel_left.TabIndex = 0;
             // 
             // panel_title_bar
@@ -298,12 +287,9 @@ namespace ArcGISFoundation
             this.panel_title_bar.Name = "panel_title_bar";
             this.panel_title_bar.Size = new System.Drawing.Size(974, 102);
             this.panel_title_bar.TabIndex = 1;
-            this.panel_title_bar.DoubleClick +=
-                new System.EventHandler(this.panel_title_bar_DoubleClick);
-            this.panel_title_bar.MouseDown += 
-                new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseDown);
-            this.panel_title_bar.MouseMove += 
-                new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseMove);
+            this.panel_title_bar.DoubleClick += new System.EventHandler(this.panel_title_bar_DoubleClick);
+            this.panel_title_bar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseDown);
+            this.panel_title_bar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseMove);
             // 
             // pictureBox5
             // 
@@ -381,6 +367,7 @@ namespace ArcGISFoundation
             this.pictureBox_tools1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_tools1.TabIndex = 5;
             this.pictureBox_tools1.TabStop = false;
+            this.pictureBox_tools1.Click += new System.EventHandler(this.pictureBox_tools1_Click);
             // 
             // close
             // 
@@ -392,12 +379,9 @@ namespace ArcGISFoundation
             this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.close.TabIndex = 4;
             this.close.TabStop = false;
-            this.close.Click += 
-                new System.EventHandler(this.close_Click);
-            this.close.MouseEnter += 
-                new System.EventHandler(this.close_MouseEnter);
-            this.close.MouseLeave += 
-                new System.EventHandler(this.close_MouseLeave);
+            this.close.Click += new System.EventHandler(this.close_Click);
+            this.close.MouseEnter += new System.EventHandler(this.close_MouseEnter);
+            this.close.MouseLeave += new System.EventHandler(this.close_MouseLeave);
             // 
             // max
             // 
@@ -410,10 +394,8 @@ namespace ArcGISFoundation
             this.max.TabIndex = 3;
             this.max.TabStop = false;
             this.max.Click += new System.EventHandler(this.max_Click);
-            this.max.MouseEnter += 
-                new System.EventHandler(this.max_MouseEnter);
-            this.max.MouseLeave += 
-                new System.EventHandler(this.max_MouseLeave);
+            this.max.MouseEnter += new System.EventHandler(this.max_MouseEnter);
+            this.max.MouseLeave += new System.EventHandler(this.max_MouseLeave);
             // 
             // min
             // 
@@ -426,10 +408,8 @@ namespace ArcGISFoundation
             this.min.TabIndex = 2;
             this.min.TabStop = false;
             this.min.Click += new System.EventHandler(this.min_Click);
-            this.min.MouseEnter += 
-                new System.EventHandler(this.min_MouseEnter);
-            this.min.MouseLeave += 
-                new System.EventHandler(this.min_MouseLeave);
+            this.min.MouseEnter += new System.EventHandler(this.min_MouseEnter);
+            this.min.MouseLeave += new System.EventHandler(this.min_MouseLeave);
             // 
             // pictureBox2
             // 
@@ -464,7 +444,6 @@ namespace ArcGISFoundation
             this.Controls.Add(this.panel_title_bar);
             this.Controls.Add(this.licensecontrol);
             this.Controls.Add(this.mainstatusbar);
-
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
@@ -472,13 +451,19 @@ namespace ArcGISFoundation
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
-
             ((System.ComponentModel.ISupportInitialize)(this.licensecontrol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maintoolbar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xystatusbar)).EndInit();
-            
+            this.panel_map_tree.ResumeLayout(false);
+            this.xPanderPanelList1.ResumeLayout(false);
+            this.xPanderPanel_tree.ResumeLayout(false);
+            this.panel_container.ResumeLayout(false);
+            this.panel_right_map.ResumeLayout(false);
+            this.panel_toolbar.ResumeLayout(false);
+            this.panel_left.ResumeLayout(false);
+            this.panel_title_bar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_querytitle)).EndInit();
@@ -490,18 +475,8 @@ namespace ArcGISFoundation
             ((System.ComponentModel.ISupportInitialize)(this.min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-
-            this.panel_map_tree.ResumeLayout(false);
-            this.xPanderPanelList1.ResumeLayout(false);
-            this.xPanderPanel_tree.ResumeLayout(false);
-            this.panel_container.ResumeLayout(false);
-            this.panel_right_map.ResumeLayout(false);
-
-            this.panel_toolbar.ResumeLayout(false);
-            this.panel_left.ResumeLayout(false);
-            this.panel_title_bar.ResumeLayout(false);
-
             this.ResumeLayout(false);
+
         }
 
         #endregion
