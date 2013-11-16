@@ -102,6 +102,13 @@ namespace ArcGISFoundation.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap query_logo_title {
+            get {
+                object obj = ResourceManager.GetObject("query_logo_title", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap title_banner {
             get {
                 object obj = ResourceManager.GetObject("title_banner", resourceCulture);

@@ -30,20 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QueryForm));
             this.query_panel = new BSE.Windows.Forms.Panel();
-            this.panel_title_bar = new System.Windows.Forms.Panel();
-            this.close = new System.Windows.Forms.PictureBox();
-            this.min = new System.Windows.Forms.PictureBox();
             this.query_panel_container = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_title_bar = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.close = new System.Windows.Forms.PictureBox();
+            this.min = new System.Windows.Forms.PictureBox();
             this.query_panel.SuspendLayout();
-            this.panel_title_bar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.min)).BeginInit();
             this.query_panel_container.SuspendLayout();
+            this.panel_title_bar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.min)).BeginInit();
             this.SuspendLayout();
             // 
             // query_panel
@@ -65,12 +65,37 @@
             this.query_panel.Image = null;
             this.query_panel.InnerBorderColor = System.Drawing.Color.White;
             this.query_panel.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.query_panel.Location = new System.Drawing.Point(0, 0);
+            this.query_panel.Location = new System.Drawing.Point(3, 3);
             this.query_panel.Name = "query_panel";
             this.query_panel.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.query_panel.Size = new System.Drawing.Size(671, 384);
+            this.query_panel.Size = new System.Drawing.Size(665, 378);
             this.query_panel.TabIndex = 0;
             this.query_panel.Text = "牧草查询结果";
+            // 
+            // query_panel_container
+            // 
+            this.query_panel_container.BackColor = System.Drawing.Color.Transparent;
+            this.query_panel_container.Controls.Add(this.query_panel);
+            this.query_panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.query_panel_container.Location = new System.Drawing.Point(0, 65);
+            this.query_panel_container.Name = "query_panel_container";
+            this.query_panel_container.Padding = new System.Windows.Forms.Padding(3);
+            this.query_panel_container.Size = new System.Drawing.Size(671, 384);
+            this.query_panel_container.TabIndex = 2;
+            // 
+            // tableLayoutPanel
+            // 
+            this.tableLayoutPanel.ColumnCount = 2;
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel.Location = new System.Drawing.Point(1, 26);
+            this.tableLayoutPanel.Name = "tableLayoutPanel";
+            this.tableLayoutPanel.RowCount = 2;
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.73949F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.26051F));
+            this.tableLayoutPanel.Size = new System.Drawing.Size(663, 351);
+            this.tableLayoutPanel.TabIndex = 0;
             // 
             // panel_title_bar
             // 
@@ -88,6 +113,29 @@
             this.panel_title_bar.TabIndex = 1;
             this.panel_title_bar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseDown);
             this.panel_title_bar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseMove);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::ArcGISFoundation.Properties.Resources.query_logo_title;
+            this.pictureBox2.Location = new System.Drawing.Point(66, 17);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(213, 34);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(72, 65);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // close
             // 
@@ -119,53 +167,6 @@
             this.min.MouseEnter += new System.EventHandler(this.min_MouseEnter);
             this.min.MouseLeave += new System.EventHandler(this.min_MouseLeave);
             // 
-            // query_panel_container
-            // 
-            this.query_panel_container.BackColor = System.Drawing.Color.Transparent;
-            this.query_panel_container.Controls.Add(this.query_panel);
-            this.query_panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.query_panel_container.Location = new System.Drawing.Point(0, 65);
-            this.query_panel_container.Name = "query_panel_container";
-            this.query_panel_container.Size = new System.Drawing.Size(671, 384);
-            this.query_panel_container.TabIndex = 2;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::ArcGISFoundation.Properties.Resources.logo_title;
-            this.pictureBox2.Location = new System.Drawing.Point(78, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(287, 60);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 9;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(76, 65);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            // 
-            // tableLayoutPanel
-            // 
-            this.tableLayoutPanel.ColumnCount = 2;
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel.Location = new System.Drawing.Point(1, 26);
-            this.tableLayoutPanel.Name = "tableLayoutPanel";
-            this.tableLayoutPanel.RowCount = 2;
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.73949F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.26051F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(669, 357);
-            this.tableLayoutPanel.TabIndex = 0;
-            // 
             // QueryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -178,12 +179,12 @@
             this.Text = "QueryForm";
             this.Load += new System.EventHandler(this.QueryForm_Load);
             this.query_panel.ResumeLayout(false);
-            this.panel_title_bar.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.min)).EndInit();
             this.query_panel_container.ResumeLayout(false);
+            this.panel_title_bar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.min)).EndInit();
             this.ResumeLayout(false);
 
         }

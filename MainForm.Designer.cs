@@ -35,6 +35,15 @@ namespace ArcGISFoundation
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("白三叶");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("臂形草");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("扁穗牛鞭草");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("紫花苜蓿");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("所有牧草", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
             this.licensecontrol = new ESRI.ArcGIS.Controls.AxLicenseControl();
             this.toccontrol = new ESRI.ArcGIS.Controls.AxTOCControl();
             this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
@@ -60,6 +69,7 @@ namespace ArcGISFoundation
             this.min = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.treeView_all_cao = new System.Windows.Forms.TreeView();
             ((System.ComponentModel.ISupportInitialize)(this.licensecontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
@@ -67,6 +77,7 @@ namespace ArcGISFoundation
             this.panel_map_tree.SuspendLayout();
             this.xPanderPanelList1.SuspendLayout();
             this.xPanderPanel_tree.SuspendLayout();
+            this.xPanderPanel_query.SuspendLayout();
             this.panel_container.SuspendLayout();
             this.panel_right_map.SuspendLayout();
             this.panel_toolbar.SuspendLayout();
@@ -157,6 +168,7 @@ namespace ArcGISFoundation
             this.panel_map_tree.Location = new System.Drawing.Point(0, 0);
             this.panel_map_tree.Name = "panel_map_tree";
             this.panel_map_tree.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
+            this.panel_map_tree.ShowExpandIcon = true;
             this.panel_map_tree.Size = new System.Drawing.Size(200, 477);
             this.panel_map_tree.TabIndex = 10;
             this.panel_map_tree.Text = "功能菜单";
@@ -211,6 +223,7 @@ namespace ArcGISFoundation
             this.xPanderPanel_query.ColorCaptionGradientMiddle = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.xPanderPanel_query.ColorFlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.xPanderPanel_query.ColorFlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.xPanderPanel_query.Controls.Add(this.treeView_all_cao);
             this.xPanderPanel_query.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_query.Image = null;
             this.xPanderPanel_query.InnerBorderColor = System.Drawing.Color.White;
@@ -432,6 +445,30 @@ namespace ArcGISFoundation
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // treeView_all_cao
+            // 
+            this.treeView_all_cao.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView_all_cao.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView_all_cao.ItemHeight = 24;
+            this.treeView_all_cao.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
+            this.treeView_all_cao.Location = new System.Drawing.Point(0, 25);
+            this.treeView_all_cao.Name = "treeView_all_cao";
+            treeNode1.Name = "节点1";
+            treeNode1.Text = "白三叶";
+            treeNode2.Name = "节点2";
+            treeNode2.Text = "臂形草";
+            treeNode3.Name = "节点3";
+            treeNode3.Text = "扁穗牛鞭草";
+            treeNode4.Name = "节点4";
+            treeNode4.Text = "紫花苜蓿";
+            treeNode5.Name = "节点0";
+            treeNode5.Text = "所有牧草";
+            this.treeView_all_cao.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode5});
+            this.treeView_all_cao.Size = new System.Drawing.Size(198, 0);
+            this.treeView_all_cao.TabIndex = 0;
+            this.treeView_all_cao.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_all_cao_NodeMouseDoubleClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -455,6 +492,7 @@ namespace ArcGISFoundation
             this.panel_map_tree.ResumeLayout(false);
             this.xPanderPanelList1.ResumeLayout(false);
             this.xPanderPanel_tree.ResumeLayout(false);
+            this.xPanderPanel_query.ResumeLayout(false);
             this.panel_container.ResumeLayout(false);
             this.panel_right_map.ResumeLayout(false);
             this.panel_toolbar.ResumeLayout(false);
@@ -504,6 +542,7 @@ namespace ArcGISFoundation
         private System.Windows.Forms.Panel panel_toolbar;
         private System.Windows.Forms.Panel panel_right_map;
         private System.Windows.Forms.Label coorText;
+        private System.Windows.Forms.TreeView treeView_all_cao;
     }
 }
 

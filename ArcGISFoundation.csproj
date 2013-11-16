@@ -221,6 +221,7 @@
     <Content Include="images\green_flower_title.png" />
     <Content Include="images\max_hover.png" />
     <Content Include="images\min_hover.png" />
+    <None Include="images\query_logo_title.png" />
     <Content Include="images\yuan.png" />
     <Content Include="images\yuan_hover.png" />
   </ItemGroup>

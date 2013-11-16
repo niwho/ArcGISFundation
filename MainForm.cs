@@ -71,6 +71,8 @@ namespace ArcGISFoundation
 
             //init main tool bar
             InitMainToolbar();
+            // open map tree
+            this.xPanderPanel_tree.Expand = true;
         }
 
         //toc context menu
@@ -385,6 +387,12 @@ namespace ArcGISFoundation
         {
             queryForm = new QueryForm();
             queryForm.Show();
+        }
+
+        private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            this.xPanderPanel_tree.Expand = true;
+            this.xPanderPanel_query.Expand = false;
         }
     }
 }
