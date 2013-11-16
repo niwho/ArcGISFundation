@@ -31,6 +31,7 @@ namespace ArcGISFoundation
         #region For UI
         //¡Ÿ ±Œª÷√
         private Point temp_point;
+        private Form queryForm;
 
         const int CS_DropSHADOW = 0x20000;
         const int GCL_STYLE = (-26);
@@ -374,5 +375,16 @@ namespace ArcGISFoundation
         }
 
         #endregion
+
+        private void panel_right_map_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox_tools1_Click(object sender, EventArgs e)
+        {
+            queryForm = new QueryForm();
+            queryForm.Show();
+        }
     }
 }

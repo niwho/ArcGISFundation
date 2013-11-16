@@ -38,6 +38,7 @@ namespace ArcGISFoundation
             this.licensecontrol = new ESRI.ArcGIS.Controls.AxLicenseControl();
             this.toccontrol = new ESRI.ArcGIS.Controls.AxTOCControl();
             this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
+            this.coorText = new System.Windows.Forms.Label();
             this.maintoolbar = new ESRI.ArcGIS.Controls.AxToolbarControl();
             this.panel_map_tree = new BSE.Windows.Forms.Panel();
             this.xPanderPanelList1 = new BSE.Windows.Forms.XPanderPanelList();
@@ -59,7 +60,6 @@ namespace ArcGISFoundation
             this.min = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.coorText = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.licensecontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
@@ -111,10 +111,19 @@ namespace ArcGISFoundation
             this.axMapControl1.Name = "axMapControl1";
             this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
             this.axMapControl1.Size = new System.Drawing.Size(768, 449);
-            this.axMapControl1.TabIndex = 1;
-            this.axMapControl1.TabStop = false;
+            this.axMapControl1.TabIndex = 3;
             this.axMapControl1.OnMouseDown += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseDownEventHandler(this.axMapControl1_OnMouseDown);
             this.axMapControl1.OnMouseMove += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseMoveEventHandler(this.axMapControl1_OnMouseMove);
+            // 
+            // coorText
+            // 
+            this.coorText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.coorText.Font = new System.Drawing.Font("ËÎÌו", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.coorText.Location = new System.Drawing.Point(508, 423);
+            this.coorText.Name = "coorText";
+            this.coorText.Padding = new System.Windows.Forms.Padding(3, 2, 0, 2);
+            this.coorText.Size = new System.Drawing.Size(253, 20);
+            this.coorText.TabIndex = 2;
             // 
             // maintoolbar
             // 
@@ -227,6 +236,7 @@ namespace ArcGISFoundation
             // 
             // panel_right_map
             // 
+            this.panel_right_map.BackColor = System.Drawing.Color.Transparent;
             this.panel_right_map.Controls.Add(this.coorText);
             this.panel_right_map.Controls.Add(this.axMapControl1);
             this.panel_right_map.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -234,6 +244,7 @@ namespace ArcGISFoundation
             this.panel_right_map.Name = "panel_right_map";
             this.panel_right_map.Size = new System.Drawing.Size(768, 449);
             this.panel_right_map.TabIndex = 22;
+            this.panel_right_map.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_right_map_Paint);
             // 
             // panel_toolbar
             // 
@@ -354,6 +365,7 @@ namespace ArcGISFoundation
             this.pictureBox_tools1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_tools1.TabIndex = 5;
             this.pictureBox_tools1.TabStop = false;
+            this.pictureBox_tools1.Click += new System.EventHandler(this.pictureBox_tools1_Click);
             // 
             // close
             // 
@@ -420,15 +432,6 @@ namespace ArcGISFoundation
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // coorText
-            // 
-            this.coorText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.coorText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.coorText.Location = new System.Drawing.Point(536, 428);
-            this.coorText.Name = "coorText";
-            this.coorText.Size = new System.Drawing.Size(225, 14);
-            this.coorText.TabIndex = 6;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -454,7 +457,6 @@ namespace ArcGISFoundation
             this.xPanderPanel_tree.ResumeLayout(false);
             this.panel_container.ResumeLayout(false);
             this.panel_right_map.ResumeLayout(false);
-            this.panel_right_map.PerformLayout();
             this.panel_toolbar.ResumeLayout(false);
             this.panel_left.ResumeLayout(false);
             this.panel_title_bar.ResumeLayout(false);
@@ -501,7 +503,7 @@ namespace ArcGISFoundation
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel panel_toolbar;
         private System.Windows.Forms.Panel panel_right_map;
-        private System.Windows.Forms.TextBox coorText;
+        private System.Windows.Forms.Label coorText;
     }
 }
 
