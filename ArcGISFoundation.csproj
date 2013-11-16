@@ -137,6 +137,9 @@
     <Compile Include="Source\Command\TocContenxMenu\ZoomToLayer.cs" />
     <Compile Include="Source\Command\MapControlContextMenu.cs" />
     <Compile Include="Source\DataSource\DataSource.cs" />
+    <Compile Include="Source\Query\nw_query.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>MainForm.cs</DependentUpon>

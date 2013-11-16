@@ -68,10 +68,12 @@ namespace ArcGISFoundation
         #region MainForm Function
         #region MainForm_Load
         //MainForm_Load
+        private string m_bin_path;
         private void MainForm_Load(object sender, EventArgs e)
         {
             m_mapControl = (IMapControl3)axMapControl1.Object;
-
+            m_isQuery = false;
+            m_bin_path = System.Environment.CurrentDirectory +'\\';
             //init toc context menu
             InitTocContextMenu();
 
@@ -106,8 +108,8 @@ namespace ArcGISFoundation
         private void InitDataSouce()
         {
             DataNode activenode;
-            string strDataRoot = @"..\data";
-            string strInitData = @"白三叶";
+            string strDataRoot = m_bin_path+@"..\data";
+            string strInitData =  @"白三叶";
             m_datasource = new DataSource();
             m_datasource.Init(strDataRoot, m_mapControl, treeView_all_cao);
             m_datasource.Refresh();
@@ -137,19 +139,27 @@ namespace ArcGISFoundation
                 esriCommandStyles.esriCommandStyleIconOnly);
 
             // 增加地图导航命令
-            progID = "esriControlToolsMapNavigation.ControlsMapZoomInTool";
+            progID = "esriControls.ControlsMapZoomInTool";
             maintoolbar.AddItem(progID, -1, -1, true, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsMapNavigation.ControlsMapZoomOutTool";
+            progID = "esriControls.ControlsMapZoomOutTool";
             maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsMapNavigation.ControlsMapPanTool";
+            progID = "esriControls.ControlsMapPanTool";
             maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsMapNavigation.ControlsMapFullExtentCommand";
+            progID = "esriControls.ControlsMapFullExtentCommand";
+            maintoolbar.AddItem(progID, -1, -1, false, 0,
+                esriCommandStyles.esriCommandStyleIconOnly);
+
+            progID = "esriControls.ControlsMapHyperlinkTool";
+            maintoolbar.AddItem(progID, -1, -1, false, 0,
+                esriCommandStyles.esriCommandStyleIconOnly);
+
+            progID = "esriControls.ControlsMapIdentifyTool";
             maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
@@ -218,23 +228,23 @@ namespace ArcGISFoundation
 
         private void close_MouseEnter(object sender, EventArgs e)
         {
-            this.close.Image = Image.FromFile(@"..\images\close_hover.png");
+            this.close.Image = Image.FromFile(m_bin_path+@"..\images\close_hover.png");
         }
 
         private void close_MouseLeave(object sender, EventArgs e)
         {
-            this.close.Image = Image.FromFile(@"..\images\close.png");
+            this.close.Image = Image.FromFile(m_bin_path+@"..\images\close.png");
         }
 
         private void max_MouseEnter(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
             {
-                this.max.Image = Image.FromFile(@"..\images\max_hover.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\max_hover.png");
             }
             else
             {
-                this.max.Image = Image.FromFile(@"..\images\yuan_hover.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\yuan_hover.png");
             }
         }
 
@@ -242,11 +252,11 @@ namespace ArcGISFoundation
         {
             if (this.WindowState == FormWindowState.Normal)
             {
-                this.max.Image = Image.FromFile(@"..\images\max.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\max.png");
             }
             else
             {
-                this.max.Image = Image.FromFile(@"..\images\yuan.png ");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\yuan.png ");
             }
         }
 
@@ -266,12 +276,12 @@ namespace ArcGISFoundation
 
         private void min_MouseEnter(object sender, EventArgs e)
         {
-            this.min.Image = Image.FromFile(@"..\images\min_hover.png");
+            this.min.Image = Image.FromFile(m_bin_path+@"..\images\min_hover.png");
         }
 
         private void min_MouseLeave(object sender, EventArgs e)
         {
-            this.min.Image = Image.FromFile(@"..\images\min.png");
+            this.min.Image = Image.FromFile(m_bin_path+@"..\images\min.png");
         }
 
         private void panel_title_bar_MouseDown(object sender, MouseEventArgs e)
@@ -286,12 +296,12 @@ namespace ArcGISFoundation
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.MaximumSize = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
                 //设置还原图片
-                this.max.Image = Image.FromFile(@"..\images\yuan.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\yuan.png");
                 this.WindowState = FormWindowState.Maximized;
             }
             else
             {
-                this.max.Image = Image.FromFile(@"..\images\max.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\max.png");
                 this.WindowState = FormWindowState.Normal;
             }
 
@@ -333,27 +343,23 @@ namespace ArcGISFoundation
 
         private void pictureBox_tools1_Click(object sender, EventArgs e)
         {
-            queryForm = new QueryForm();
-            queryForm.Show();
+            m_isQuery = true;
+            return;
         }
 
         private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            if (e.Button == MouseButtons.Left &&
+                e.Node.Level != 0 &&
+                m_datasource.Switch(e.Node.Text))
+            {               
+                DataNode datanode= m_datasource.GetActiveNode();
 
-                if (e.Node.Level != 0 &&
-                    m_datasource.Switch(e.Node.Text))
-                {
-
-                    e.Node.ForeColor = Color.CadetBlue;
-                    DataNode datanode = m_datasource.GetActiveNode();
-
-                    this.xPanderPanel_tree.Text = "图层管理--" + datanode.strName;
-                    this.xPanderPanel_tree.Expand = true;
-                    this.xPanderPanel_query.Expand = false;
-                }
+                this.xPanderPanel_tree.Text = "图层管理--" + datanode.strName;
+                this.xPanderPanel_tree.Expand = true;
+                this.xPanderPanel_query.Expand = false;
+            }
         }
-
-
 
         #endregion
 
@@ -397,6 +403,12 @@ namespace ArcGISFoundation
         private void axMapControl1_OnMouseDown(object sender, IMapControlEvents2_OnMouseDownEvent e)
         {
             //make sure that the user right clicked
+            if (m_isQuery && 1 == e.button)
+            {
+                m_isQuery = false;//暂时这样处理
+                nw_query();
+                return;
+            }
             if (2 != e.button)
                 return;
 
@@ -411,37 +423,26 @@ namespace ArcGISFoundation
 
         #endregion
 
-        private void treeView_all_cao_DrawNode(object sender, DrawTreeNodeEventArgs e)
+       /* private void panel_right_map_Paint(object sender, PaintEventArgs e)
         {
-            e.DrawDefault = true; //我这里用默认颜色即可，只需要在TreeView失去焦点时选中节点仍然突显
+
+        }*/
+
+        /*private void pictureBox_tools1_Click(object sender, EventArgs e)
+        {
+            //queryForm = new QueryForm();
+           // queryForm.Show();
+            m_isQuery = true;
             return;
-
-            if ((e.State & TreeNodeStates.Selected) != 0)
-            {
-                //演示为绿底白字
-                e.Graphics.FillRectangle(Brushes.DarkBlue, e.Node.Bounds);
-
-                Font nodeFont = e.Node.NodeFont;
-                if (nodeFont == null) nodeFont = ((TreeView)sender).Font;
-                e.Graphics.DrawString(e.Node.Text, nodeFont, Brushes.White, Rectangle.Inflate(e.Bounds, 2, 0));
-            }
-            else
-            {
-                e.DrawDefault = true;
-            }
-
-            if ((e.State & TreeNodeStates.Focused) != 0)
-            {
-                using (Pen focusPen = new Pen(Color.Black))
-                {
-                    focusPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
-                    Rectangle focusBounds = e.Node.Bounds;
-                    focusBounds.Size = new Size(focusBounds.Width - 1,
-                    focusBounds.Height - 1);
-                    e.Graphics.DrawRectangle(focusPen, focusBounds);
-                }
-            }
         }
 
+        private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Level != 0) {
+                this.xPanderPanel_tree.Expand = true;
+                this.xPanderPanel_query.Expand = false;
+            }
+           
+        }*/
     }
 }
