@@ -69,7 +69,7 @@ namespace ArcGISFoundation
         private void MainForm_Load(object sender, EventArgs e)
         {
             m_mapControl = (IMapControl3)axMapControl1.Object;
-
+            m_isQuery = false;
             //init toc context menu
             InitTocContextMenu();
 
@@ -371,6 +371,12 @@ namespace ArcGISFoundation
         private void axMapControl1_OnMouseDown(object sender, IMapControlEvents2_OnMouseDownEvent e)
         {
             //make sure that the user right clicked
+            if (m_isQuery && 1 == e.button)
+            {
+                m_isQuery = false;//暂时这样处理
+                nw_query();
+                return;
+            }
             if (2 != e.button)
                 return;
 
@@ -392,8 +398,10 @@ namespace ArcGISFoundation
 
         private void pictureBox_tools1_Click(object sender, EventArgs e)
         {
-            queryForm = new QueryForm();
-            queryForm.Show();
+            //queryForm = new QueryForm();
+           // queryForm.Show();
+            m_isQuery = true;
+            return;
         }
 
         private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)

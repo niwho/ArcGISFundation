@@ -25,6 +25,10 @@ namespace ArcGISFoundation
             InitializeComponent();
         }
 
+        public System.Windows.Forms.ListView nw_getListView()
+        {
+            return listView_data;
+        }
         private void QueryForm_Load(object sender, EventArgs e)
         {
               
