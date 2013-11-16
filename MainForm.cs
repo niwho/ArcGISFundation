@@ -136,19 +136,27 @@ namespace ArcGISFoundation
                 esriCommandStyles.esriCommandStyleIconOnly);
 
             // 增加地图导航命令
-            progID = "esriControlToolsMapNavigation.ControlsMapZoomInTool";
+            progID = "esriControls.ControlsMapZoomInTool";
             maintoolbar.AddItem(progID, -1, -1, true, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsMapNavigation.ControlsMapZoomOutTool";
+            progID = "esriControls.ControlsMapZoomOutTool";
             maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsMapNavigation.ControlsMapPanTool";
+            progID = "esriControls.ControlsMapPanTool";
             maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsMapNavigation.ControlsMapFullExtentCommand";
+            progID = "esriControls.ControlsMapFullExtentCommand";
+            maintoolbar.AddItem(progID, -1, -1, false, 0,
+                esriCommandStyles.esriCommandStyleIconOnly);
+
+            progID = "esriControls.ControlsMapHyperlinkTool";
+            maintoolbar.AddItem(progID, -1, -1, false, 0,
+                esriCommandStyles.esriCommandStyleIconOnly);
+
+            progID = "esriControls.ControlsMapIdentifyTool";
             maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
@@ -338,10 +346,10 @@ namespace ArcGISFoundation
 
         private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (e.Node.Level != 0 &&
+            if (e.Button == MouseButtons.Left &&
+                e.Node.Level != 0 &&
                 m_datasource.Switch(e.Node.Text))
-            {
-                
+            {               
                 DataNode datanode= m_datasource.GetActiveNode();
 
                 this.xPanderPanel_tree.Text = "图层管理--" + datanode.strName;
