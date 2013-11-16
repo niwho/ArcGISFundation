@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QueryForm));
             this.query_panel = new BSE.Windows.Forms.Panel();
+            this.listView_data = new System.Windows.Forms.ListView();
             this.query_panel_container = new System.Windows.Forms.Panel();
             this.panel_title_bar = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.close = new System.Windows.Forms.PictureBox();
             this.min = new System.Windows.Forms.PictureBox();
-            this.listView_data = new System.Windows.Forms.ListView();
             this.query_panel.SuspendLayout();
             this.query_panel_container.SuspendLayout();
             this.panel_title_bar.SuspendLayout();
@@ -71,6 +71,16 @@
             this.query_panel.Size = new System.Drawing.Size(665, 378);
             this.query_panel.TabIndex = 0;
             this.query_panel.Text = "牧草查询结果";
+            // 
+            // listView_data
+            // 
+            this.listView_data.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView_data.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView_data.Location = new System.Drawing.Point(1, 26);
+            this.listView_data.Name = "listView_data";
+            this.listView_data.Size = new System.Drawing.Size(663, 351);
+            this.listView_data.TabIndex = 0;
+            this.listView_data.UseCompatibleStateImageBehavior = false;
             // 
             // query_panel_container
             // 
@@ -152,16 +162,6 @@
             this.min.Click += new System.EventHandler(this.min_Click);
             this.min.MouseEnter += new System.EventHandler(this.min_MouseEnter);
             this.min.MouseLeave += new System.EventHandler(this.min_MouseLeave);
-            // 
-            // listView_data
-            // 
-            this.listView_data.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView_data.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView_data.Location = new System.Drawing.Point(1, 26);
-            this.listView_data.Name = "listView_data";
-            this.listView_data.Size = new System.Drawing.Size(663, 351);
-            this.listView_data.TabIndex = 0;
-            this.listView_data.UseCompatibleStateImageBehavior = false;
             // 
             // QueryForm
             // 
