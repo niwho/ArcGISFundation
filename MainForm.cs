@@ -109,7 +109,7 @@ namespace ArcGISFoundation
         {
             DataNode activenode;
             string strDataRoot = m_bin_path+@"..\data";
-            string strInitData = m_bin_path+@"°×ÈýÒ¶";
+            string strInitData =  @"°×ÈýÒ¶";
             m_datasource = new DataSource();
             m_datasource.Init(strDataRoot, m_mapControl, treeView_all_cao);
             m_datasource.Refresh();
