@@ -36,7 +36,7 @@ namespace ArcGISFoundation
         private Form queryForm;
 
         //当前路径
-        private string currPath  = "";
+        private string currPath = "";
 
         const int CS_DropSHADOW = 0x20000;
         const int GCL_STYLE = (-26);
@@ -108,29 +108,9 @@ namespace ArcGISFoundation
             m_datasource = new DataSource();
             m_datasource.Init(strDataRoot, m_mapControl, treeView_all_cao);
             m_datasource.Refresh();
-        }
 
-        //toc context menu
-        private void InitMapDoc()
-        {
-            //map doc file path
-            string filePath = @"..\data\白三叶\白三叶.mxd";
-            IMapDocument mapDoc = new MapDocumentClass();
-            if (mapDoc.get_IsPresent(filePath) &&
-                !mapDoc.get_IsPasswordProtected(filePath))
-            {
-                mapDoc.Open(filePath, string.Empty);
-
-                // set the first map as the active view
-                IMap map = mapDoc.get_Map(0);
-                mapDoc.SetActiveView((IActiveView)map);
-
-                //assign the opened map to the MapControl
-                m_mapControl.DocumentFilename = filePath;
-                m_mapControl.Map = map;
-
-                mapDoc.Close();
-            }
+            this.xPanderPanel_tree.Text = 
+                "图层管理--" + m_datasource.GetActiveNode().strName;
         }
 
         //toc context menu
@@ -356,11 +336,14 @@ namespace ArcGISFoundation
             if (e.Node.Level != 0 &&
                 m_datasource.Switch(e.Node.Text))
             {
+                DataNode datanode= m_datasource.GetActiveNode();
+
+                this.xPanderPanel_tree.Text = "图层管理--" + datanode.strName;
                 this.xPanderPanel_tree.Expand = true;
                 this.xPanderPanel_query.Expand = false;
             }
         }
-    
+
         #endregion
 
         #region Control Event
@@ -412,10 +395,10 @@ namespace ArcGISFoundation
 
         private void axMapControl1_OnMouseMove(object sender, IMapControlEvents2_OnMouseMoveEvent e)
         {
-            this.coorText.Text = string.Format("{0}{1}{2}{3} {4}","坐标：", e.mapX.ToString("#######.###"),"，", e.mapY.ToString("#######.###"), axMapControl1.MapUnits.ToString().Substring(4));
+            this.coorText.Text = string.Format("{0}{1}{2}{3} {4}", "坐标：", e.mapX.ToString("#######.###"), "，", e.mapY.ToString("#######.###"), axMapControl1.MapUnits.ToString().Substring(4));
         }
 
         #endregion
 
- }
+    }
 }

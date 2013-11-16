@@ -26,8 +26,10 @@ namespace ArcGISFoundation
     {
         protected IMapControl3  m_mapcontrol;
         protected TreeView      m_tree;
+
         protected string        m_rootDir;
-        protected List<DataNode> m_dataNodes = new List<DataNode>();
+        protected List<DataNode>m_dataNodes = new List<DataNode>();
+        protected DataNode      m_activenode;
 
         public void Init(string rootDir, IMapControl3 mapcontrol, TreeView datatree)
         {
@@ -69,9 +71,13 @@ namespace ArcGISFoundation
             Switch(m_dataNodes[0].strName);
         }
 
+        public DataNode GetActiveNode()
+        {
+            return m_activenode;
+        }
+
         public DataNode GetNodeByName(string strName)
         {
-            bool find = false;
             foreach (DataNode node in m_dataNodes)
             {
                 if (node.strName == strName)
@@ -85,22 +91,22 @@ namespace ArcGISFoundation
 
         public bool Switch(string strName)
         {
-            DataNode datanode= GetNodeByName(strName);
-            if (datanode.strName == string.Empty)
+            m_activenode = GetNodeByName(strName);
+            if (m_activenode.strName == string.Empty)
                 return false;
            
             IMapDocument mapDoc = new MapDocumentClass();
-            if (mapDoc.get_IsPresent(datanode.strMapDoc) &&
-                !mapDoc.get_IsPasswordProtected(datanode.strMapDoc))
+            if (mapDoc.get_IsPresent(m_activenode.strMapDoc) &&
+                !mapDoc.get_IsPasswordProtected(m_activenode.strMapDoc))
             {
-                mapDoc.Open(datanode.strMapDoc, string.Empty);
+                mapDoc.Open(m_activenode.strMapDoc, string.Empty);
 
                 // set the first map as the active view
                 IMap map = mapDoc.get_Map(0);
                 mapDoc.SetActiveView((IActiveView)map);
 
                 //assign the opened map to the MapControl
-                m_mapcontrol.DocumentFilename = datanode.strMapDoc;
+                m_mapcontrol.DocumentFilename = m_activenode.strMapDoc;
                 m_mapcontrol.Map = map;
 
                 mapDoc.Close();
