@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QueryForm));
             this.query_panel = new BSE.Windows.Forms.Panel();
             this.query_panel_container = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.panel_title_bar = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.close = new System.Windows.Forms.PictureBox();
             this.min = new System.Windows.Forms.PictureBox();
+            this.listView_data = new System.Windows.Forms.ListView();
             this.query_panel.SuspendLayout();
             this.query_panel_container.SuspendLayout();
             this.panel_title_bar.SuspendLayout();
@@ -59,7 +59,7 @@
             this.query_panel.ColorCaptionGradientMiddle = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.query_panel.ColorContentPanelGradientBegin = System.Drawing.Color.Empty;
             this.query_panel.ColorContentPanelGradientEnd = System.Drawing.Color.Empty;
-            this.query_panel.Controls.Add(this.tableLayoutPanel);
+            this.query_panel.Controls.Add(this.listView_data);
             this.query_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.query_panel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.query_panel.Image = null;
@@ -82,20 +82,6 @@
             this.query_panel_container.Padding = new System.Windows.Forms.Padding(3);
             this.query_panel_container.Size = new System.Drawing.Size(671, 384);
             this.query_panel_container.TabIndex = 2;
-            // 
-            // tableLayoutPanel
-            // 
-            this.tableLayoutPanel.ColumnCount = 2;
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel.Location = new System.Drawing.Point(1, 26);
-            this.tableLayoutPanel.Name = "tableLayoutPanel";
-            this.tableLayoutPanel.RowCount = 2;
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 48.73949F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.26051F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(663, 351);
-            this.tableLayoutPanel.TabIndex = 0;
             // 
             // panel_title_bar
             // 
@@ -167,6 +153,16 @@
             this.min.MouseEnter += new System.EventHandler(this.min_MouseEnter);
             this.min.MouseLeave += new System.EventHandler(this.min_MouseLeave);
             // 
+            // listView_data
+            // 
+            this.listView_data.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView_data.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView_data.Location = new System.Drawing.Point(1, 26);
+            this.listView_data.Name = "listView_data";
+            this.listView_data.Size = new System.Drawing.Size(663, 351);
+            this.listView_data.TabIndex = 0;
+            this.listView_data.UseCompatibleStateImageBehavior = false;
+            // 
             // QueryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -196,8 +192,8 @@
         private System.Windows.Forms.PictureBox close;
         private System.Windows.Forms.PictureBox min;
         private System.Windows.Forms.Panel query_panel_container;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ListView listView_data;
     }
 }
