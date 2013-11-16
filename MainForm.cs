@@ -370,7 +370,7 @@ namespace ArcGISFoundation
 
         private void axMapControl1_OnMouseMove(object sender, IMapControlEvents2_OnMouseMoveEvent e)
         {
-            xystatusbar.Text = string.Format("{0} {1} {2}", e.mapX.ToString("#######.###"), e.mapY.ToString("#######.###"), axMapControl1.MapUnits.ToString().Substring(4));
+            this.coorText.Text = string.Format("{0}{1}{2}{3} {4}","×ø±ê£º", e.mapX.ToString("#######.###"),"£¬", e.mapY.ToString("#######.###"), axMapControl1.MapUnits.ToString().Substring(4));
         }
 
         #endregion

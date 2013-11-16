@@ -34,16 +34,11 @@ namespace ArcGISFoundation
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources =
-                new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.licensecontrol = new ESRI.ArcGIS.Controls.AxLicenseControl();
             this.toccontrol = new ESRI.ArcGIS.Controls.AxTOCControl();
             this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
             this.maintoolbar = new ESRI.ArcGIS.Controls.AxToolbarControl();
-            this.mainstatusbar = new System.Windows.Forms.StatusBar();
-            this.xystatusbar = new System.Windows.Forms.StatusBarPanel();
-
             this.panel_map_tree = new BSE.Windows.Forms.Panel();
             this.xPanderPanelList1 = new BSE.Windows.Forms.XPanderPanelList();
             this.xPanderPanel_tree = new BSE.Windows.Forms.XPanderPanel();
@@ -64,13 +59,19 @@ namespace ArcGISFoundation
             this.min = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-
-            ((System.ComponentModel.ISupportInitialize)(this.xystatusbar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).BeginInit();
+            this.coorText = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.licensecontrol)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.maintoolbar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
-
+            ((System.ComponentModel.ISupportInitialize)(this.maintoolbar)).BeginInit();
+            this.panel_map_tree.SuspendLayout();
+            this.xPanderPanelList1.SuspendLayout();
+            this.xPanderPanel_tree.SuspendLayout();
+            this.panel_container.SuspendLayout();
+            this.panel_right_map.SuspendLayout();
+            this.panel_toolbar.SuspendLayout();
+            this.panel_left.SuspendLayout();
+            this.panel_title_bar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_querytitle)).BeginInit();
@@ -82,17 +83,16 @@ namespace ArcGISFoundation
             ((System.ComponentModel.ISupportInitialize)(this.min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-
-            this.panel_map_tree.SuspendLayout();
-            this.xPanderPanelList1.SuspendLayout();
-            this.xPanderPanel_tree.SuspendLayout();
-            this.panel_container.SuspendLayout();
-            this.panel_right_map.SuspendLayout();
-            this.panel_toolbar.SuspendLayout();
-            this.panel_left.SuspendLayout();
-            this.panel_title_bar.SuspendLayout();
-
             this.SuspendLayout();
+            // 
+            // licensecontrol
+            // 
+            this.licensecontrol.Enabled = true;
+            this.licensecontrol.Location = new System.Drawing.Point(680, 206);
+            this.licensecontrol.Name = "licensecontrol";
+            this.licensecontrol.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("licensecontrol.OcxState")));
+            this.licensecontrol.Size = new System.Drawing.Size(32, 32);
+            this.licensecontrol.TabIndex = 5;
             // 
             // toccontrol
             // 
@@ -111,20 +111,10 @@ namespace ArcGISFoundation
             this.axMapControl1.Name = "axMapControl1";
             this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
             this.axMapControl1.Size = new System.Drawing.Size(768, 449);
-            this.axMapControl1.TabIndex = 20;
-            this.axMapControl1.OnMouseDown +=
-                new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseDownEventHandler(this.axMapControl1_OnMouseDown);
-            this.axMapControl1.OnMouseMove +=
-                new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseMoveEventHandler(this.axMapControl1_OnMouseMove);
-            // 
-            // licensecontrol
-            // 
-            this.licensecontrol.Enabled = true;
-            this.licensecontrol.Location = new System.Drawing.Point(680, 206);
-            this.licensecontrol.Name = "licensecontrol";
-            this.licensecontrol.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("licensecontrol.OcxState")));
-            this.licensecontrol.Size = new System.Drawing.Size(32, 32);
-            this.licensecontrol.TabIndex = 5;
+            this.axMapControl1.TabIndex = 1;
+            this.axMapControl1.TabStop = false;
+            this.axMapControl1.OnMouseDown += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseDownEventHandler(this.axMapControl1_OnMouseDown);
+            this.axMapControl1.OnMouseMove += new ESRI.ArcGIS.Controls.IMapControlEvents2_Ax_OnMouseMoveEventHandler(this.axMapControl1_OnMouseMove);
             // 
             // maintoolbar
             // 
@@ -135,21 +125,6 @@ namespace ArcGISFoundation
             this.maintoolbar.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("maintoolbar.OcxState")));
             this.maintoolbar.Size = new System.Drawing.Size(768, 28);
             this.maintoolbar.TabIndex = 12;
-            // 
-            // mainstatusbar
-            // 
-            this.mainstatusbar.Location = new System.Drawing.Point(0, 542);
-            this.mainstatusbar.Name = "mainstatusbar";
-            this.mainstatusbar.Panels.AddRange(new System.Windows.Forms.StatusBarPanel[] {
-            this.xystatusbar});
-            this.mainstatusbar.ShowPanels = true;
-            this.mainstatusbar.Size = new System.Drawing.Size(784, 24);
-            this.mainstatusbar.TabIndex = 5;
-            // 
-            // xystatusbar
-            // 
-            this.xystatusbar.Name = "xystatusbar";
-            this.xystatusbar.Width = 200;
             // 
             // panel_map_tree
             // 
@@ -252,6 +227,7 @@ namespace ArcGISFoundation
             // 
             // panel_right_map
             // 
+            this.panel_right_map.Controls.Add(this.coorText);
             this.panel_right_map.Controls.Add(this.axMapControl1);
             this.panel_right_map.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_right_map.Location = new System.Drawing.Point(203, 28);
@@ -298,12 +274,9 @@ namespace ArcGISFoundation
             this.panel_title_bar.Name = "panel_title_bar";
             this.panel_title_bar.Size = new System.Drawing.Size(974, 102);
             this.panel_title_bar.TabIndex = 1;
-            this.panel_title_bar.DoubleClick +=
-                new System.EventHandler(this.panel_title_bar_DoubleClick);
-            this.panel_title_bar.MouseDown += 
-                new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseDown);
-            this.panel_title_bar.MouseMove += 
-                new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseMove);
+            this.panel_title_bar.DoubleClick += new System.EventHandler(this.panel_title_bar_DoubleClick);
+            this.panel_title_bar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseDown);
+            this.panel_title_bar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseMove);
             // 
             // pictureBox5
             // 
@@ -392,12 +365,9 @@ namespace ArcGISFoundation
             this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.close.TabIndex = 4;
             this.close.TabStop = false;
-            this.close.Click += 
-                new System.EventHandler(this.close_Click);
-            this.close.MouseEnter += 
-                new System.EventHandler(this.close_MouseEnter);
-            this.close.MouseLeave += 
-                new System.EventHandler(this.close_MouseLeave);
+            this.close.Click += new System.EventHandler(this.close_Click);
+            this.close.MouseEnter += new System.EventHandler(this.close_MouseEnter);
+            this.close.MouseLeave += new System.EventHandler(this.close_MouseLeave);
             // 
             // max
             // 
@@ -410,10 +380,8 @@ namespace ArcGISFoundation
             this.max.TabIndex = 3;
             this.max.TabStop = false;
             this.max.Click += new System.EventHandler(this.max_Click);
-            this.max.MouseEnter += 
-                new System.EventHandler(this.max_MouseEnter);
-            this.max.MouseLeave += 
-                new System.EventHandler(this.max_MouseLeave);
+            this.max.MouseEnter += new System.EventHandler(this.max_MouseEnter);
+            this.max.MouseLeave += new System.EventHandler(this.max_MouseLeave);
             // 
             // min
             // 
@@ -426,10 +394,8 @@ namespace ArcGISFoundation
             this.min.TabIndex = 2;
             this.min.TabStop = false;
             this.min.Click += new System.EventHandler(this.min_Click);
-            this.min.MouseEnter += 
-                new System.EventHandler(this.min_MouseEnter);
-            this.min.MouseLeave += 
-                new System.EventHandler(this.min_MouseLeave);
+            this.min.MouseEnter += new System.EventHandler(this.min_MouseEnter);
+            this.min.MouseLeave += new System.EventHandler(this.min_MouseLeave);
             // 
             // pictureBox2
             // 
@@ -454,6 +420,15 @@ namespace ArcGISFoundation
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // coorText
+            // 
+            this.coorText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.coorText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.coorText.Location = new System.Drawing.Point(536, 428);
+            this.coorText.Name = "coorText";
+            this.coorText.Size = new System.Drawing.Size(225, 14);
+            this.coorText.TabIndex = 6;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -463,8 +438,6 @@ namespace ArcGISFoundation
             this.Controls.Add(this.panel_container);
             this.Controls.Add(this.panel_title_bar);
             this.Controls.Add(this.licensecontrol);
-            this.Controls.Add(this.mainstatusbar);
-
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
@@ -472,13 +445,19 @@ namespace ArcGISFoundation
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
-
             ((System.ComponentModel.ISupportInitialize)(this.licensecontrol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maintoolbar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xystatusbar)).EndInit();
-            
+            this.panel_map_tree.ResumeLayout(false);
+            this.xPanderPanelList1.ResumeLayout(false);
+            this.xPanderPanel_tree.ResumeLayout(false);
+            this.panel_container.ResumeLayout(false);
+            this.panel_right_map.ResumeLayout(false);
+            this.panel_right_map.PerformLayout();
+            this.panel_toolbar.ResumeLayout(false);
+            this.panel_left.ResumeLayout(false);
+            this.panel_title_bar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_querytitle)).EndInit();
@@ -490,24 +469,12 @@ namespace ArcGISFoundation
             ((System.ComponentModel.ISupportInitialize)(this.min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-
-            this.panel_map_tree.ResumeLayout(false);
-            this.xPanderPanelList1.ResumeLayout(false);
-            this.xPanderPanel_tree.ResumeLayout(false);
-            this.panel_container.ResumeLayout(false);
-            this.panel_right_map.ResumeLayout(false);
-
-            this.panel_toolbar.ResumeLayout(false);
-            this.panel_left.ResumeLayout(false);
-            this.panel_title_bar.ResumeLayout(false);
-
             this.ResumeLayout(false);
+
         }
 
         #endregion
 
-        private System.Windows.Forms.StatusBar mainstatusbar;
-        private System.Windows.Forms.StatusBarPanel xystatusbar;
 
         private ESRI.ArcGIS.Controls.AxTOCControl toccontrol;
         private ESRI.ArcGIS.Controls.AxLicenseControl licensecontrol;
@@ -534,6 +501,7 @@ namespace ArcGISFoundation
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel panel_toolbar;
         private System.Windows.Forms.Panel panel_right_map;
+        private System.Windows.Forms.TextBox coorText;
     }
 }
 
