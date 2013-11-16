@@ -255,7 +255,6 @@ namespace ArcGISFoundation
             treeNode5});
             this.treeView_all_cao.Size = new System.Drawing.Size(198, 0);
             this.treeView_all_cao.TabIndex = 0;
-            this.treeView_all_cao.DrawNode += new System.Windows.Forms.DrawTreeNodeEventHandler(this.treeView_all_cao_DrawNode);
             this.treeView_all_cao.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_all_cao_NodeMouseDoubleClick);
             // 
             // panel_container
