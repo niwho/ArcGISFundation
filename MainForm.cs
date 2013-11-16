@@ -74,6 +74,7 @@ namespace ArcGISFoundation
             m_mapControl = (IMapControl3)axMapControl1.Object;
             m_isQuery = false;
             m_bin_path = System.Environment.CurrentDirectory +'\\';
+
             //init toc context menu
             InitTocContextMenu();
 
@@ -107,7 +108,6 @@ namespace ArcGISFoundation
         //init data source
         private void InitDataSouce()
         {
-            DataNode activenode;
             string strDataRoot = m_bin_path+@"..\data";
             string strInitData =  @"白三叶";
             m_datasource = new DataSource();
@@ -172,24 +172,7 @@ namespace ArcGISFoundation
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            //Warn users if the ArcGIS Engine samples used by this application have not been compiled
-            ArrayList checkList = new ArrayList();
-            checkList.Add("ReshapePolylineEditTask_CS.ReshapePolylineEditTask");
-            checkList.Add("VertexCommands_CS.UsingOutOfBoxVertexCommands");
-
-            Type t = null;
-            bool success = true;
-
-            foreach (string item in checkList)
-            {
-                t = Type.GetTypeFromProgID(item);
-
-                if (t == null)
-                {
-                    success = false;
-                    break;
-                }
-            }
+           
         }
         //窗体改变大小时
         private void MainForm_Resize(object sender, EventArgs e)
