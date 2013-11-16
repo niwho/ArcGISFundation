@@ -26,6 +26,8 @@ namespace ArcGISFoundation
         TocMapContextMenu m_tocMapContextMenu = null;
         TocLayerContextMenu m_tocLayerContextMenu = null;
         MapControlContextMenu m_mapControlContextMenu = null;
+        DataSource m_datasource = null;
+
         #endregion
 
         #region For UI
@@ -73,8 +75,8 @@ namespace ArcGISFoundation
             //init toc context menu
             InitTocContextMenu();
 
-            //init map doc
-            InitMapDoc();
+            //init data source 
+            InitDataSouce();
 
             //init main tool bar
             InitMainToolbar();
@@ -97,6 +99,15 @@ namespace ArcGISFoundation
         {
             //Add map menu
             m_mapControlContextMenu = new MapControlContextMenu(m_mapControl);
+        }
+
+        //init data source
+        private void InitDataSouce()
+        {
+            string strDataRoot = @"..\data";
+            m_datasource = new DataSource();
+            m_datasource.Init(strDataRoot, m_mapControl, treeView_all_cao);
+            m_datasource.Refresh();
         }
 
         //toc context menu
@@ -329,6 +340,27 @@ namespace ArcGISFoundation
 
         }
 
+        private void panel_right_map_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox_tools1_Click(object sender, EventArgs e)
+        {
+            queryForm = new QueryForm();
+            queryForm.Show();
+        }
+
+        private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Level != 0 &&
+                m_datasource.Switch(e.Node.Text))
+            {
+                this.xPanderPanel_tree.Expand = true;
+                this.xPanderPanel_query.Expand = false;
+            }
+        }
+    
         #endregion
 
         #region Control Event
@@ -385,21 +417,5 @@ namespace ArcGISFoundation
 
         #endregion
 
-        private void panel_right_map_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox_tools1_Click(object sender, EventArgs e)
-        {
-            queryForm = new QueryForm();
-            queryForm.Show();
-        }
-
-        private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            this.xPanderPanel_tree.Expand = true;
-            this.xPanderPanel_query.Expand = false;
-        }
-    }
+ }
 }
