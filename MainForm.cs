@@ -398,10 +398,7 @@ namespace ArcGISFoundation
 
         private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (e.Node.Level != 0) {
-                this.xPanderPanel_tree.Expand = true;
-                this.xPanderPanel_query.Expand = false;
-            }
+           
            
         }
     }
