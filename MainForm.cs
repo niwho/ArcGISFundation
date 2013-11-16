@@ -31,8 +31,7 @@ namespace ArcGISFoundation
         #region For UI
         //临时位置
         private Point temp_point;
-        private Form queryForm;
-
+        private bool m_isQuery;
         //当前路径
         private string currPath  = "";
 
@@ -69,7 +68,7 @@ namespace ArcGISFoundation
         private void MainForm_Load(object sender, EventArgs e)
         {
             m_mapControl = (IMapControl3)axMapControl1.Object;
-
+            m_isQuery = false;
             //init toc context menu
             InitTocContextMenu();
 
@@ -183,6 +182,9 @@ namespace ArcGISFoundation
                     break;
                 }
             }
+
+            //
+            //MessageBox.Show(System.Environment.CurrentDirectory);
         }
         //窗体改变大小时
         private void MainForm_Resize(object sender, EventArgs e)
@@ -371,6 +373,12 @@ namespace ArcGISFoundation
         private void axMapControl1_OnMouseDown(object sender, IMapControlEvents2_OnMouseDownEvent e)
         {
             //make sure that the user right clicked
+            if (m_isQuery && 1 == e.button)
+            {
+                m_isQuery = false;//暂时这样处理
+                nw_query();
+                return;
+            }
             if (2 != e.button)
                 return;
 
@@ -385,24 +393,68 @@ namespace ArcGISFoundation
 
         #endregion
 
-        private void panel_right_map_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void pictureBox_tools1_Click(object sender, EventArgs e)
         {
-            queryForm = new QueryForm();
-            queryForm.Show();
+            m_isQuery = true;
+            return;
+
+            // MessageBox.Show("query");
+           
         }
 
-        private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        private void nw_query()
         {
-            if (e.Node.Level != 0) {
-                this.xPanderPanel_tree.Expand = true;
-                this.xPanderPanel_query.Expand = false;
+            ILayer layer = axMapControl1.get_Layer(0);
+            axMapControl1.MousePointer = ESRI.ArcGIS.Controls.esriControlsMousePointer.esriPointerCrosshair;
+            ESRI.ArcGIS.Geometry.IGeometry geometry = null;
+            geometry = axMapControl1.TrackRectangle();
+            IFeatureLayer featureLayer = layer as IFeatureLayer;
+            //获取featureLayer的featureClass 
+            IFeatureClass featureClass = featureLayer.FeatureClass;
+            ISpatialFilter pSpatialFilter = new SpatialFilterClass();
+            IQueryFilter pQueryFilter = pSpatialFilter as ISpatialFilter;
+            //设置过滤器的Geometry
+            pSpatialFilter.Geometry = geometry;
+            //设置空间关系类型
+            pSpatialFilter.SpatialRel = esriSpatialRelEnum.esriSpatialRelIntersects;//esriSpatialRelContains;
+            //获取FeatureCursor游标
+            IFeatureCursor pFeatureCursor = featureClass.Search(pQueryFilter, true);
+            //遍历FeatureCursor
+            IFeature pFeature;
+            System.Collections.Generic.List<IFeature> pList = new System.Collections.Generic.List<IFeature>();
+            while ((pFeature = pFeatureCursor.NextFeature()) != null)
+            {
+
+               // ESRI.ArcGIS.Geodatabase.IField filed = pFeature.Fields.FindField("rate_shiyi");
+                
+                ESRI.ArcGIS.Geodatabase.IRow row = pFeature.Table.GetRow(pFeature.OID);
+                //string str = row.Value[].ToString();
+                double a = System.Convert.ToDouble(row.get_Value(pFeature.Fields.FindField(nw_getQueryFiledName())));
+                pList.Add(pFeature);
             }
-           
+
+            MessageBox.Show(pList.Count.ToString());
+            if (pFeature != null)
+            {
+                axMapControl1.Map.SelectFeature(axMapControl1.get_Layer(0), pFeature);
+                axMapControl1.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+            }
+            /* axMapControl1.Map.SelectByShape(geometry, null, false);
+             axMapControl1.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);*/
+        }
+        private string nw_getQueryFiledName(int ty =0)
+        {
+            //根据当前的查询，适宜，次适宜
+            switch (ty)
+            {
+                case 0:
+                    return "rate_shiyi";
+                case 1:
+                    return "rate_cishiyi";
+                default:
+                    return "rate_shiyi";
+            }
+
         }
     }
 }
