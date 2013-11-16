@@ -46,6 +46,7 @@ namespace ArcGISFoundation
             System.Windows.Forms.ListView listView_data = qf.nw_getListView();
             listView_data.Columns.Add("省名", 120,HorizontalAlignment.Left);//省名,,
             listView_data.Columns.Add("比重", 120, HorizontalAlignment.Left);
+
             System.Collections.Generic.List<IFeature> pList = new System.Collections.Generic.List<IFeature>();
             while (pFeature != null)
             {
