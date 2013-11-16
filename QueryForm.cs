@@ -19,9 +19,10 @@ namespace ArcGISFoundation
 
         //临时位置
         private Point temp_point;
-
-        public QueryForm()
+        private string m_bin_path;
+        public QueryForm(string path)
         {
+            m_bin_path = path;
             InitializeComponent();
         }
 
@@ -41,12 +42,12 @@ namespace ArcGISFoundation
 
         private void min_MouseEnter(object sender, EventArgs e)
         {
-            this.min.Image = Image.FromFile(@"..\images\min_hover.png");
+            this.min.Image = Image.FromFile(m_bin_path + @"..\images\min_hover.png");
         }
 
         private void min_MouseLeave(object sender, EventArgs e)
         {
-            this.min.Image = Image.FromFile(@"..\images\min.png");
+            this.min.Image = Image.FromFile(m_bin_path + @"..\images\min.png");
         }
 
         private void close_Click(object sender, EventArgs e)
@@ -56,12 +57,12 @@ namespace ArcGISFoundation
 
         private void close_MouseEnter(object sender, EventArgs e)
         {
-            this.close.Image = Image.FromFile(@"..\images\close_hover.png");
+            this.close.Image = Image.FromFile(m_bin_path + @"..\images\close_hover.png");
         }
 
         private void close_MouseLeave(object sender, EventArgs e)
         {
-            this.close.Image = Image.FromFile(@"..\images\close.png");
+            this.close.Image = Image.FromFile(m_bin_path + @"..\images\close.png");
         }
 
         private void panel_title_bar_MouseMove(object sender, MouseEventArgs e)

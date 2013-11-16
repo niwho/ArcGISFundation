@@ -68,10 +68,12 @@ namespace ArcGISFoundation
         #region MainForm Function
         #region MainForm_Load
         //MainForm_Load
+        private string m_bin_path;
         private void MainForm_Load(object sender, EventArgs e)
         {
             m_mapControl = (IMapControl3)axMapControl1.Object;
             m_isQuery = false;
+            m_bin_path = System.Environment.CurrentDirectory +'\\';
             //init toc context menu
             InitTocContextMenu();
 
@@ -82,6 +84,7 @@ namespace ArcGISFoundation
             InitMainToolbar();
             // open map tree
             this.xPanderPanel_tree.Expand = true;
+
         }
 
         //toc context menu
@@ -105,8 +108,8 @@ namespace ArcGISFoundation
         private void InitDataSouce()
         {
             DataNode activenode;
-            string strDataRoot = @"..\data";
-            string strInitData = @"白三叶";
+            string strDataRoot = m_bin_path+@"..\data";
+            string strInitData = m_bin_path+@"白三叶";
             m_datasource = new DataSource();
             m_datasource.Init(strDataRoot, m_mapControl, treeView_all_cao);
             m_datasource.Refresh();
@@ -217,23 +220,23 @@ namespace ArcGISFoundation
 
         private void close_MouseEnter(object sender, EventArgs e)
         {
-            this.close.Image = Image.FromFile(@"..\images\close_hover.png");
+            this.close.Image = Image.FromFile(m_bin_path+@"..\images\close_hover.png");
         }
 
         private void close_MouseLeave(object sender, EventArgs e)
         {
-            this.close.Image = Image.FromFile(@"..\images\close.png");
+            this.close.Image = Image.FromFile(m_bin_path+@"..\images\close.png");
         }
 
         private void max_MouseEnter(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
             {
-                this.max.Image = Image.FromFile(@"..\images\max_hover.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\max_hover.png");
             }
             else
             {
-                this.max.Image = Image.FromFile(@"..\images\yuan_hover.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\yuan_hover.png");
             }
         }
 
@@ -241,11 +244,11 @@ namespace ArcGISFoundation
         {
             if (this.WindowState == FormWindowState.Normal)
             {
-                this.max.Image = Image.FromFile(@"..\images\max.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\max.png");
             }
             else
             {
-                this.max.Image = Image.FromFile(@"..\images\yuan.png ");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\yuan.png ");
             }
         }
 
@@ -265,12 +268,12 @@ namespace ArcGISFoundation
 
         private void min_MouseEnter(object sender, EventArgs e)
         {
-            this.min.Image = Image.FromFile(@"..\images\min_hover.png");
+            this.min.Image = Image.FromFile(m_bin_path+@"..\images\min_hover.png");
         }
 
         private void min_MouseLeave(object sender, EventArgs e)
         {
-            this.min.Image = Image.FromFile(@"..\images\min.png");
+            this.min.Image = Image.FromFile(m_bin_path+@"..\images\min.png");
         }
 
         private void panel_title_bar_MouseDown(object sender, MouseEventArgs e)
@@ -285,12 +288,12 @@ namespace ArcGISFoundation
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.MaximumSize = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
                 //设置还原图片
-                this.max.Image = Image.FromFile(@"..\images\yuan.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\yuan.png");
                 this.WindowState = FormWindowState.Maximized;
             }
             else
             {
-                this.max.Image = Image.FromFile(@"..\images\max.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\max.png");
                 this.WindowState = FormWindowState.Normal;
             }
 
@@ -332,8 +335,8 @@ namespace ArcGISFoundation
 
         private void pictureBox_tools1_Click(object sender, EventArgs e)
         {
-            queryForm = new QueryForm();
-            queryForm.Show();
+            m_isQuery = true;
+            return;
         }
 
         private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -412,12 +415,12 @@ namespace ArcGISFoundation
 
         #endregion
 
-        private void panel_right_map_Paint(object sender, PaintEventArgs e)
+       /* private void panel_right_map_Paint(object sender, PaintEventArgs e)
         {
 
-        }
+        }*/
 
-        private void pictureBox_tools1_Click(object sender, EventArgs e)
+        /*private void pictureBox_tools1_Click(object sender, EventArgs e)
         {
             //queryForm = new QueryForm();
            // queryForm.Show();
@@ -432,6 +435,6 @@ namespace ArcGISFoundation
                 this.xPanderPanel_query.Expand = false;
             }
            
-        }
+        }*/
     }
 }
