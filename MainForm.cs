@@ -33,6 +33,9 @@ namespace ArcGISFoundation
         private Point temp_point;
         private Form queryForm;
 
+        //当前路径
+        private string currPath  = "";
+
         const int CS_DropSHADOW = 0x20000;
         const int GCL_STYLE = (-26);
         //声明Win32 API
@@ -53,6 +56,10 @@ namespace ArcGISFoundation
             InitializeComponent();
             //this.MyFormMouseDown += new MouseEventHandler(panel_title_bar_MouseDown);
             SetClassLong(this.Handle, GCL_STYLE, GetClassLong(this.Handle, GCL_STYLE) | CS_DropSHADOW); //API函数加载，实现窗体边框阴影效果
+
+            //
+            currPath = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
+            //MessageBox.Show("获取和设置包括该应用程序的目录的名称:" + currPath);
         }
         #endregion
 
