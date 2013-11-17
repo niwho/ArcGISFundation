@@ -137,7 +137,7 @@ namespace ArcGISFoundation
                     //m_mapControl.Map.SelectFeature(m_featureLayer as ILayer, feature);
                     m_mapControl.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
                     m_mapControl.CenterAt(feature.Extent.LowerLeft);
-                    m_mapControl.MapScale = 0.1;
+                    //m_mapControl.MapScale = 0.1;
                     //m_mapControl.Map.SelectFeature(m_featureLayer as ILayer, null);
                 }
 

@@ -88,6 +88,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\WINDOWS\assembly\GAC_MSIL\ESRI.ArcGIS.Geometry\9.3.0.1549__8fc3cc631e44ad86\ESRI.ArcGIS.Geometry.dll</HintPath>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.Output, Version=10.0.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.System, Version=9.3.0.1549, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\WINDOWS\assembly\GAC_MSIL\ESRI.ArcGIS.System\9.3.0.1549__8fc3cc631e44ad86\ESRI.ArcGIS.System.dll</HintPath>
@@ -137,10 +141,12 @@
     <Compile Include="Source\Command\TocContenxMenu\ZoomToLayer.cs" />
     <Compile Include="Source\Command\MapControlContextMenu.cs" />
     <Compile Include="Source\DataSource\DataSource.cs" />
+    <Compile Include="Source\Helper\PrintHelper.cs" />
     <Compile Include="Source\Query\list_sort.cs" />
     <Compile Include="Source\Query\nw_query.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Source\Helper\FeatureHelper.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -227,6 +233,7 @@
     <Content Include="images\max_hover.png" />
     <Content Include="images\min_hover.png" />
     <None Include="images\query_logo_title.png" />
+    <None Include="images\tool_map_printer.png" />
     <Content Include="images\yuan.png" />
     <Content Include="images\yuan_hover.png" />
   </ItemGroup>

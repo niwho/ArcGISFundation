@@ -64,10 +64,11 @@
             this.query_panel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.query_panel.Image = null;
             this.query_panel.InnerBorderColor = System.Drawing.Color.White;
-            this.query_panel.Location = new System.Drawing.Point(3, 3);
+            this.query_panel.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.query_panel.Location = new System.Drawing.Point(3, 0);
             this.query_panel.Name = "query_panel";
             this.query_panel.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.query_panel.Size = new System.Drawing.Size(665, 378);
+            this.query_panel.Size = new System.Drawing.Size(665, 381);
             this.query_panel.TabIndex = 0;
             this.query_panel.Text = "牧草查询结果";
             // 
@@ -79,7 +80,7 @@
             this.listView_data.GridLines = true;
             this.listView_data.Location = new System.Drawing.Point(1, 26);
             this.listView_data.Name = "listView_data";
-            this.listView_data.Size = new System.Drawing.Size(663, 351);
+            this.listView_data.Size = new System.Drawing.Size(663, 354);
             this.listView_data.TabIndex = 0;
             this.listView_data.UseCompatibleStateImageBehavior = false;
             this.listView_data.View = System.Windows.Forms.View.Details;
@@ -93,7 +94,7 @@
             this.query_panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
             this.query_panel_container.Location = new System.Drawing.Point(0, 65);
             this.query_panel_container.Name = "query_panel_container";
-            this.query_panel_container.Padding = new System.Windows.Forms.Padding(3);
+            this.query_panel_container.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.query_panel_container.Size = new System.Drawing.Size(671, 384);
             this.query_panel_container.TabIndex = 2;
             // 
