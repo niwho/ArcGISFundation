@@ -255,6 +255,7 @@
     <Content Include="images\max_hover.png" />
     <Content Include="images\min_hover.png" />
     <None Include="images\query_logo_title.png" />
+    <None Include="images\tool_map_printer.png" />
     <Content Include="images\yuan.png" />
     <Content Include="images\yuan_hover.png" />
   </ItemGroup>

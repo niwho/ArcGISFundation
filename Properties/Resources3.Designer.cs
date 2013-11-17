@@ -123,6 +123,13 @@ namespace ArcGISFoundation.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap tool_map_printer {
+            get {
+                object obj = ResourceManager.GetObject("tool_map_printer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap tools_help {
             get {
                 object obj = ResourceManager.GetObject("tools_help", resourceCulture);

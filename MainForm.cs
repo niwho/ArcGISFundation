@@ -340,16 +340,14 @@ namespace ArcGISFoundation
 
             Size size = new Size(3474,1479);
 
-            PrintHelper.ExportActiveView(m_mapControl.ActiveView, size, strImagePath);
-            PrintHelper.ExportActiveView(m_mapControl.ActiveView, 300, 5, 
-                strImageType, strImageDir, strImageName, 
-                true, m_mapControl.ActiveView.Extent);
+            //PrintHelper.ExportActiveView(m_mapControl.ActiveView, size, strImagePath);
+            PrintHelper.ExportActiveView(m_mapControl.ActiveView, 300, 5, strImageType, strImageDir, strImageName, true, m_mapControl.ActiveView.Extent);
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            ExcelImportForm excelImport = new ExcelImportForm();
-            excelImport.ShowDialog(this);
+            ExcelImportForm form = new ExcelImportForm();
+            form.ShowDialog(this);
         }
 
         private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
