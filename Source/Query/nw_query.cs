@@ -27,6 +27,7 @@ namespace ArcGISFoundation
         {
             ILayer layer = axMapControl1.get_Layer(0);
             axMapControl1.MousePointer = ESRI.ArcGIS.Controls.esriControlsMousePointer.esriPointerCrosshair;
+            
             ESRI.ArcGIS.Geometry.IGeometry geometry = null;
             geometry = axMapControl1.TrackRectangle();
             IFeatureLayer featureLayer = layer as IFeatureLayer;
@@ -47,9 +48,12 @@ namespace ArcGISFoundation
                         (ESRI.ArcGIS.Controls.ControlsLayerListToolControl)(maintoolbar.GetItem(maintoolbar.Find("esriControls.ControlsLayerListToolControl"))).Command;
               string ss = dfsafdsfa.ToString();
             QueryForm qf =new QueryForm(m_bin_path);
+            qf.m_mapControl = axMapControl1;
+            qf.m_featureLayer = featureLayer;
             System.Windows.Forms.ListView listView_data = qf.nw_getListView();
             listView_data.Columns.Add("省名", 120,HorizontalAlignment.Left);//省名,,
-            listView_data.Columns.Add("比重", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add("适宜度", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add("面积", 120, HorizontalAlignment.Left);
 
             System.Collections.Generic.List<IFeature> pList = new System.Collections.Generic.List<IFeature>();
             while (pFeature != null)
@@ -68,17 +72,13 @@ namespace ArcGISFoundation
                // ESRI.ArcGIS.Geodatabase.IRowBuffer buff = (IRowBuffer)pFeature;
                 lvi.Text = buff.Value[pFeature.Fields.FindField("NAME")].ToString();
                 lvi.SubItems.Add(buff.Value[pFeature.Fields.FindField("rate_shiyi")].ToString());//rate_shiyi
+                lvi.SubItems.Add(buff.Value[pFeature.Fields.FindField("PERIMETER")].ToString());//
                 listView_data.Items.Add(lvi);
 
                 pFeature = pFeatureCursor.NextFeature();
             }
+            axMapControl1.MousePointer = ESRI.ArcGIS.Controls.esriControlsMousePointer.esriPointerDefault;
             qf.Show();
-
-             
-
-         
-           qf.Show();
-           
             if (pFeature != null)
             {
                 axMapControl1.Map.SelectFeature(axMapControl1.get_Layer(0), pFeature);
@@ -101,6 +101,7 @@ namespace ArcGISFoundation
             }
 
         }
+
 
     }
 }

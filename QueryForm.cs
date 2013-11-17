@@ -6,7 +6,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
+using ESRI.ArcGIS.Controls;
+using ESRI.ArcGIS.Carto;
+using ESRI.ArcGIS.Geodatabase;
 namespace ArcGISFoundation
 {
     public partial class QueryForm : Form
@@ -21,6 +23,10 @@ namespace ArcGISFoundation
         private Point temp_point;
         private string m_bin_path;
         private sortListView.ListViewColumnSorter lvwColumnSorter;
+
+        public ESRI.ArcGIS.Controls.AxMapControl m_mapControl;
+        public ESRI.ArcGIS.Carto.IFeatureLayer m_featureLayer;
+
         public QueryForm(string path)
         {
             m_bin_path = path;
@@ -28,7 +34,7 @@ namespace ArcGISFoundation
             lvwColumnSorter = new sortListView.ListViewColumnSorter();
             this.listView_data.ListViewItemSorter = lvwColumnSorter;
         }
-
+       
         public System.Windows.Forms.ListView nw_getListView()
         {
             return listView_data;
@@ -84,8 +90,9 @@ namespace ArcGISFoundation
 
         private void listView_data_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            if (e.Column == lvwColumnSorter.SortColumn)
+            if (e.Column == 1 ||e.Column == 2)
             {
+                lvwColumnSorter.SortColumn = e.Column;
                 // 重新设置此列的排序方法.
                 if (lvwColumnSorter.Order == SortOrder.Ascending)
                 {
@@ -100,6 +107,41 @@ namespace ArcGISFoundation
             }
             
                  
+        }
+
+        private void listView_data_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView_data.SelectedIndices != null && listView_data.SelectedIndices.Count > 0)
+            {
+                ListView.SelectedIndexCollection c = listView_data.SelectedIndices;
+                string str = this.listView_data.SelectedItems[0].SubItems[1].Text;
+                //MessageBox.Show( listView_data.Items[c[0]].Text);
+
+                IFeatureClass featureClass = m_featureLayer.FeatureClass;
+                IFeatureSelection sel = m_featureLayer as IFeatureSelection; 
+                
+                IFeature feature = null;
+                IQueryFilter queryFilter = new QueryFilterClass();
+                IFeatureCursor featureCusor;
+                queryFilter.WhereClause = "NAME = '" + this.listView_data.SelectedItems[0].SubItems[0].Text + "'";
+                featureCusor = featureClass.Search(queryFilter, true);
+                //search的参数第一个为过滤条件，第二个为是否重复执行。
+                feature = featureCusor.NextFeature();
+                sel.SelectFeatures(queryFilter, ESRI.ArcGIS.Carto.esriSelectionResultEnum.esriSelectionResultXOR, false);
+                if (feature != null)
+                {
+                    m_mapControl.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+                    sel.Clear();
+                    //m_mapControl.Map.FeatureSelection.Clear();
+                    sel.SelectFeatures(queryFilter, ESRI.ArcGIS.Carto.esriSelectionResultEnum.esriSelectionResultNew, false);
+                    //m_mapControl.Map.SelectFeature(m_featureLayer as ILayer, feature);
+                    m_mapControl.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+                    m_mapControl.CenterAt(feature.Extent.LowerLeft);
+                    m_mapControl.MapScale = 0.1;
+                    //m_mapControl.Map.SelectFeature(m_featureLayer as ILayer, null);
+                }
+
+            }
         }
     }
 }
