@@ -340,7 +340,7 @@ namespace ArcGISFoundation
 
             Size size = new Size(3474,1479);
 
-            PrintHelper.ExportActiveView(m_mapControl.ActiveView, size, strImagePath);
+            //PrintHelper.ExportActiveView(m_mapControl.ActiveView, size, strImagePath);
             PrintHelper.ExportActiveView(m_mapControl.ActiveView, 300, 5, strImageType, strImageDir, strImageName, true, m_mapControl.ActiveView.Extent);
         }
 
