@@ -346,6 +346,12 @@ namespace ArcGISFoundation
                 true, m_mapControl.ActiveView.Extent);
         }
 
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            ExcelImportForm excelImport = new ExcelImportForm();
+            excelImport.ShowDialog(this);
+        }
+
         private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Button == MouseButtons.Left &&

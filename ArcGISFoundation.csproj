@@ -103,6 +103,7 @@
     <Reference Include="ESRI.ArcGIS.Version, Version=1.0.0.7, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="stdole, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -110,6 +111,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <HintPath>..\..\..\Program Files\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\System.Xml.Linq.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainForm.cs">
@@ -141,6 +145,18 @@
     <Compile Include="Source\Command\TocContenxMenu\ZoomToLayer.cs" />
     <Compile Include="Source\Command\MapControlContextMenu.cs" />
     <Compile Include="Source\DataSource\DataSource.cs" />
+    <Compile Include="Source\ExcelImport\CreateShpFileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\ExcelImport\CreateShpFileForm.designer.cs">
+      <DependentUpon>CreateShpFileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\ExcelImport\ExcelImportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\ExcelImport\ExcelImportForm.designer.cs">
+      <DependentUpon>ExcelImportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\Helper\PrintHelper.cs" />
     <Compile Include="Source\Query\list_sort.cs" />
     <Compile Include="Source\Query\nw_query.cs">
@@ -153,6 +169,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QueryForm.resx">
       <DependentUpon>QueryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\ExcelImport\CreateShpFileForm.resx">
+      <DependentUpon>CreateShpFileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\ExcelImport\ExcelImportForm.resx">
+      <DependentUpon>ExcelImportForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
