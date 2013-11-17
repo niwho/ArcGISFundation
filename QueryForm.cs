@@ -20,10 +20,13 @@ namespace ArcGISFoundation
         //临时位置
         private Point temp_point;
         private string m_bin_path;
+        private sortListView.ListViewColumnSorter lvwColumnSorter;
         public QueryForm(string path)
         {
             m_bin_path = path;
             InitializeComponent();
+            lvwColumnSorter = new sortListView.ListViewColumnSorter();
+            this.listView_data.ListViewItemSorter = lvwColumnSorter;
         }
 
         public System.Windows.Forms.ListView nw_getListView()
@@ -77,6 +80,26 @@ namespace ArcGISFoundation
         private void panel_title_bar_MouseDown(object sender, MouseEventArgs e)
         {
             temp_point = new Point(e.X, e.Y);
+        }
+
+        private void listView_data_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // 重新设置此列的排序方法.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                } 
+                // 用新的排序方法对ListView排序
+                this.listView_data.Sort();    
+            }
+            
+                 
         }
     }
 }

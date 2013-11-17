@@ -47,10 +47,10 @@ namespace ArcGISFoundation
 		{
 			get
 			{
-				if (m_subType == 1) 
-                    return "Turn All Layers On";
-				else  
-                    return "Turn All Layers Off";
+				if (m_subType == 1)
+                    return "打开所有图层";
+				else
+                    return "关闭所有图层";
 			}
 		}
 	

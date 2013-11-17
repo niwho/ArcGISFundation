@@ -74,6 +74,7 @@ namespace ArcGISFoundation
             m_mapControl = (IMapControl3)axMapControl1.Object;
             m_isQuery = false;
             m_bin_path = System.Environment.CurrentDirectory +'\\';
+
             //init toc context menu
             InitTocContextMenu();
 
@@ -107,7 +108,6 @@ namespace ArcGISFoundation
         //init data source
         private void InitDataSouce()
         {
-            DataNode activenode;
             string strDataRoot = m_bin_path+@"..\data";
             string strInitData =  @"白三叶";
             m_datasource = new DataSource();
@@ -172,24 +172,7 @@ namespace ArcGISFoundation
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            //Warn users if the ArcGIS Engine samples used by this application have not been compiled
-            ArrayList checkList = new ArrayList();
-            checkList.Add("ReshapePolylineEditTask_CS.ReshapePolylineEditTask");
-            checkList.Add("VertexCommands_CS.UsingOutOfBoxVertexCommands");
-
-            Type t = null;
-            bool success = true;
-
-            foreach (string item in checkList)
-            {
-                t = Type.GetTypeFromProgID(item);
-
-                if (t == null)
-                {
-                    success = false;
-                    break;
-                }
-            }
+           
         }
         //窗体改变大小时
         private void MainForm_Resize(object sender, EventArgs e)
@@ -347,6 +330,21 @@ namespace ArcGISFoundation
             return;
         }
 
+        private void pictureBox_query_Click(object sender, EventArgs e)
+        {
+            string strImageName = @"MapPrameter";
+            string strImageType = @"JPG";
+            string strImageDir  = @"../Output";
+
+            string strImagePath = @"../Output/Map.JPG";
+
+            Size size = new Size(3474,1479);
+
+            Print printer = new Print();
+            printer.ExportActiveView(m_mapControl.ActiveView,size,strImagePath);
+            printer.ExportActiveView(m_mapControl.ActiveView, 300, 5,strImageType, strImageDir, strImageName);
+        }
+
         private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Button == MouseButtons.Left &&
@@ -422,27 +420,5 @@ namespace ArcGISFoundation
         }
 
         #endregion
-
-       /* private void panel_right_map_Paint(object sender, PaintEventArgs e)
-        {
-
-        }*/
-
-        /*private void pictureBox_tools1_Click(object sender, EventArgs e)
-        {
-            //queryForm = new QueryForm();
-           // queryForm.Show();
-            m_isQuery = true;
-            return;
-        }
-
-        private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            if (e.Node.Level != 0) {
-                this.xPanderPanel_tree.Expand = true;
-                this.xPanderPanel_query.Expand = false;
-            }
-           
-        }*/
     }
 }
