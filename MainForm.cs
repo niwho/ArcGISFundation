@@ -334,15 +334,14 @@ namespace ArcGISFoundation
         {
             string strImageName = @"MapPrameter";
             string strImageType = @"JPG";
-            string strImageDir  = @"../Output";
+            string strImageDir = m_bin_path + @"../Output";
 
-            string strImagePath = @"../Output/Map.JPG";
+            string strImagePath = m_bin_path + @"../Output/Map.JPG";
 
             Size size = new Size(3474,1479);
 
-            Print printer = new Print();
-            printer.ExportActiveView(m_mapControl.ActiveView,size,strImagePath);
-            printer.ExportActiveView(m_mapControl.ActiveView, 300, 5,strImageType, strImageDir, strImageName);
+            PrintHelper.ExportActiveView(m_mapControl.ActiveView, size, strImagePath);
+            PrintHelper.ExportActiveView(m_mapControl.ActiveView, 300, 5, strImageType, strImageDir, strImageName, true, m_mapControl.ActiveView.Extent);
         }
 
         private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)

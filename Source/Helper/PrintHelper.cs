@@ -19,7 +19,7 @@ using ESRI.ArcGIS.Geometry;
 
 namespace ArcGISFoundation
 {
-    class Print
+    class PrintHelper
     {
         [DllImport("GDI32.dll")]
         public static extern int GetDeviceCaps(int hdc, int nIndex);
@@ -69,14 +69,14 @@ namespace ArcGISFoundation
                 return image;
             }
 
-            catch (Exception excp)
+            catch (Exception e)
             {
                 return null;
             }
         }
 
         //输出当前地图至指定的文件    
-        public void ExportActiveView(IActiveView pView, Size outRect, string outPath)
+        public static void ExportActiveView(IActiveView pView, Size outRect, string outPath)
         {
             try
             {
@@ -160,7 +160,7 @@ namespace ArcGISFoundation
             }
         }
 
-        public void ExportActiveView(IActiveView pView, long iOutputResolution,long lResampleRatio, 
+        public static void ExportActiveView(IActiveView pView, long iOutputResolution, long lResampleRatio, 
                     string sExportType, string sOutputDir, string sOutputName,
                     Boolean bClipToGraphicsExtent = true, IEnvelope pEnvelope = null)
         {
@@ -359,7 +359,7 @@ namespace ArcGISFoundation
             PixelBoundsEnv = null;
         }
 
-        public void SetOutputQuality(IActiveView docActiveView, long iResampleRatio)
+        public static void SetOutputQuality(IActiveView docActiveView, long iResampleRatio)
         {
             IGraphicsContainer oiqGraphicsContainer;
             IElement oiqElement;
@@ -397,7 +397,7 @@ namespace ArcGISFoundation
             }
             docOutputRasterSettings = null;
         }
-        public IEnvelope GetGraphicsExtent(IActiveView docActiveView)
+        public static IEnvelope GetGraphicsExtent(IActiveView docActiveView)
         {
             IEnvelope GraphicsBounds;
             IEnvelope GraphicsEnvelope;
@@ -421,7 +421,7 @@ namespace ArcGISFoundation
             return GraphicsBounds;
         }
 
-        private void DisableFontSmoothing()
+        private static void DisableFontSmoothing()
         {
             bool iResult;
             int pv = 0;
@@ -429,7 +429,7 @@ namespace ArcGISFoundation
             iResult = SystemParametersInfo(SPI_SETFONTSMOOTHING, 0, ref pv, SPIF_UPDATEINIFILE);
         }
 
-        private void EnableFontSmoothing()
+        private static void EnableFontSmoothing()
         {
             bool iResult;
             int pv = 0;
@@ -437,7 +437,7 @@ namespace ArcGISFoundation
             iResult = SystemParametersInfo(SPI_SETFONTSMOOTHING, 1, ref pv, SPIF_UPDATEINIFILE);
         }
 
-        private Boolean GetFontSmoothing()
+        private static Boolean GetFontSmoothing()
         {
             bool iResult;
             int pv = 0;
