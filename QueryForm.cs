@@ -26,6 +26,7 @@ namespace ArcGISFoundation
 
         public ESRI.ArcGIS.Controls.AxMapControl m_mapControl;
         public ESRI.ArcGIS.Carto.IFeatureLayer m_featureLayer;
+        public IFeature m_feature;
 
         public QueryForm(string path)
         {
@@ -61,6 +62,9 @@ namespace ArcGISFoundation
 
         private void close_Click(object sender, EventArgs e)
         {
+            m_mapControl.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+            m_mapControl.Map.ClearSelection();      
+            m_mapControl.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
             this.Close();
         }
 
@@ -121,6 +125,7 @@ namespace ArcGISFoundation
                 IFeatureSelection sel = m_featureLayer as IFeatureSelection; 
                 
                 IFeature feature = null;
+
                 IQueryFilter queryFilter = new QueryFilterClass();
                 IFeatureCursor featureCusor;
                 queryFilter.WhereClause = "NAME = '" + this.listView_data.SelectedItems[0].SubItems[0].Text + "'";
@@ -130,6 +135,7 @@ namespace ArcGISFoundation
                 sel.SelectFeatures(queryFilter, ESRI.ArcGIS.Carto.esriSelectionResultEnum.esriSelectionResultXOR, false);
                 if (feature != null)
                 {
+                    m_feature = feature;
                     m_mapControl.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
                     sel.Clear();
                     //m_mapControl.Map.FeatureSelection.Clear();
