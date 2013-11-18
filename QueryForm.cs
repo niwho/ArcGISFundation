@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
 namespace ArcGISFoundation
 {
     public partial class QueryForm : Form
@@ -20,7 +21,7 @@ namespace ArcGISFoundation
         private static extern int ReleaseCapture();
 
         //临时位置
-        private Point temp_point;
+        private System.Drawing.Point temp_point;
         private string m_bin_path;
         private sortListView.ListViewColumnSorter lvwColumnSorter;
 
@@ -89,7 +90,7 @@ namespace ArcGISFoundation
 
         private void panel_title_bar_MouseDown(object sender, MouseEventArgs e)
         {
-            temp_point = new Point(e.X, e.Y);
+            temp_point = new System.Drawing.Point(e.X, e.Y);
         }
 
         private void listView_data_ColumnClick(object sender, ColumnClickEventArgs e)
@@ -126,23 +127,41 @@ namespace ArcGISFoundation
                 
                 IFeature feature = null;
 
+                m_mapControl.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+                m_mapControl.Map.ClearSelection();
+                m_mapControl.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+
                 IQueryFilter queryFilter = new QueryFilterClass();
                 IFeatureCursor featureCusor;
                 queryFilter.WhereClause = "NAME = '" + this.listView_data.SelectedItems[0].SubItems[0].Text + "'";
                 featureCusor = featureClass.Search(queryFilter, true);
                 //search的参数第一个为过滤条件，第二个为是否重复执行。
-                feature = featureCusor.NextFeature();
+                //feature = featureCusor.NextFeature();
+                IFeature pFeat = null;
+                IEnvelope pEnve = new EnvelopeClass();
+                while ((pFeat = featureCusor.NextFeature()) != null)
+                {
+                    pEnve.Union(pFeat.Extent);
+                }
+
+                if (pEnve != null)
+                {
+                    pEnve.Expand(2, 2, true);
+                    (m_mapControl.Map as IActiveView).Extent = pEnve;
+                    (m_mapControl.Map as IActiveView).Refresh();
+                }
                 sel.SelectFeatures(queryFilter, ESRI.ArcGIS.Carto.esriSelectionResultEnum.esriSelectionResultXOR, false);
                 if (feature != null)
                 {
-                    m_feature = feature;
-                    m_mapControl.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
-                    sel.Clear();
+                    //m_feature = feature;
+                   // m_mapControl.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+                   // sel.Clear();
                     //m_mapControl.Map.FeatureSelection.Clear();
                     sel.SelectFeatures(queryFilter, ESRI.ArcGIS.Carto.esriSelectionResultEnum.esriSelectionResultNew, false);
                     //m_mapControl.Map.SelectFeature(m_featureLayer as ILayer, feature);
                     m_mapControl.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
                     m_mapControl.CenterAt(feature.Extent.LowerLeft);
+
                     //m_mapControl.MapScale = 0.1;
                     //m_mapControl.Map.SelectFeature(m_featureLayer as ILayer, null);
                 }

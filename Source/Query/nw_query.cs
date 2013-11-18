@@ -25,6 +25,10 @@ namespace ArcGISFoundation
 
         private void nw_query()
         {
+            ILayerEffectProperties pLayerEffectProperties = new CommandsEnvironmentClass();
+           ILayer ly=  pLayerEffectProperties.FlickerLayer;
+            ILayer layer1 = (ILayer)axMapControl1.CustomProperty; 
+            //axMapControl1
             ILayer layer = axMapControl1.get_Layer(0);
             axMapControl1.MousePointer = ESRI.ArcGIS.Controls.esriControlsMousePointer.esriPointerCrosshair;
             
