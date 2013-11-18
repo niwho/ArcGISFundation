@@ -429,5 +429,10 @@ namespace ArcGISFoundation
         }
 
         #endregion
+
+        private void maintoolbar_OnItemClick(object sender, IToolbarControlEvents_OnItemClickEvent e)
+        {
+            m_isQuery = false;
+        }
     }
 }
