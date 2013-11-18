@@ -76,6 +76,8 @@
             // 
             this.listView_data.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView_data.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView_data.FullRowSelect = true;
+            this.listView_data.GridLines = true;
             this.listView_data.Location = new System.Drawing.Point(1, 26);
             this.listView_data.Name = "listView_data";
             this.listView_data.Size = new System.Drawing.Size(663, 354);
@@ -83,6 +85,7 @@
             this.listView_data.UseCompatibleStateImageBehavior = false;
             this.listView_data.View = System.Windows.Forms.View.Details;
             this.listView_data.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_data_ColumnClick);
+            this.listView_data.SelectedIndexChanged += new System.EventHandler(this.listView_data_SelectedIndexChanged);
             // 
             // query_panel_container
             // 

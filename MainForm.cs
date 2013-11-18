@@ -17,6 +17,7 @@ using ESRI.ArcGIS.DataSourcesFile;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Display;
 
+
 namespace ArcGISFoundation
 {
     public sealed partial class MainForm : Form
@@ -167,6 +168,13 @@ namespace ArcGISFoundation
             progID = "esriControls.ControlsLayerListToolControl";
             maintoolbar.AddItem(progID, -1, -1, true, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
+
+           /* progID = "ArcGISFoundation.Source.Query.Command1";
+            maintoolbar.AddItem(progID, -1, -1, true, 0,
+               esriCommandStyles.esriCommandStyleIconOnly);            progID = "nw_query.nw_query";
+            ICommand command = new nw_query.nw_query(axMapControl1);
+            maintoolbar.AddItem(progIDcommand, -1, -1, true, 0,
+               esriCommandStyles.esriCommandStyleIconOnly);*/
         }
         #endregion
 
@@ -326,6 +334,8 @@ namespace ArcGISFoundation
 
         private void pictureBox_tools1_Click(object sender, EventArgs e)
         {
+            this.axMapControl1.CurrentTool = null;
+          //  this.axMapControl1.ActiveView.Selection.
             m_isQuery = true;
             return;
         }

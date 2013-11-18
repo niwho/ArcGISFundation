@@ -13,7 +13,7 @@ namespace sortListView
         public ListViewColumnSorter()// 构造函数
         {
             ColumnToSort = 1;// 默认按第二列排序            
-            OrderOfSort = SortOrder.None;// 排序方式为不排序            
+            OrderOfSort = SortOrder.Descending;// 排序方式为不排序            
            // ObjectCompare = new CaseInsensitiveComparer();// 初始化CaseInsensitiveComparer类对象
         }
         // 重写IComparer接口.        
