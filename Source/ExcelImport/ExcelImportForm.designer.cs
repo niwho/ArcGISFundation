@@ -101,7 +101,7 @@
             // 
             // CreateShpFile
             // 
-            this.CreateShpFile.Location = new System.Drawing.Point(80, 333);
+            this.CreateShpFile.Location = new System.Drawing.Point(395, 333);
             this.CreateShpFile.Name = "CreateShpFile";
             this.CreateShpFile.Size = new System.Drawing.Size(88, 23);
             this.CreateShpFile.TabIndex = 6;

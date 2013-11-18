@@ -174,6 +174,5 @@ namespace ArcGISFoundation
         {
             fileName = fileNameTextBox.Text;
         }
-
     }
 }

@@ -43,29 +43,30 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // xComboBoxEx
             // 
             this.xComboBoxEx.FormattingEnabled = true;
-            this.xComboBoxEx.Location = new System.Drawing.Point(31, 128);
+            this.xComboBoxEx.Location = new System.Drawing.Point(35, 128);
             this.xComboBoxEx.Name = "xComboBoxEx";
-            this.xComboBoxEx.Size = new System.Drawing.Size(157, 20);
+            this.xComboBoxEx.Size = new System.Drawing.Size(153, 20);
             this.xComboBoxEx.TabIndex = 0;
             // 
             // yComboBoxEx
             // 
             this.yComboBoxEx.FormattingEnabled = true;
-            this.yComboBoxEx.Location = new System.Drawing.Point(260, 131);
+            this.yComboBoxEx.Location = new System.Drawing.Point(262, 128);
             this.yComboBoxEx.Name = "yComboBoxEx";
-            this.yComboBoxEx.Size = new System.Drawing.Size(157, 20);
+            this.yComboBoxEx.Size = new System.Drawing.Size(154, 20);
             this.yComboBoxEx.TabIndex = 1;
             // 
             // fieldListBox
             // 
             this.fieldListBox.FormattingEnabled = true;
             this.fieldListBox.ItemHeight = 12;
-            this.fieldListBox.Location = new System.Drawing.Point(31, 172);
+            this.fieldListBox.Location = new System.Drawing.Point(31, 178);
             this.fieldListBox.Name = "fieldListBox";
             this.fieldListBox.Size = new System.Drawing.Size(157, 208);
             this.fieldListBox.TabIndex = 2;
@@ -74,14 +75,14 @@
             // 
             this.addFieldListBox.FormattingEnabled = true;
             this.addFieldListBox.ItemHeight = 12;
-            this.addFieldListBox.Location = new System.Drawing.Point(260, 172);
+            this.addFieldListBox.Location = new System.Drawing.Point(260, 178);
             this.addFieldListBox.Name = "addFieldListBox";
             this.addFieldListBox.Size = new System.Drawing.Size(157, 208);
             this.addFieldListBox.TabIndex = 3;
             // 
             // addFieldButtonX
             // 
-            this.addFieldButtonX.Location = new System.Drawing.Point(200, 216);
+            this.addFieldButtonX.Location = new System.Drawing.Point(200, 252);
             this.addFieldButtonX.Name = "addFieldButtonX";
             this.addFieldButtonX.Size = new System.Drawing.Size(51, 23);
             this.addFieldButtonX.TabIndex = 4;
@@ -91,7 +92,7 @@
             // 
             // delFieldButtonX
             // 
-            this.delFieldButtonX.Location = new System.Drawing.Point(200, 263);
+            this.delFieldButtonX.Location = new System.Drawing.Point(200, 299);
             this.delFieldButtonX.Name = "delFieldButtonX";
             this.delFieldButtonX.Size = new System.Drawing.Size(51, 23);
             this.delFieldButtonX.TabIndex = 5;
@@ -133,6 +134,7 @@
             // 
             // fileNameTextBox
             // 
+            this.fileNameTextBox.Enabled = false;
             this.fileNameTextBox.Location = new System.Drawing.Point(12, 60);
             this.fileNameTextBox.Name = "fileNameTextBox";
             this.fileNameTextBox.Size = new System.Drawing.Size(405, 21);
@@ -151,6 +153,7 @@
             // 
             // filePathTextBox
             // 
+            this.filePathTextBox.Enabled = false;
             this.filePathTextBox.Location = new System.Drawing.Point(12, 23);
             this.filePathTextBox.Name = "filePathTextBox";
             this.filePathTextBox.Size = new System.Drawing.Size(349, 21);
@@ -175,11 +178,21 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Y：";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 163);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "属性：";
+            // 
             // CreateShpFileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(434, 441);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.shpTypeComboBox);
@@ -220,5 +233,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Label label3;
     }
 }
