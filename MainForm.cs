@@ -345,13 +345,41 @@ namespace ArcGISFoundation
             string strImageName = @"MapPrameter";
             string strImageType = @"JPG";
             string strImageDir = m_bin_path + @"../Output";
+            string localFilePath = "";
 
             string strImagePath = m_bin_path + @"../Output/Map.JPG";
 
             Size size = new Size(3474,1479);
 
+            //this.folderBrowserDialog_printer.Filter = "Special Files(*.png)|*.jpg|All files (*.*)|*.*";
+
+            //this.openFileDialog_printer.Description = "请选择路径";
+            this.saveFileDialog_printer.Filter = "jpg files (*.jpg)|*.jpg|png files (*.png)|*.png|gif files(*.gif)|*.gif|bmp files (*.bmp)|*.bmp|tiff files (*.tiff)|*.tiff";
+            this.saveFileDialog_printer.FilterIndex = 1;
+            //this.openFileDialog_printer.RootFolder = Environment.SpecialFolder.Desktop;
+            DialogResult result = this.saveFileDialog_printer.ShowDialog();
+            //保存对话框是否记忆上次打开的目录  
+            this.saveFileDialog_printer.RestoreDirectory = true;
+
+            if (result == DialogResult.OK)
+            {
+                //获得文件路径
+                localFilePath = this.saveFileDialog_printer.FileName.ToString();  
+                //获取文件名，不带路径  
+                strImageName = localFilePath.Substring(localFilePath.LastIndexOf("\\") + 1);
+
+                strImageType = strImageName.Substring(strImageName.LastIndexOf(".") + 1);
+                strImageName = strImageName.Substring(0,strImageName.LastIndexOf("."));
+                //获取文件路径，不带文件名  
+                strImageDir = localFilePath.Substring(0, localFilePath.LastIndexOf("\\")); 
+
+                //this.folderBrowserDialog_printer.
+                PrintHelper.ExportActiveView(m_mapControl.ActiveView, 300, 5, strImageType, strImageDir, strImageName, true, m_mapControl.ActiveView.Extent);
+            }
+            
+
             //PrintHelper.ExportActiveView(m_mapControl.ActiveView, size, strImagePath);
-            PrintHelper.ExportActiveView(m_mapControl.ActiveView, 300, 5, strImageType, strImageDir, strImageName, true, m_mapControl.ActiveView.Extent);
+            
         }
 
         private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
