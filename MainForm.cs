@@ -376,10 +376,20 @@ namespace ArcGISFoundation
                 //this.folderBrowserDialog_printer.
                 PrintHelper.ExportActiveView(m_mapControl.ActiveView, 300, 5, strImageType, strImageDir, strImageName, true, m_mapControl.ActiveView.Extent);
             }
-            
+           
+            //PrintHelper.ExportActiveView(m_mapControl.ActiveView, size, strImagePath);        
+        }
 
-            //PrintHelper.ExportActiveView(m_mapControl.ActiveView, size, strImagePath);
-            
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            ExcelImportForm form = new ExcelImportForm();
+            form.ShowDialog(this);
+        }
+
+        private void maintoolbar_OnItemClick(object sender, IToolbarControlEvents_OnItemClickEvent e)
+        {
+            m_isQuery = false;
         }
 
         private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -458,9 +468,5 @@ namespace ArcGISFoundation
 
         #endregion
 
-        private void maintoolbar_OnItemClick(object sender, IToolbarControlEvents_OnItemClickEvent e)
-        {
-            m_isQuery = false;
-        }
     }
 }
