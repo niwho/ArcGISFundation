@@ -173,7 +173,5 @@ namespace ArcGISFoundation
             }
 
         }
-
-
     }
 }
