@@ -19,7 +19,7 @@ namespace ArcGISFoundation
         private static extern int SendMessage(int hWnd, int Msg, int wParam, int lParam);
         [DllImport("User32.dll", EntryPoint = "ReleaseCapture")]
         private static extern int ReleaseCapture();
-
+        public string m_query_name;
         //临时位置
         private System.Drawing.Point temp_point;
         private string m_bin_path;
@@ -133,7 +133,7 @@ namespace ArcGISFoundation
 
                 IQueryFilter queryFilter = new QueryFilterClass();
                 IFeatureCursor featureCusor;
-                queryFilter.WhereClause = "NAME = '" + this.listView_data.SelectedItems[0].SubItems[0].Text + "'";
+                queryFilter.WhereClause = m_query_name +" = '" + this.listView_data.SelectedItems[0].SubItems[0].Text + "'";
                 featureCusor = featureClass.Search(queryFilter, true);
                 //search的参数第一个为过滤条件，第二个为是否重复执行。
                 //feature = featureCusor.NextFeature();
