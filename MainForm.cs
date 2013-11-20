@@ -406,7 +406,6 @@ namespace ArcGISFoundation
                 e.Node.Level > 1 &&
                 m_datasource.Switch(e.Node.Text))
             {
-                e.Node.ForeColor = Color.BlueViolet;
                 Pasture pasture= m_datasource.GetActivePasture();
 
                 this.xPanderPanel_tree.Text = "Õº≤„π‹¿Ì--" + pasture.strPasture;
@@ -422,6 +421,21 @@ namespace ArcGISFoundation
                 m_LayerList.SelectedIndex = 0;
                 m_mucao = pasture.strPasture;
             }
+        }
+
+        private void m_LayerList_DropDown(object sender, EventArgs e)
+        {
+            m_LayerList.Items.Clear();
+            for (int i = 0; i < m_mapControl.LayerCount; ++i)
+            {
+                //string layername = m_mapControl.Layer[i].Name;
+                m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
+            }
+        }
+
+        private void m_LayerList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            m_selectedLayer = m_LayerList.SelectedIndex;
         }
 
         #endregion
@@ -485,21 +499,5 @@ namespace ArcGISFoundation
         }
 
         #endregion
-
-        private void m_LayerList_DropDown(object sender, EventArgs e)
-        {
-            m_LayerList.Items.Clear();
-            for(int i =0;i<m_mapControl.LayerCount;++i)
-            {
-                //string layername = m_mapControl.Layer[i].Name;
-                m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
-            }
-        }
-
-        private void m_LayerList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            m_selectedLayer = m_LayerList.SelectedIndex;
-        }
-
     }
 }
