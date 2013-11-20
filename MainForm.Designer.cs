@@ -35,15 +35,15 @@ namespace ArcGISFoundation
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("白三叶");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("臂形草");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("扁穗牛鞭草");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("紫花苜蓿");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("所有牧草", new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12,
-            treeNode13,
-            treeNode14});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("白三叶");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("臂形草");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("扁穗牛鞭草");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("紫花苜蓿");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("所有牧草", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
             this.licensecontrol = new ESRI.ArcGIS.Controls.AxLicenseControl();
             this.toccontrol = new ESRI.ArcGIS.Controls.AxTOCControl();
             this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
@@ -116,7 +116,7 @@ namespace ArcGISFoundation
             this.toccontrol.Location = new System.Drawing.Point(0, 25);
             this.toccontrol.Name = "toccontrol";
             this.toccontrol.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("toccontrol.OcxState")));
-            this.toccontrol.Size = new System.Drawing.Size(198, 400);
+            this.toccontrol.Size = new System.Drawing.Size(198, 0);
             this.toccontrol.TabIndex = 12;
             this.toccontrol.OnMouseDown += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnMouseDownEventHandler(this.axTOCControl1_OnMouseDown);
             // 
@@ -206,18 +206,18 @@ namespace ArcGISFoundation
             this.xPanderPanel_tree.ColorFlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.xPanderPanel_tree.ColorFlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.xPanderPanel_tree.Controls.Add(this.toccontrol);
-            this.xPanderPanel_tree.Expand = true;
             this.xPanderPanel_tree.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_tree.Image = null;
             this.xPanderPanel_tree.InnerBorderColor = System.Drawing.Color.White;
             this.xPanderPanel_tree.Name = "xPanderPanel_tree";
             this.xPanderPanel_tree.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel_tree.Size = new System.Drawing.Size(198, 425);
+            this.xPanderPanel_tree.Size = new System.Drawing.Size(198, 25);
             this.xPanderPanel_tree.TabIndex = 0;
             this.xPanderPanel_tree.Text = "图层管理";
             // 
             // xPanderPanel_query
             // 
+            this.xPanderPanel_query.BackColor = System.Drawing.Color.Transparent;
             this.xPanderPanel_query.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.xPanderPanel_query.CaptionFont = new System.Drawing.Font("微软雅黑", 8F, System.Drawing.FontStyle.Bold);
             this.xPanderPanel_query.CaptionForeColor = System.Drawing.SystemColors.ControlText;
@@ -228,12 +228,13 @@ namespace ArcGISFoundation
             this.xPanderPanel_query.ColorFlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.xPanderPanel_query.ColorFlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.xPanderPanel_query.Controls.Add(this.treeView_all_cao);
+            this.xPanderPanel_query.Expand = true;
             this.xPanderPanel_query.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_query.Image = null;
             this.xPanderPanel_query.InnerBorderColor = System.Drawing.Color.White;
             this.xPanderPanel_query.Name = "xPanderPanel_query";
             this.xPanderPanel_query.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel_query.Size = new System.Drawing.Size(198, 25);
+            this.xPanderPanel_query.Size = new System.Drawing.Size(198, 425);
             this.xPanderPanel_query.TabIndex = 1;
             this.xPanderPanel_query.Text = "牧草地图切换";
             // 
@@ -245,19 +246,19 @@ namespace ArcGISFoundation
             this.treeView_all_cao.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.treeView_all_cao.Location = new System.Drawing.Point(0, 25);
             this.treeView_all_cao.Name = "treeView_all_cao";
-            treeNode11.Name = "节点1";
-            treeNode11.Text = "白三叶";
-            treeNode12.Name = "节点2";
-            treeNode12.Text = "臂形草";
-            treeNode13.Name = "节点3";
-            treeNode13.Text = "扁穗牛鞭草";
-            treeNode14.Name = "节点4";
-            treeNode14.Text = "紫花苜蓿";
-            treeNode15.Name = "节点0";
-            treeNode15.Text = "所有牧草";
+            treeNode1.Name = "节点1";
+            treeNode1.Text = "白三叶";
+            treeNode2.Name = "节点2";
+            treeNode2.Text = "臂形草";
+            treeNode3.Name = "节点3";
+            treeNode3.Text = "扁穗牛鞭草";
+            treeNode4.Name = "节点4";
+            treeNode4.Text = "紫花苜蓿";
+            treeNode5.Name = "节点0";
+            treeNode5.Text = "所有牧草";
             this.treeView_all_cao.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode15});
-            this.treeView_all_cao.Size = new System.Drawing.Size(198, 0);
+            treeNode5});
+            this.treeView_all_cao.Size = new System.Drawing.Size(198, 400);
             this.treeView_all_cao.TabIndex = 0;
             this.treeView_all_cao.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_all_cao_NodeMouseDoubleClick);
             // 

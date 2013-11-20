@@ -26,6 +26,7 @@ namespace ArcGISFoundation
         private string m_range_en;
         private string m_rate;
         private string m_rate_en;
+        private string m_mucao ="";
 
         private void resolveNameRange(string layer_name)
         {
@@ -101,6 +102,8 @@ namespace ArcGISFoundation
             qf.m_mapControl = axMapControl1;
             qf.m_featureLayer = featureLayer;
             qf.m_query_name = m_range_en;
+            qf.m_mucao = m_mucao;
+
             System.Windows.Forms.ListView listView_data = qf.nw_getListView();
             listView_data.Columns.Add(m_range+"名", 120,HorizontalAlignment.Left);//省名,,
             listView_data.Columns.Add(m_rate + "度", 120, HorizontalAlignment.Left);

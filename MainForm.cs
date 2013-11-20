@@ -411,6 +411,15 @@ namespace ArcGISFoundation
                 this.xPanderPanel_tree.Text = "Õº≤„π‹¿Ì--" + datanode.strName;
                 this.xPanderPanel_tree.Expand = true;
                 this.xPanderPanel_query.Expand = false;
+
+                m_LayerList.Items.Clear();
+                for (int i = 0; i < m_mapControl.LayerCount; ++i)
+                {
+                    //string layername = m_mapControl.Layer[i].Name;
+                    m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
+                }
+                m_LayerList.SelectedIndex = 0;
+                m_mucao = datanode.strName;
             }
         }
 

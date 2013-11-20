@@ -19,7 +19,7 @@ namespace ArcGISFoundation
         private static extern int SendMessage(int hWnd, int Msg, int wParam, int lParam);
         [DllImport("User32.dll", EntryPoint = "ReleaseCapture")]
         private static extern int ReleaseCapture();
-        public string m_query_name;
+       
         //临时位置
         private System.Drawing.Point temp_point;
         private string m_bin_path;
@@ -28,6 +28,8 @@ namespace ArcGISFoundation
         public ESRI.ArcGIS.Controls.AxMapControl m_mapControl;
         public ESRI.ArcGIS.Carto.IFeatureLayer m_featureLayer;
         public IFeature m_feature;
+        public string m_query_name;
+        public string m_mucao;
 
         public QueryForm(string path)
         {
@@ -43,7 +45,7 @@ namespace ArcGISFoundation
         }
         private void QueryForm_Load(object sender, EventArgs e)
         {
-              
+            query_panel.Text = m_mucao;
         }
 
         private void min_Click(object sender, EventArgs e)
