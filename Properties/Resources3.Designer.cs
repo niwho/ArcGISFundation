@@ -81,6 +81,13 @@ namespace ArcGISFoundation.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap import_logo_title {
+            get {
+                object obj = ResourceManager.GetObject("import_logo_title", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap logo_title {
             get {
                 object obj = ResourceManager.GetObject("logo_title", resourceCulture);

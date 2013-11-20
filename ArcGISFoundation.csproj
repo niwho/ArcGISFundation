@@ -252,6 +252,7 @@
   <ItemGroup>
     <Content Include="images\close_hover.png" />
     <Content Include="images\green_flower_title.png" />
+    <None Include="images\import_logo_title.png" />
     <Content Include="images\max_hover.png" />
     <Content Include="images\min_hover.png" />
     <None Include="images\query_logo_title.png" />

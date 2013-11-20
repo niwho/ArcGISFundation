@@ -173,9 +173,9 @@ namespace ArcGISFoundation
                 esriCommandStyles.esriCommandStyleIconOnly);
 
             //
-            progID = "esriControls.ControlsLayerListToolControl";
+           /* progID = "esriControls.ControlsLayerListToolControl";
             maintoolbar.AddItem(progID, -1, -1, true, 0,
-                esriCommandStyles.esriCommandStyleIconOnly);
+                esriCommandStyles.esriCommandStyleIconOnly);*/
 
            /* progID = "ArcGISFoundation.Source.Query.Command1";
             maintoolbar.AddItem(progID, -1, -1, true, 0,
@@ -391,7 +391,7 @@ namespace ArcGISFoundation
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-            ExcelImportForm form = new ExcelImportForm();
+            ExcelImportForm form = new ExcelImportForm(m_bin_path);
             form.ShowDialog(this);
         }
 
