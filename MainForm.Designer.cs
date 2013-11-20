@@ -74,6 +74,7 @@ namespace ArcGISFoundation
             this.min = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.m_LayerList = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.licensecontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
@@ -115,7 +116,7 @@ namespace ArcGISFoundation
             this.toccontrol.Location = new System.Drawing.Point(0, 25);
             this.toccontrol.Name = "toccontrol";
             this.toccontrol.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("toccontrol.OcxState")));
-            this.toccontrol.Size = new System.Drawing.Size(198, 400);
+            this.toccontrol.Size = new System.Drawing.Size(198, 0);
             this.toccontrol.TabIndex = 12;
             this.toccontrol.OnMouseDown += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnMouseDownEventHandler(this.axTOCControl1_OnMouseDown);
             // 
@@ -169,7 +170,6 @@ namespace ArcGISFoundation
             this.panel_map_tree.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel_map_tree.Image = null;
             this.panel_map_tree.InnerBorderColor = System.Drawing.Color.White;
-            this.panel_map_tree.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.panel_map_tree.Location = new System.Drawing.Point(0, 0);
             this.panel_map_tree.Name = "panel_map_tree";
             this.panel_map_tree.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
@@ -206,13 +206,12 @@ namespace ArcGISFoundation
             this.xPanderPanel_tree.ColorFlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.xPanderPanel_tree.ColorFlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.xPanderPanel_tree.Controls.Add(this.toccontrol);
-            this.xPanderPanel_tree.Expand = true;
             this.xPanderPanel_tree.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_tree.Image = null;
             this.xPanderPanel_tree.InnerBorderColor = System.Drawing.Color.White;
             this.xPanderPanel_tree.Name = "xPanderPanel_tree";
             this.xPanderPanel_tree.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel_tree.Size = new System.Drawing.Size(198, 425);
+            this.xPanderPanel_tree.Size = new System.Drawing.Size(198, 25);
             this.xPanderPanel_tree.TabIndex = 0;
             this.xPanderPanel_tree.Text = "图层管理";
             // 
@@ -229,12 +228,13 @@ namespace ArcGISFoundation
             this.xPanderPanel_query.ColorFlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.xPanderPanel_query.ColorFlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.xPanderPanel_query.Controls.Add(this.treeView_all_cao);
+            this.xPanderPanel_query.Expand = true;
             this.xPanderPanel_query.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_query.Image = null;
             this.xPanderPanel_query.InnerBorderColor = System.Drawing.Color.White;
             this.xPanderPanel_query.Name = "xPanderPanel_query";
             this.xPanderPanel_query.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel_query.Size = new System.Drawing.Size(198, 25);
+            this.xPanderPanel_query.Size = new System.Drawing.Size(198, 425);
             this.xPanderPanel_query.TabIndex = 1;
             this.xPanderPanel_query.Text = "牧草地图切换";
             // 
@@ -258,7 +258,7 @@ namespace ArcGISFoundation
             treeNode5.Text = "所有牧草";
             this.treeView_all_cao.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode5});
-            this.treeView_all_cao.Size = new System.Drawing.Size(198, 0);
+            this.treeView_all_cao.Size = new System.Drawing.Size(198, 400);
             this.treeView_all_cao.TabIndex = 0;
             this.treeView_all_cao.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_all_cao_NodeMouseDoubleClick);
             // 
@@ -290,6 +290,7 @@ namespace ArcGISFoundation
             // 
             // panel_toolbar
             // 
+            this.panel_toolbar.Controls.Add(this.m_LayerList);
             this.panel_toolbar.Controls.Add(this.maintoolbar);
             this.panel_toolbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_toolbar.Location = new System.Drawing.Point(203, 0);
@@ -371,7 +372,7 @@ namespace ArcGISFoundation
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 40);
             this.label2.TabIndex = 13;
-            this.label2.Text = "支持牧草数据导入";
+            this.label2.Text = "帮助文档查询";
             // 
             // pictureBox_tools2
             // 
@@ -515,6 +516,16 @@ namespace ArcGISFoundation
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // m_LayerList
+            // 
+            this.m_LayerList.FormattingEnabled = true;
+            this.m_LayerList.Location = new System.Drawing.Point(427, 4);
+            this.m_LayerList.Name = "m_LayerList";
+            this.m_LayerList.Size = new System.Drawing.Size(121, 20);
+            this.m_LayerList.TabIndex = 13;
+            this.m_LayerList.DropDown += new System.EventHandler(this.m_LayerList_DropDown);
+            this.m_LayerList.SelectedIndexChanged += new System.EventHandler(this.m_LayerList_SelectedIndexChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -593,6 +604,7 @@ namespace ArcGISFoundation
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.SaveFileDialog saveFileDialog_printer;
+        private System.Windows.Forms.ComboBox m_LayerList;
     }
 }
 

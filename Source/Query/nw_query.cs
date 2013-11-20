@@ -22,14 +22,61 @@ namespace ArcGISFoundation
     public sealed partial class MainForm : Form
     {
         private bool m_isQuery ;
+        private string m_range;
+        private string m_range_en;
+        private string m_rate;
+        private string m_rate_en;
+        private string m_mucao ="";
 
+        private void resolveNameRange(string layer_name)
+        {
+            if(layer_name.IndexOf("省")>-1)
+            {
+                m_range = "省";
+                m_range_en = "NAME";
+            }
+            else if (layer_name.IndexOf("市")>-1)
+            {
+                m_range = "市";
+                m_range_en = "CITY";
+            }
+            else if (layer_name.IndexOf("县") > -1)
+            {
+                m_range = "县";
+                m_range_en = "COUNTY";
+            }
+            else
+            {
+                MessageBox.Show("图层名错误！");
+            }
+        }
+        private void resolveNameRate(string layer_name)
+        {
+            if (layer_name.IndexOf("次适宜") > -1)//必须先判断这个
+            {
+                m_rate = "次适宜";
+                m_rate_en = "_cishi";
+            }
+            else if (layer_name.IndexOf("适宜") > -1)
+            {
+                m_rate = "适宜";
+                m_rate_en = "_shiyi";
+            }
+            else
+            {
+                MessageBox.Show("图层名错误！");
+            }
+            
+        }
         private void nw_query()
         {
-            ILayerEffectProperties pLayerEffectProperties = new CommandsEnvironmentClass();
-           ILayer ly=  pLayerEffectProperties.FlickerLayer;
-            ILayer layer1 = (ILayer)axMapControl1.CustomProperty; 
             //axMapControl1
-            ILayer layer = axMapControl1.get_Layer(0);
+            ILayer layer = axMapControl1.get_Layer(m_selectedLayer);
+            resolveNameRate(layer.Name);
+            resolveNameRange(layer.Name);
+            
+            //layer_name[1];
+            //
             axMapControl1.MousePointer = ESRI.ArcGIS.Controls.esriControlsMousePointer.esriPointerCrosshair;
             
             ESRI.ArcGIS.Geometry.IGeometry geometry = null;
@@ -54,41 +101,62 @@ namespace ArcGISFoundation
             QueryForm qf =new QueryForm(m_bin_path);
             qf.m_mapControl = axMapControl1;
             qf.m_featureLayer = featureLayer;
-            System.Windows.Forms.ListView listView_data = qf.nw_getListView();
-            listView_data.Columns.Add("省名", 120,HorizontalAlignment.Left);//省名,,
-            listView_data.Columns.Add("适宜度", 120, HorizontalAlignment.Left);
-            listView_data.Columns.Add("面积", 120, HorizontalAlignment.Left);
+            qf.m_query_name = m_range_en;
+            qf.m_mucao = m_mucao;
 
+            System.Windows.Forms.ListView listView_data = qf.nw_getListView();
+            listView_data.Columns.Add(m_range+"名", 120,HorizontalAlignment.Left);//省名,,
+            listView_data.Columns.Add(m_rate + "度", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add(m_rate+"面积", 120, HorizontalAlignment.Left);
+            string area = "area" + m_rate_en;
+            string rate = "rate" + m_rate_en;
+            if(pFeature != null)
+            {
+                for (int i = 0; i < pFeature.Fields.FieldCount;++i )
+                {
+                    if (pFeature.Fields.Field[i].Name.IndexOf("area_") > -1)
+                    {
+                        area = pFeature.Fields.Field[i].Name;
+                    }
+                    else if(pFeature.Fields.Field[i].Name.IndexOf("rate_")>-1)
+                    {
+                        rate =  pFeature.Fields.Field[i].Name;
+                    }
+                   
+                }
+            }
             System.Collections.Generic.List<IFeature> pList = new System.Collections.Generic.List<IFeature>();
             while (pFeature != null)
             {
 
                 // ESRI.ArcGIS.Geodatabase.IField filed = pFeature.Fields.FindField("rate_shiyi");
-                ESRI.ArcGIS.Geodatabase.IRowBuffer buff = (IRowBuffer)pFeature;
-                string str = buff.Value[pFeature.Fields.FindField("NAME")].ToString();
-                ESRI.ArcGIS.Geodatabase.IRow row = pFeature.Table.GetRow(pFeature.OID);
+                //ESRI.ArcGIS.Geodatabase.IRowBuffer buff = (IRowBuffer)pFeature;
+                //string str = buff.Value[pFeature.Fields.FindField("NAME")].ToString();
+                //ESRI.ArcGIS.Geodatabase.IRow row = pFeature.Table.GetRow(pFeature.OID);
                 //string str = row.Value[].ToString();
-                double a = System.Convert.ToDouble(row.get_Value(pFeature.Fields.FindField(nw_getQueryFiledName())));
+                //double a = System.Convert.ToDouble(row.get_Value(pFeature.Fields.FindField(nw_getQueryFiledName())));
                 //pList.Add()
                 //pList.Add(pFeature.);
-
+               
                 ListViewItem lvi = new ListViewItem();
                // ESRI.ArcGIS.Geodatabase.IRowBuffer buff = (IRowBuffer)pFeature;
-                lvi.Text = buff.Value[pFeature.Fields.FindField("NAME")].ToString();
-                lvi.SubItems.Add(buff.Value[pFeature.Fields.FindField("rate_shiyi")].ToString());//rate_shiyi
-                lvi.SubItems.Add(buff.Value[pFeature.Fields.FindField("PERIMETER")].ToString());//
+                lvi.Text = pFeature.Value[pFeature.Fields.FindField(m_range_en)].ToString();
+                lvi.SubItems.Add(pFeature.Value[pFeature.Fields.FindField(rate)].ToString());//rate_shiyi
+              
+                
+                lvi.SubItems.Add(System.Convert.ToDecimal(pFeature.Value[pFeature.Fields.FindField(area)]).ToString("N"));//
                 listView_data.Items.Add(lvi);
 
                 pFeature = pFeatureCursor.NextFeature();
             }
             axMapControl1.MousePointer = ESRI.ArcGIS.Controls.esriControlsMousePointer.esriPointerDefault;
             qf.Show();
-            if (pFeature != null)
+           /*  if (pFeature != null)
             {
                 axMapControl1.Map.SelectFeature(axMapControl1.get_Layer(0), pFeature);
                 axMapControl1.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
             }
-            /* axMapControl1.Map.SelectByShape(geometry, null, false);
+            axMapControl1.Map.SelectByShape(geometry, null, false);
              axMapControl1.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);*/
         }
         private string nw_getQueryFiledName(int ty = 0)
