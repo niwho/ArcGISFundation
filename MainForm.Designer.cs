@@ -35,15 +35,15 @@ namespace ArcGISFoundation
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("白三叶");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("臂形草");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("扁穗牛鞭草");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("紫花苜蓿");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("所有牧草", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode4});
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("白三叶");
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("臂形草");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("扁穗牛鞭草");
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("紫花苜蓿");
+            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("所有牧草", new System.Windows.Forms.TreeNode[] {
+            treeNode36,
+            treeNode37,
+            treeNode38,
+            treeNode39});
             this.licensecontrol = new ESRI.ArcGIS.Controls.AxLicenseControl();
             this.toccontrol = new ESRI.ArcGIS.Controls.AxTOCControl();
             this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
@@ -57,6 +57,7 @@ namespace ArcGISFoundation
             this.panel_container = new System.Windows.Forms.Panel();
             this.panel_right_map = new System.Windows.Forms.Panel();
             this.panel_toolbar = new System.Windows.Forms.Panel();
+            this.m_LayerList = new System.Windows.Forms.ComboBox();
             this.panel_left = new System.Windows.Forms.Panel();
             this.saveFileDialog_printer = new System.Windows.Forms.SaveFileDialog();
             this.panel_title_bar = new System.Windows.Forms.Panel();
@@ -74,7 +75,6 @@ namespace ArcGISFoundation
             this.min = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.m_LayerList = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.licensecontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
@@ -170,6 +170,7 @@ namespace ArcGISFoundation
             this.panel_map_tree.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel_map_tree.Image = null;
             this.panel_map_tree.InnerBorderColor = System.Drawing.Color.White;
+            this.panel_map_tree.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.panel_map_tree.Location = new System.Drawing.Point(0, 0);
             this.panel_map_tree.Name = "panel_map_tree";
             this.panel_map_tree.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
@@ -246,18 +247,18 @@ namespace ArcGISFoundation
             this.treeView_all_cao.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.treeView_all_cao.Location = new System.Drawing.Point(0, 25);
             this.treeView_all_cao.Name = "treeView_all_cao";
-            treeNode1.Name = "节点1";
-            treeNode1.Text = "白三叶";
-            treeNode2.Name = "节点2";
-            treeNode2.Text = "臂形草";
-            treeNode3.Name = "节点3";
-            treeNode3.Text = "扁穗牛鞭草";
-            treeNode4.Name = "节点4";
-            treeNode4.Text = "紫花苜蓿";
-            treeNode5.Name = "节点0";
-            treeNode5.Text = "所有牧草";
+            treeNode36.Name = "节点1";
+            treeNode36.Text = "白三叶";
+            treeNode37.Name = "节点2";
+            treeNode37.Text = "臂形草";
+            treeNode38.Name = "节点3";
+            treeNode38.Text = "扁穗牛鞭草";
+            treeNode39.Name = "节点4";
+            treeNode39.Text = "紫花苜蓿";
+            treeNode40.Name = "节点0";
+            treeNode40.Text = "所有牧草";
             this.treeView_all_cao.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5});
+            treeNode40});
             this.treeView_all_cao.Size = new System.Drawing.Size(198, 400);
             this.treeView_all_cao.TabIndex = 0;
             this.treeView_all_cao.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_all_cao_NodeMouseDoubleClick);
@@ -297,6 +298,19 @@ namespace ArcGISFoundation
             this.panel_toolbar.Name = "panel_toolbar";
             this.panel_toolbar.Size = new System.Drawing.Size(768, 28);
             this.panel_toolbar.TabIndex = 21;
+            // 
+            // m_LayerList
+            // 
+            this.m_LayerList.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.m_LayerList.FormattingEnabled = true;
+            this.m_LayerList.IntegralHeight = false;
+            this.m_LayerList.ItemHeight = 17;
+            this.m_LayerList.Location = new System.Drawing.Point(249, 1);
+            this.m_LayerList.Name = "m_LayerList";
+            this.m_LayerList.Size = new System.Drawing.Size(115, 25);
+            this.m_LayerList.TabIndex = 13;
+            this.m_LayerList.DropDown += new System.EventHandler(this.m_LayerList_DropDown);
+            this.m_LayerList.SelectedIndexChanged += new System.EventHandler(this.m_LayerList_SelectedIndexChanged);
             // 
             // panel_left
             // 
@@ -515,16 +529,6 @@ namespace ArcGISFoundation
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // m_LayerList
-            // 
-            this.m_LayerList.FormattingEnabled = true;
-            this.m_LayerList.Location = new System.Drawing.Point(427, 4);
-            this.m_LayerList.Name = "m_LayerList";
-            this.m_LayerList.Size = new System.Drawing.Size(121, 20);
-            this.m_LayerList.TabIndex = 13;
-            this.m_LayerList.DropDown += new System.EventHandler(this.m_LayerList_DropDown);
-            this.m_LayerList.SelectedIndexChanged += new System.EventHandler(this.m_LayerList_SelectedIndexChanged);
             // 
             // MainForm
             // 

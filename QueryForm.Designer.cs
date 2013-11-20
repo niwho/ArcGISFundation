@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QueryForm));
             this.query_panel = new BSE.Windows.Forms.Panel();
             this.listView_data = new System.Windows.Forms.ListView();
+            this.imageList_hide = new System.Windows.Forms.ImageList(this.components);
             this.query_panel_container = new System.Windows.Forms.Panel();
             this.panel_title_bar = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -68,7 +70,7 @@
             this.query_panel.Location = new System.Drawing.Point(3, 0);
             this.query_panel.Name = "query_panel";
             this.query_panel.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.query_panel.Size = new System.Drawing.Size(665, 381);
+            this.query_panel.Size = new System.Drawing.Size(414, 381);
             this.query_panel.TabIndex = 0;
             this.query_panel.Text = "牧草查询结果";
             // 
@@ -80,12 +82,20 @@
             this.listView_data.GridLines = true;
             this.listView_data.Location = new System.Drawing.Point(1, 26);
             this.listView_data.Name = "listView_data";
-            this.listView_data.Size = new System.Drawing.Size(663, 354);
+            this.listView_data.Size = new System.Drawing.Size(412, 354);
+            this.listView_data.SmallImageList = this.imageList_hide;
             this.listView_data.TabIndex = 0;
+            this.listView_data.TileSize = new System.Drawing.Size(128, 45);
             this.listView_data.UseCompatibleStateImageBehavior = false;
             this.listView_data.View = System.Windows.Forms.View.Details;
             this.listView_data.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_data_ColumnClick);
             this.listView_data.SelectedIndexChanged += new System.EventHandler(this.listView_data_SelectedIndexChanged);
+            // 
+            // imageList_hide
+            // 
+            this.imageList_hide.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList_hide.ImageSize = new System.Drawing.Size(1, 24);
+            this.imageList_hide.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // query_panel_container
             // 
@@ -95,7 +105,7 @@
             this.query_panel_container.Location = new System.Drawing.Point(0, 65);
             this.query_panel_container.Name = "query_panel_container";
             this.query_panel_container.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.query_panel_container.Size = new System.Drawing.Size(671, 384);
+            this.query_panel_container.Size = new System.Drawing.Size(420, 384);
             this.query_panel_container.TabIndex = 2;
             // 
             // panel_title_bar
@@ -110,7 +120,7 @@
             this.panel_title_bar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_title_bar.Location = new System.Drawing.Point(0, 0);
             this.panel_title_bar.Name = "panel_title_bar";
-            this.panel_title_bar.Size = new System.Drawing.Size(671, 65);
+            this.panel_title_bar.Size = new System.Drawing.Size(420, 65);
             this.panel_title_bar.TabIndex = 1;
             this.panel_title_bar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseDown);
             this.panel_title_bar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseMove);
@@ -143,7 +153,7 @@
             this.close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.close.BackColor = System.Drawing.Color.Transparent;
             this.close.Image = global::ArcGISFoundation.Properties.Resources.close;
-            this.close.Location = new System.Drawing.Point(632, -1);
+            this.close.Location = new System.Drawing.Point(381, -1);
             this.close.Name = "close";
             this.close.Size = new System.Drawing.Size(27, 22);
             this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -158,7 +168,7 @@
             this.min.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.min.BackColor = System.Drawing.Color.Transparent;
             this.min.Image = global::ArcGISFoundation.Properties.Resources.min;
-            this.min.Location = new System.Drawing.Point(598, -1);
+            this.min.Location = new System.Drawing.Point(347, -1);
             this.min.Name = "min";
             this.min.Size = new System.Drawing.Size(27, 22);
             this.min.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -172,7 +182,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(671, 449);
+            this.ClientSize = new System.Drawing.Size(420, 449);
             this.Controls.Add(this.query_panel_container);
             this.Controls.Add(this.panel_title_bar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -200,5 +210,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ListView listView_data;
+        private System.Windows.Forms.ImageList imageList_hide;
     }
 }

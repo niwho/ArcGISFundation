@@ -95,9 +95,6 @@ namespace ArcGISFoundation
             //遍历FeatureCursor
             IFeature pFeature = pFeatureCursor.NextFeature(); 
           
-              ESRI.ArcGIS.Controls.ControlsLayerListToolControl dfsafdsfa =
-                        (ESRI.ArcGIS.Controls.ControlsLayerListToolControl)(maintoolbar.GetItem(maintoolbar.Find("esriControls.ControlsLayerListToolControl"))).Command;
-              string ss = dfsafdsfa.ToString();
             QueryForm qf =new QueryForm(m_bin_path);
             qf.m_mapControl = axMapControl1;
             qf.m_featureLayer = featureLayer;
@@ -107,7 +104,7 @@ namespace ArcGISFoundation
             System.Windows.Forms.ListView listView_data = qf.nw_getListView();
             listView_data.Columns.Add(m_range+"名", 120,HorizontalAlignment.Left);//省名,,
             listView_data.Columns.Add(m_rate + "度", 120, HorizontalAlignment.Left);
-            listView_data.Columns.Add(m_rate+"面积", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add(m_rate+"面积", 130, HorizontalAlignment.Left);
             string area = "area" + m_rate_en;
             string rate = "rate" + m_rate_en;
             if(pFeature != null)
