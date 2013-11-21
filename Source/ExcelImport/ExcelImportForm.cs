@@ -86,7 +86,7 @@ namespace ArcGISFoundation
 
         private void CreateShpFile_Click(object sender, EventArgs e)
         {
-            CreateShpFileForm form = new CreateShpFileForm(axMapControl1, excelGridView);
+            CreateShpFileForm form = new CreateShpFileForm(axMapControl1, excelGridView, m_bin_path);
             form.ShowDialog(this);
         }
 
@@ -141,6 +141,24 @@ namespace ArcGISFoundation
                 ReleaseCapture();
                 SendMessage(this.Handle.ToInt32(), 0x0112, 0xF012, 0);
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics,
+       this.panel1.ClientRectangle,
+       Color.LightSeaGreen,         //left
+       3,
+       ButtonBorderStyle.None,
+       Color.LightSeaGreen,         //top
+       0,
+       ButtonBorderStyle.Solid,
+       Color.LightSeaGreen,        //right
+       1,
+       ButtonBorderStyle.Solid,
+       Color.LightSeaGreen,        //bottom
+       1,
+       ButtonBorderStyle.Solid);
         }
     }
 }

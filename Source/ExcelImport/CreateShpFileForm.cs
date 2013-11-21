@@ -9,20 +9,32 @@ using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.DataSourcesFile;
 using ESRI.ArcGIS.Geometry;
+using System.Runtime.InteropServices;
 
 namespace ArcGISFoundation
 {
     public partial class CreateShpFileForm : Form
     {
+
+        [DllImport("User32.dll", EntryPoint = "SendMessage")]
+        private static extern int SendMessage(int hWnd, int Msg, int wParam, int lParam);
+        [DllImport("User32.dll", EntryPoint = "ReleaseCapture")]
+        private static extern int ReleaseCapture();
+
         private DataGridView excelDataGridViewX;
         private AxMapControl axMapControl;
         private string fileName;
         private string filePath;
+        private string m_bin_path;
 
-        public CreateShpFileForm(AxMapControl _axMapControl, DataGridView _DataView)
+        //临时位置
+        private System.Drawing.Point temp_point;
+
+        public CreateShpFileForm(AxMapControl _axMapControl, DataGridView _DataView, string path)
         {
             axMapControl = _axMapControl;
             excelDataGridViewX = _DataView;
+            m_bin_path = path;
             InitializeComponent();
         }
 
@@ -173,6 +185,68 @@ namespace ArcGISFoundation
         private void fileNameTextBox_TextChanged(object sender, EventArgs e)
         {
             fileName = fileNameTextBox.Text;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            ControlPaint.DrawBorder(e.Graphics,
+                   this.panel1.ClientRectangle,
+                   Color.LightSeaGreen,         //left
+                   1,
+                   ButtonBorderStyle.None,
+                   Color.LightSeaGreen,         //top
+                   0,
+                   ButtonBorderStyle.Solid,
+                   Color.LightSeaGreen,        //right
+                   1,
+                   ButtonBorderStyle.Solid,
+                   Color.LightSeaGreen,        //bottom
+                   1,
+                   ButtonBorderStyle.Solid);
+        }
+
+        private void min_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void min_MouseEnter(object sender, EventArgs e)
+        {
+            this.min.Image = Image.FromFile(m_bin_path + @"..\images\min_hover.png");
+        }
+
+        private void min_MouseLeave(object sender, EventArgs e)
+        {
+            this.min.Image = Image.FromFile(m_bin_path + @"..\images\min.png");
+        }
+
+        private void close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void close_MouseEnter(object sender, EventArgs e)
+        {
+            this.close.Image = Image.FromFile(m_bin_path + @"..\images\close_hover.png");
+        }
+
+        private void close_MouseLeave(object sender, EventArgs e)
+        {
+            this.close.Image = Image.FromFile(m_bin_path + @"..\images\close.png");
+        }
+
+        private void panel_title_bar_MouseDown(object sender, MouseEventArgs e)
+        {
+            temp_point = new System.Drawing.Point(e.X, e.Y);
+        }
+
+        private void panel_title_bar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && (e.X - temp_point.X != 0 || e.Y - temp_point.Y != 0))
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle.ToInt32(), 0x0112, 0xF012, 0);
+            }
         }
     }
 }

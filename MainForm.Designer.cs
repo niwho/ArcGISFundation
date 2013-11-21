@@ -35,15 +35,15 @@ namespace ArcGISFoundation
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("白三叶");
-            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("臂形草");
-            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("扁穗牛鞭草");
-            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("紫花苜蓿");
-            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("所有牧草", new System.Windows.Forms.TreeNode[] {
-            treeNode36,
-            treeNode37,
-            treeNode38,
-            treeNode39});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("白三叶");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("臂形草");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("扁穗牛鞭草");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("紫花苜蓿");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("所有牧草", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
             this.licensecontrol = new ESRI.ArcGIS.Controls.AxLicenseControl();
             this.toccontrol = new ESRI.ArcGIS.Controls.AxTOCControl();
             this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
@@ -247,18 +247,18 @@ namespace ArcGISFoundation
             this.treeView_all_cao.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.treeView_all_cao.Location = new System.Drawing.Point(0, 25);
             this.treeView_all_cao.Name = "treeView_all_cao";
-            treeNode36.Name = "节点1";
-            treeNode36.Text = "白三叶";
-            treeNode37.Name = "节点2";
-            treeNode37.Text = "臂形草";
-            treeNode38.Name = "节点3";
-            treeNode38.Text = "扁穗牛鞭草";
-            treeNode39.Name = "节点4";
-            treeNode39.Text = "紫花苜蓿";
-            treeNode40.Name = "节点0";
-            treeNode40.Text = "所有牧草";
+            treeNode1.Name = "节点1";
+            treeNode1.Text = "白三叶";
+            treeNode2.Name = "节点2";
+            treeNode2.Text = "臂形草";
+            treeNode3.Name = "节点3";
+            treeNode3.Text = "扁穗牛鞭草";
+            treeNode4.Name = "节点4";
+            treeNode4.Text = "紫花苜蓿";
+            treeNode5.Name = "节点0";
+            treeNode5.Text = "所有牧草";
             this.treeView_all_cao.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode40});
+            treeNode5});
             this.treeView_all_cao.Size = new System.Drawing.Size(198, 400);
             this.treeView_all_cao.TabIndex = 0;
             this.treeView_all_cao.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_all_cao_NodeMouseDoubleClick);
@@ -386,7 +386,7 @@ namespace ArcGISFoundation
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 40);
             this.label2.TabIndex = 13;
-            this.label2.Text = "帮助文档查询";
+            this.label2.Text = "可导入牧草数据";
             // 
             // pictureBox_tools2
             // 
