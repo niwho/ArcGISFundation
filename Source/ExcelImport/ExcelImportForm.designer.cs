@@ -63,9 +63,12 @@
             // 
             // OpenExcel
             // 
-            this.OpenExcel.Location = new System.Drawing.Point(7, 80);
+            this.OpenExcel.BackgroundImage = global::ArcGISFoundation.Properties.Resources.banner;
+            this.OpenExcel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.OpenExcel.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.OpenExcel.Location = new System.Drawing.Point(7, 74);
             this.OpenExcel.Name = "OpenExcel";
-            this.OpenExcel.Size = new System.Drawing.Size(115, 23);
+            this.OpenExcel.Size = new System.Drawing.Size(115, 29);
             this.OpenExcel.TabIndex = 0;
             this.OpenExcel.Text = "打开Excel";
             this.OpenExcel.UseVisualStyleBackColor = true;
@@ -73,17 +76,22 @@
             // 
             // excelCmbBox
             // 
+            this.excelCmbBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.excelCmbBox.FormattingEnabled = true;
-            this.excelCmbBox.Location = new System.Drawing.Point(132, 82);
+            this.excelCmbBox.Location = new System.Drawing.Point(132, 77);
             this.excelCmbBox.Name = "excelCmbBox";
-            this.excelCmbBox.Size = new System.Drawing.Size(244, 20);
+            this.excelCmbBox.Size = new System.Drawing.Size(244, 25);
             this.excelCmbBox.TabIndex = 1;
             // 
             // Open
             // 
-            this.Open.Location = new System.Drawing.Point(408, 82);
+            this.Open.BackgroundImage = global::ArcGISFoundation.Properties.Resources.banner;
+            this.Open.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Open.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.Open.Location = new System.Drawing.Point(392, 74);
+            this.Open.Margin = new System.Windows.Forms.Padding(0);
             this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(75, 23);
+            this.Open.Size = new System.Drawing.Size(62, 30);
             this.Open.TabIndex = 2;
             this.Open.Text = "打开";
             this.Open.UseVisualStyleBackColor = true;
@@ -111,9 +119,12 @@
             // 
             // CreateShpFile
             // 
-            this.CreateShpFile.Location = new System.Drawing.Point(395, 400);
+            this.CreateShpFile.BackgroundImage = global::ArcGISFoundation.Properties.Resources.banner;
+            this.CreateShpFile.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CreateShpFile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CreateShpFile.Location = new System.Drawing.Point(358, 400);
             this.CreateShpFile.Name = "CreateShpFile";
-            this.CreateShpFile.Size = new System.Drawing.Size(88, 23);
+            this.CreateShpFile.Size = new System.Drawing.Size(125, 32);
             this.CreateShpFile.TabIndex = 6;
             this.CreateShpFile.Text = "创建Shape文件";
             this.CreateShpFile.UseVisualStyleBackColor = true;
@@ -201,7 +212,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(998, 435);
+            this.ClientSize = new System.Drawing.Size(998, 444);
             this.Controls.Add(this.panel_title_bar);
             this.Controls.Add(this.CreateShpFile);
             this.Controls.Add(this.axLicenseControl1);
