@@ -17,20 +17,26 @@ using ESRI.ArcGIS.Display;
 
 namespace ArcGISFoundation
 {
-    public struct DataNode
+    public struct Pasture
     {
-        public string strName;
-        public string strMapDoc;
+        public string                   strPasture;
+        public string                   strMapDoc;
+    };
+
+    public struct GrassFamily
+    {
+        public string                   strFamily;
+        public List<Pasture>            pastures;
     };
 
     public class DataSource
     {
-        protected IMapControl3  m_mapcontrol;
-        protected TreeView      m_tree;
+        protected IMapControl3          m_mapcontrol;
+        protected TreeView              m_tree;
 
-        protected string        m_rootDir;
-        protected List<DataNode>m_dataNodes = new List<DataNode>();
-        protected DataNode      m_activenode;
+        protected string                m_rootDir;
+        protected List<GrassFamily>     m_grassFamilys = new List<GrassFamily>();
+        protected Pasture               m_activepasture;
 
         public void Init(string rootDir, IMapControl3 mapcontrol, TreeView datatree)
         {
@@ -42,98 +48,113 @@ namespace ArcGISFoundation
         public void Refresh()
         {
             DirectoryInfo   rootDir = new DirectoryInfo(m_rootDir);
-            DirectoryInfo[] childDirs = rootDir.GetDirectories();
+            DirectoryInfo[] familyDirs = rootDir.GetDirectories();
 
             string          strRootNode = @"所有牧草";
 
             m_tree.BeginUpdate();
-
             m_tree.Nodes.Clear();
 
             TreeNode rootnode = new TreeNode(strRootNode);
             m_tree.Nodes.Add(rootnode);
-            foreach (DirectoryInfo dir in childDirs)
-            {
-                FileInfo[] files = dir.GetFiles("*.mxd");
-                if (files.Length == 1)
-                {
-                    FileInfo file = files[0];
-                    DataNode  datanode = new DataNode();
-                    datanode.strName = dir.Name;
-                    datanode.strMapDoc = file.FullName;
-                    m_dataNodes.Add(datanode);
 
-                    rootnode.Nodes.Add(datanode.strName);
+            foreach (DirectoryInfo fdir in familyDirs)
+            {
+                DirectoryInfo[] pdirs = fdir.GetDirectories();
+
+                GrassFamily family = new GrassFamily();
+
+                family.strFamily = fdir.Name;
+                family.pastures = new List<Pasture>();
+
+                TreeNode familynode = rootnode.Nodes.Add(family.strFamily);
+
+                foreach (DirectoryInfo dir in pdirs)
+                {
+                    FileInfo[] files = dir.GetFiles("*.mxd");
+                    if (files.Length == 1)
+                    {
+                        FileInfo file = files[0];
+                        Pasture pasture = new Pasture();
+                        pasture.strPasture = dir.Name;
+                        pasture.strMapDoc = file.FullName;
+                        family.pastures.Add(pasture);
+
+                        familynode.Nodes.Add(pasture.strPasture);
+                    }
                 }
+
+                m_grassFamilys.Add(family);
             }
 
             m_tree.EndUpdate();
 
             //
-            m_activenode = m_dataNodes[0];
-            
+            //m_activepasture = m_grassFamilys[0].pastures[0];     
         }
 
-        public DataNode GetActiveNode()
+        public Pasture GetActivePasture()
         {
-            return m_activenode;
+            return m_activepasture;
         }
 
-        public DataNode GetNodeByName(string strName)
+        public Pasture GetPastureByName(string strName)
         {
-            foreach (DataNode node in m_dataNodes)
+            foreach (GrassFamily family in m_grassFamilys)
             {
-                if (node.strName == strName)
+                foreach (Pasture pasture in family.pastures)
                 {
-                    return node;
+                    if (pasture.strPasture == strName)
+                    {
+                        return pasture;
+                    }
                 }
             }
 
-            return new DataNode();
+            return new Pasture();
         }
 
         public bool Switch(string strName)
         {
-            m_activenode = GetNodeByName(strName);
-            if (m_activenode.strName == string.Empty)
+            m_activepasture = GetPastureByName(strName);
+            if (m_activepasture.strPasture == string.Empty)
                 return false;
            
             IMapDocument mapDoc = new MapDocumentClass();
-            if (mapDoc.get_IsPresent(m_activenode.strMapDoc) &&
-                !mapDoc.get_IsPasswordProtected(m_activenode.strMapDoc))
+            if (mapDoc.get_IsPresent(m_activepasture.strMapDoc) &&
+                !mapDoc.get_IsPasswordProtected(m_activepasture.strMapDoc))
             {
-                mapDoc.Open(m_activenode.strMapDoc, string.Empty);
+                mapDoc.Open(m_activepasture.strMapDoc, string.Empty);
 
                 // set the first map as the active view
                 IMap map = mapDoc.get_Map(0);
                 mapDoc.SetActiveView((IActiveView)map);
 
                 //assign the opened map to the MapControl
-                m_mapcontrol.DocumentFilename = m_activenode.strMapDoc;
+                m_mapcontrol.DocumentFilename = m_activepasture.strMapDoc;
                 m_mapcontrol.Map = map;
 
                 mapDoc.Close();
 
                 //////////////////////////////////////////////////////////////////////////
-                TreeNode node = m_tree.Nodes[0];
-                TreeNode first = node.FirstNode;
-                TreeNode last = node.LastNode;
-                TreeNode current = first;
-                while (current != last)
+                Queue<TreeNode> vistor_queue = new Queue<TreeNode>();
+                vistor_queue.Enqueue(m_tree.Nodes[0]);
+                while (vistor_queue.Count > 0)
                 {
-                    if (current.Text == strName)
-                        current.ForeColor = Color.BlueViolet;
+                    TreeNode node = vistor_queue.Dequeue();
+                    if (node.Text == strName)
+                        node.ForeColor = Color.BlueViolet;
                     else
-                        current.ForeColor = Color.Black;
+                        node.ForeColor = Color.Black;
 
-                     current = current.NextNode;
+                    TreeNode child = node.FirstNode;
+                    while (null != child)
+                    {
+                        vistor_queue.Enqueue(child);
+                        child = child.NextNode;
+                    }
                 }
-
-                if (last.Text == strName)
-                    last.ForeColor = Color.BlueViolet;
-                else
-                    last.ForeColor = Color.Black;
-
+        
                 return true;
             }
 

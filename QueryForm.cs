@@ -30,6 +30,7 @@ namespace ArcGISFoundation
         public IFeature m_feature;
         public string m_query_name;
         public string m_mucao;
+        public string m_layername;
 
         public QueryForm(string path)
         {
@@ -45,7 +46,7 @@ namespace ArcGISFoundation
         }
         private void QueryForm_Load(object sender, EventArgs e)
         {
-            query_panel.Text = m_mucao;
+            query_panel.Text =m_layername+ " 牧草：" +m_mucao;
         }
 
         private void min_Click(object sender, EventArgs e)
@@ -118,6 +119,7 @@ namespace ArcGISFoundation
 
         private void listView_data_SelectedIndexChanged(object sender, EventArgs e)
         {
+            return;
             if (listView_data.SelectedIndices != null && listView_data.SelectedIndices.Count > 0)
             {
                 ListView.SelectedIndexCollection c = listView_data.SelectedIndices;
@@ -158,6 +160,62 @@ namespace ArcGISFoundation
                     //m_feature = feature;
                    // m_mapControl.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
                    // sel.Clear();
+                    //m_mapControl.Map.FeatureSelection.Clear();
+                    sel.SelectFeatures(queryFilter, ESRI.ArcGIS.Carto.esriSelectionResultEnum.esriSelectionResultNew, false);
+                    //m_mapControl.Map.SelectFeature(m_featureLayer as ILayer, feature);
+                    m_mapControl.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+                    m_mapControl.CenterAt(feature.Extent.LowerLeft);
+
+                    //m_mapControl.MapScale = 0.1;
+                    //m_mapControl.Map.SelectFeature(m_featureLayer as ILayer, null);
+                }
+
+            }
+        }
+
+        private void listView_data_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+           // MessageBox.Show(this.listView_data.SelectedItems[0].SubItems[0].Text);
+            if (listView_data.SelectedIndices != null && listView_data.SelectedIndices.Count > 0)
+            {
+                ListView.SelectedIndexCollection c = listView_data.SelectedIndices;
+                string str = this.listView_data.SelectedItems[0].SubItems[1].Text;
+                //MessageBox.Show( listView_data.Items[c[0]].Text);
+
+                IFeatureClass featureClass = m_featureLayer.FeatureClass;
+                IFeatureSelection sel = m_featureLayer as IFeatureSelection;
+
+                IFeature feature = null;
+
+                m_mapControl.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+                m_mapControl.Map.ClearSelection();
+                m_mapControl.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+
+                IQueryFilter queryFilter = new QueryFilterClass();
+                IFeatureCursor featureCusor;
+                queryFilter.WhereClause = m_query_name + " = '" + this.listView_data.SelectedItems[0].SubItems[0].Text + "'";
+                featureCusor = featureClass.Search(queryFilter, true);
+                //search的参数第一个为过滤条件，第二个为是否重复执行。
+                //feature = featureCusor.NextFeature();
+                IFeature pFeat = null;
+                IEnvelope pEnve = new EnvelopeClass();
+                while ((pFeat = featureCusor.NextFeature()) != null)
+                {
+                    pEnve.Union(pFeat.Extent);
+                }
+
+                if (pEnve != null)
+                {
+                    pEnve.Expand(2, 2, true);
+                    (m_mapControl.Map as IActiveView).Extent = pEnve;
+                    (m_mapControl.Map as IActiveView).Refresh();
+                }
+                sel.SelectFeatures(queryFilter, ESRI.ArcGIS.Carto.esriSelectionResultEnum.esriSelectionResultXOR, false);
+                if (feature != null)
+                {
+                    //m_feature = feature;
+                    // m_mapControl.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+                    // sel.Clear();
                     //m_mapControl.Map.FeatureSelection.Clear();
                     sel.SelectFeatures(queryFilter, ESRI.ArcGIS.Carto.esriSelectionResultEnum.esriSelectionResultNew, false);
                     //m_mapControl.Map.SelectFeature(m_featureLayer as ILayer, feature);

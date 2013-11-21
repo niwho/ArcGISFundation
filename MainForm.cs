@@ -117,7 +117,7 @@ namespace ArcGISFoundation
         //init data source
         private void InitDataSouce()
         {
-            string strDataRoot = m_bin_path+@"..\data";
+            string strDataRoot = m_bin_path + @"..\data\牧草数据\";
             string strInitData =  @"白三叶";
             m_datasource = new DataSource();
             m_datasource.Init(strDataRoot, m_mapControl, treeView_all_cao);
@@ -127,6 +127,7 @@ namespace ArcGISFoundation
             {
                 this.xPanderPanel_tree.Text =
                "图层管理--" + strInitData;
+                m_mucao = strInitData;
             }
         }
 
@@ -403,12 +404,12 @@ namespace ArcGISFoundation
         private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Button == MouseButtons.Left &&
-                e.Node.Level != 0 &&
+                e.Node.Level > 1 &&
                 m_datasource.Switch(e.Node.Text))
-            {               
-                DataNode datanode= m_datasource.GetActiveNode();
+            {
+                Pasture pasture= m_datasource.GetActivePasture();
 
-                this.xPanderPanel_tree.Text = "图层管理--" + datanode.strName;
+                this.xPanderPanel_tree.Text = "图层管理--" + pasture.strPasture;
                 this.xPanderPanel_tree.Expand = true;
                 this.xPanderPanel_query.Expand = false;
 
@@ -419,8 +420,23 @@ namespace ArcGISFoundation
                     m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
                 }
                 m_LayerList.SelectedIndex = 0;
-                m_mucao = datanode.strName;
+                m_mucao = pasture.strPasture;
             }
+        }
+
+        private void m_LayerList_DropDown(object sender, EventArgs e)
+        {
+            m_LayerList.Items.Clear();
+            for (int i = 0; i < m_mapControl.LayerCount; ++i)
+            {
+                //string layername = m_mapControl.Layer[i].Name;
+                m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
+            }
+        }
+
+        private void m_LayerList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            m_selectedLayer = m_LayerList.SelectedIndex;
         }
 
         #endregion
@@ -484,21 +500,5 @@ namespace ArcGISFoundation
         }
 
         #endregion
-
-        private void m_LayerList_DropDown(object sender, EventArgs e)
-        {
-            m_LayerList.Items.Clear();
-            for(int i =0;i<m_mapControl.LayerCount;++i)
-            {
-                //string layername = m_mapControl.Layer[i].Name;
-                m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
-            }
-        }
-
-        private void m_LayerList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            m_selectedLayer = m_LayerList.SelectedIndex;
-        }
-
     }
 }
