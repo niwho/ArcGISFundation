@@ -34,6 +34,7 @@ namespace ArcGISFoundation
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("°×ÈýÒ¶");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("±ÛÐÎ²Ý");
@@ -75,6 +76,8 @@ namespace ArcGISFoundation
             this.min = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.licensecontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
@@ -243,6 +246,8 @@ namespace ArcGISFoundation
             // 
             this.treeView_all_cao.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView_all_cao.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView_all_cao.ImageIndex = 0;
+            this.treeView_all_cao.ImageList = this.imageList1;
             this.treeView_all_cao.ItemHeight = 24;
             this.treeView_all_cao.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.treeView_all_cao.Location = new System.Drawing.Point(0, 25);
@@ -259,6 +264,7 @@ namespace ArcGISFoundation
             treeNode5.Text = "ËùÓÐÄÁ²Ý";
             this.treeView_all_cao.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode5});
+            this.treeView_all_cao.SelectedImageIndex = 0;
             this.treeView_all_cao.Size = new System.Drawing.Size(198, 400);
             this.treeView_all_cao.TabIndex = 0;
             this.treeView_all_cao.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_all_cao_NodeMouseDoubleClick);
@@ -291,6 +297,7 @@ namespace ArcGISFoundation
             // 
             // panel_toolbar
             // 
+            this.panel_toolbar.Controls.Add(this.label3);
             this.panel_toolbar.Controls.Add(this.m_LayerList);
             this.panel_toolbar.Controls.Add(this.maintoolbar);
             this.panel_toolbar.Dock = System.Windows.Forms.DockStyle.Top;
@@ -305,7 +312,7 @@ namespace ArcGISFoundation
             this.m_LayerList.FormattingEnabled = true;
             this.m_LayerList.IntegralHeight = false;
             this.m_LayerList.ItemHeight = 17;
-            this.m_LayerList.Location = new System.Drawing.Point(249, 1);
+            this.m_LayerList.Location = new System.Drawing.Point(350, 1);
             this.m_LayerList.Name = "m_LayerList";
             this.m_LayerList.Size = new System.Drawing.Size(115, 25);
             this.m_LayerList.TabIndex = 13;
@@ -530,6 +537,23 @@ namespace ArcGISFoundation
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(264, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 17);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Ö¸¶¨²éÑ¯Í¼²ã:";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "clover.png");
+            this.imageList1.Images.SetKeyName(1, "blue_folder.png");
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -557,6 +581,7 @@ namespace ArcGISFoundation
             this.panel_container.ResumeLayout(false);
             this.panel_right_map.ResumeLayout(false);
             this.panel_toolbar.ResumeLayout(false);
+            this.panel_toolbar.PerformLayout();
             this.panel_left.ResumeLayout(false);
             this.panel_title_bar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -609,6 +634,8 @@ namespace ArcGISFoundation
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.SaveFileDialog saveFileDialog_printer;
         private System.Windows.Forms.ComboBox m_LayerList;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }
 
