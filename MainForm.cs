@@ -127,6 +127,7 @@ namespace ArcGISFoundation
             {
                 this.xPanderPanel_tree.Text =
                "Õº≤„π‹¿Ì--" + strInitData;
+                m_mucao = strInitData;
             }
         }
 

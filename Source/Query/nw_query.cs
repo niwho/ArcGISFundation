@@ -100,6 +100,7 @@ namespace ArcGISFoundation
             qf.m_featureLayer = featureLayer;
             qf.m_query_name = m_range_en;
             qf.m_mucao = m_mucao;
+            qf.m_layername = " 当前图层：" + layer.Name;
 
             System.Windows.Forms.ListView listView_data = qf.nw_getListView();
             listView_data.Columns.Add(m_range+"名", 120,HorizontalAlignment.Left);//省名,,

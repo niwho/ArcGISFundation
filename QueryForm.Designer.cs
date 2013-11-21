@@ -66,7 +66,6 @@
             this.query_panel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.query_panel.Image = null;
             this.query_panel.InnerBorderColor = System.Drawing.Color.White;
-            this.query_panel.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.query_panel.Location = new System.Drawing.Point(3, 0);
             this.query_panel.Name = "query_panel";
             this.query_panel.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
@@ -90,6 +89,7 @@
             this.listView_data.View = System.Windows.Forms.View.Details;
             this.listView_data.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_data_ColumnClick);
             this.listView_data.SelectedIndexChanged += new System.EventHandler(this.listView_data_SelectedIndexChanged);
+            this.listView_data.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_data_MouseDoubleClick);
             // 
             // imageList_hide
             // 
