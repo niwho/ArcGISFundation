@@ -46,7 +46,7 @@ namespace ArcGISFoundation
         }
         private void QueryForm_Load(object sender, EventArgs e)
         {
-            query_panel.Text =m_layername+ " 牧草：" +m_mucao;
+            query_panel.Text =m_layername+ "    牧草：" +m_mucao;
         }
 
         private void min_Click(object sender, EventArgs e)

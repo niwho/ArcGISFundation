@@ -31,27 +31,29 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExcelImportForm));
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
-            this.OpenExcel = new System.Windows.Forms.Button();
             this.openExcelDialog = new System.Windows.Forms.OpenFileDialog();
-            this.excelCmbBox = new System.Windows.Forms.ComboBox();
-            this.Open = new System.Windows.Forms.Button();
-            this.excelGridView = new System.Windows.Forms.DataGridView();
-            this.axLicenseControl1 = new ESRI.ArcGIS.Controls.AxLicenseControl();
-            this.CreateShpFile = new System.Windows.Forms.Button();
-            this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
             this.panel_title_bar = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.close = new System.Windows.Forms.PictureBox();
             this.min = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.excelGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.CreateShpFile = new System.Windows.Forms.Button();
+            this.axLicenseControl1 = new ESRI.ArcGIS.Controls.AxLicenseControl();
+            this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
+            this.excelGridView = new System.Windows.Forms.DataGridView();
+            this.Open = new System.Windows.Forms.Button();
+            this.excelCmbBox = new System.Windows.Forms.ComboBox();
+            this.OpenExcel = new System.Windows.Forms.Button();
             this.panel_title_bar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.min)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.excelGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -60,83 +62,6 @@
             this.notifyIcon1.Text = "ExcelToLayer";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
-            // 
-            // OpenExcel
-            // 
-            this.OpenExcel.BackgroundImage = global::ArcGISFoundation.Properties.Resources.banner;
-            this.OpenExcel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.OpenExcel.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.OpenExcel.Location = new System.Drawing.Point(7, 74);
-            this.OpenExcel.Name = "OpenExcel";
-            this.OpenExcel.Size = new System.Drawing.Size(115, 29);
-            this.OpenExcel.TabIndex = 0;
-            this.OpenExcel.Text = "打开Excel";
-            this.OpenExcel.UseVisualStyleBackColor = true;
-            this.OpenExcel.Click += new System.EventHandler(this.OpenExcel_Click);
-            // 
-            // excelCmbBox
-            // 
-            this.excelCmbBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.excelCmbBox.FormattingEnabled = true;
-            this.excelCmbBox.Location = new System.Drawing.Point(132, 77);
-            this.excelCmbBox.Name = "excelCmbBox";
-            this.excelCmbBox.Size = new System.Drawing.Size(244, 25);
-            this.excelCmbBox.TabIndex = 1;
-            // 
-            // Open
-            // 
-            this.Open.BackgroundImage = global::ArcGISFoundation.Properties.Resources.banner;
-            this.Open.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Open.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.Open.Location = new System.Drawing.Point(392, 74);
-            this.Open.Margin = new System.Windows.Forms.Padding(0);
-            this.Open.Name = "Open";
-            this.Open.Size = new System.Drawing.Size(62, 30);
-            this.Open.TabIndex = 2;
-            this.Open.Text = "打开";
-            this.Open.UseVisualStyleBackColor = true;
-            this.Open.Click += new System.EventHandler(this.Open_Click);
-            // 
-            // excelGridView
-            // 
-            this.excelGridView.AllowUserToAddRows = false;
-            this.excelGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.excelGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.excelGridView.Location = new System.Drawing.Point(4, 111);
-            this.excelGridView.Name = "excelGridView";
-            this.excelGridView.RowTemplate.Height = 23;
-            this.excelGridView.Size = new System.Drawing.Size(479, 283);
-            this.excelGridView.TabIndex = 3;
-            // 
-            // axLicenseControl1
-            // 
-            this.axLicenseControl1.Enabled = true;
-            this.axLicenseControl1.Location = new System.Drawing.Point(649, 210);
-            this.axLicenseControl1.Name = "axLicenseControl1";
-            this.axLicenseControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axLicenseControl1.OcxState")));
-            this.axLicenseControl1.Size = new System.Drawing.Size(32, 32);
-            this.axLicenseControl1.TabIndex = 5;
-            // 
-            // CreateShpFile
-            // 
-            this.CreateShpFile.BackgroundImage = global::ArcGISFoundation.Properties.Resources.banner;
-            this.CreateShpFile.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.CreateShpFile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CreateShpFile.Location = new System.Drawing.Point(358, 400);
-            this.CreateShpFile.Name = "CreateShpFile";
-            this.CreateShpFile.Size = new System.Drawing.Size(125, 32);
-            this.CreateShpFile.TabIndex = 6;
-            this.CreateShpFile.Text = "创建Shape文件";
-            this.CreateShpFile.UseVisualStyleBackColor = true;
-            this.CreateShpFile.Click += new System.EventHandler(this.CreateShpFile_Click);
-            // 
-            // axMapControl1
-            // 
-            this.axMapControl1.Location = new System.Drawing.Point(504, 82);
-            this.axMapControl1.Name = "axMapControl1";
-            this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
-            this.axMapControl1.Size = new System.Drawing.Size(482, 312);
-            this.axMapControl1.TabIndex = 4;
             // 
             // panel_title_bar
             // 
@@ -208,19 +133,109 @@
             this.min.MouseEnter += new System.EventHandler(this.min_MouseEnter);
             this.min.MouseLeave += new System.EventHandler(this.min_MouseLeave);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.Controls.Add(this.CreateShpFile);
+            this.panel1.Controls.Add(this.axLicenseControl1);
+            this.panel1.Controls.Add(this.axMapControl1);
+            this.panel1.Controls.Add(this.excelGridView);
+            this.panel1.Controls.Add(this.Open);
+            this.panel1.Controls.Add(this.excelCmbBox);
+            this.panel1.Controls.Add(this.OpenExcel);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 65);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(3);
+            this.panel1.Size = new System.Drawing.Size(998, 379);
+            this.panel1.TabIndex = 8;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // CreateShpFile
+            // 
+            this.CreateShpFile.BackgroundImage = global::ArcGISFoundation.Properties.Resources.banner;
+            this.CreateShpFile.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CreateShpFile.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CreateShpFile.Location = new System.Drawing.Point(362, 336);
+            this.CreateShpFile.Name = "CreateShpFile";
+            this.CreateShpFile.Size = new System.Drawing.Size(125, 32);
+            this.CreateShpFile.TabIndex = 13;
+            this.CreateShpFile.Text = "创建Shape文件";
+            this.CreateShpFile.UseVisualStyleBackColor = true;
+            this.CreateShpFile.Click += new System.EventHandler(this.CreateShpFile_Click);
+            // 
+            // axLicenseControl1
+            // 
+            this.axLicenseControl1.Enabled = true;
+            this.axLicenseControl1.Location = new System.Drawing.Point(653, 146);
+            this.axLicenseControl1.Name = "axLicenseControl1";
+            this.axLicenseControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axLicenseControl1.OcxState")));
+            this.axLicenseControl1.Size = new System.Drawing.Size(32, 32);
+            this.axLicenseControl1.TabIndex = 12;
+            // 
+            // axMapControl1
+            // 
+            this.axMapControl1.Location = new System.Drawing.Point(508, 18);
+            this.axMapControl1.Name = "axMapControl1";
+            this.axMapControl1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axMapControl1.OcxState")));
+            this.axMapControl1.Size = new System.Drawing.Size(482, 312);
+            this.axMapControl1.TabIndex = 11;
+            // 
+            // excelGridView
+            // 
+            this.excelGridView.AllowUserToAddRows = false;
+            this.excelGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.excelGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.excelGridView.Location = new System.Drawing.Point(8, 47);
+            this.excelGridView.Name = "excelGridView";
+            this.excelGridView.RowTemplate.Height = 23;
+            this.excelGridView.Size = new System.Drawing.Size(479, 283);
+            this.excelGridView.TabIndex = 10;
+            // 
+            // Open
+            // 
+            this.Open.BackgroundImage = global::ArcGISFoundation.Properties.Resources.banner;
+            this.Open.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Open.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.Open.Location = new System.Drawing.Point(396, 10);
+            this.Open.Margin = new System.Windows.Forms.Padding(0);
+            this.Open.Name = "Open";
+            this.Open.Size = new System.Drawing.Size(62, 30);
+            this.Open.TabIndex = 9;
+            this.Open.Text = "打开";
+            this.Open.UseVisualStyleBackColor = true;
+            this.Open.Click += new System.EventHandler(this.Open_Click);
+            // 
+            // excelCmbBox
+            // 
+            this.excelCmbBox.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.excelCmbBox.FormattingEnabled = true;
+            this.excelCmbBox.Location = new System.Drawing.Point(136, 13);
+            this.excelCmbBox.Name = "excelCmbBox";
+            this.excelCmbBox.Size = new System.Drawing.Size(244, 25);
+            this.excelCmbBox.TabIndex = 8;
+            // 
+            // OpenExcel
+            // 
+            this.OpenExcel.BackgroundImage = global::ArcGISFoundation.Properties.Resources.banner;
+            this.OpenExcel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.OpenExcel.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.OpenExcel.Location = new System.Drawing.Point(11, 10);
+            this.OpenExcel.Name = "OpenExcel";
+            this.OpenExcel.Size = new System.Drawing.Size(115, 29);
+            this.OpenExcel.TabIndex = 7;
+            this.OpenExcel.Text = "打开Excel";
+            this.OpenExcel.UseVisualStyleBackColor = true;
+            this.OpenExcel.Click += new System.EventHandler(this.OpenExcel_Click);
+            // 
             // ExcelImportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(998, 444);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_title_bar);
-            this.Controls.Add(this.CreateShpFile);
-            this.Controls.Add(this.axLicenseControl1);
-            this.Controls.Add(this.axMapControl1);
-            this.Controls.Add(this.excelGridView);
-            this.Controls.Add(this.Open);
-            this.Controls.Add(this.excelCmbBox);
-            this.Controls.Add(this.OpenExcel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -228,14 +243,15 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "导入Excel";
             this.Load += new System.EventHandler(this.ExcelImportForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.excelGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).EndInit();
             this.panel_title_bar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.min)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.axLicenseControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.excelGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -243,18 +259,19 @@
         #endregion
 
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.Button OpenExcel;
         private System.Windows.Forms.OpenFileDialog openExcelDialog;
-        private System.Windows.Forms.ComboBox excelCmbBox;
-        private System.Windows.Forms.Button Open;
-        private System.Windows.Forms.DataGridView excelGridView;
-        private ESRI.ArcGIS.Controls.AxMapControl axMapControl1;
-        private ESRI.ArcGIS.Controls.AxLicenseControl axLicenseControl1;
-        private System.Windows.Forms.Button CreateShpFile;
         private System.Windows.Forms.Panel panel_title_bar;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox close;
         private System.Windows.Forms.PictureBox min;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button CreateShpFile;
+        private ESRI.ArcGIS.Controls.AxLicenseControl axLicenseControl1;
+        private ESRI.ArcGIS.Controls.AxMapControl axMapControl1;
+        private System.Windows.Forms.DataGridView excelGridView;
+        private System.Windows.Forms.Button Open;
+        private System.Windows.Forms.ComboBox excelCmbBox;
+        private System.Windows.Forms.Button OpenExcel;
     }
 }
