@@ -86,13 +86,13 @@ namespace ArcGISFoundation
             // open map tree
             this.xPanderPanel_tree.Expand = true;
 
-            m_LayerList.Items.Clear();
-            for (int i = 0; i < m_mapControl.LayerCount; ++i)
-            {
-                //string layername = m_mapControl.Layer[i].Name;
-                m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
-            }
-            m_LayerList.SelectedIndex = 0;
+            //m_LayerList.Items.Clear();
+            //for (int i = 0; i < m_mapControl.LayerCount; ++i)
+            //{
+            //    //string layername = m_mapControl.Layer[i].Name;
+            //    m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
+            //}
+            //m_LayerList.SelectedIndex = 0;
 
         }
 
@@ -136,7 +136,7 @@ namespace ArcGISFoundation
             // 增加打开档命令
             string progID;
             progID = "esriControlToolsGeneric.ControlsOpenDocCommand";
-            maintoolbar.AddItem(progID, -1, -1, true, 0,
+            maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
             progID = "esriControlToolsGeneric.ControlsSaveAsDocCommand";
@@ -165,6 +165,10 @@ namespace ArcGISFoundation
                 esriCommandStyles.esriCommandStyleIconOnly);
 
             progID = "esriControls.ControlsMapHyperlinkTool";
+            maintoolbar.AddItem(progID, -1, -1, false, 0,
+                esriCommandStyles.esriCommandStyleIconOnly);
+
+            progID = "esriControls.ControlsMapFindCommand";
             maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
@@ -415,30 +419,30 @@ namespace ArcGISFoundation
                 this.xPanderPanel_tree.Expand = true;
                 this.xPanderPanel_query.Expand = false;
 
-                m_LayerList.Items.Clear();
+                //m_LayerList.Items.Clear();
                 for (int i = 0; i < m_mapControl.LayerCount; ++i)
                 {
                     //string layername = m_mapControl.Layer[i].Name;
-                    m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
+                    //m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
                 }
-                m_LayerList.SelectedIndex = 0;
+                //m_LayerList.SelectedIndex = 0;
                 m_mucao = pasture.strPasture;
             }
         }
 
         private void m_LayerList_DropDown(object sender, EventArgs e)
         {
-            m_LayerList.Items.Clear();
-            for (int i = 0; i < m_mapControl.LayerCount; ++i)
-            {
-                //string layername = m_mapControl.Layer[i].Name;
-                m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
-            }
+            //m_LayerList.Items.Clear();
+            //for (int i = 0; i < m_mapControl.LayerCount; ++i)
+            //{
+            //    //string layername = m_mapControl.Layer[i].Name;
+            //    m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
+            //}
         }
 
         private void m_LayerList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            m_selectedLayer = m_LayerList.SelectedIndex;
+            //m_selectedLayer = m_LayerList.SelectedIndex;
         }
 
         #endregion
