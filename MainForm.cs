@@ -86,6 +86,7 @@ namespace ArcGISFoundation
 
             //init main tool bar
             InitMainToolbar();
+
             // open map tree
             this.xPanderPanel_tree.Expand = true;
             radioButton_sheng.Checked = true;
@@ -132,17 +133,17 @@ namespace ArcGISFoundation
         {
             // 增加打开档命令
             string progID;
-            progID = "esriControlToolsGeneric.ControlsOpenDocCommand";
-            maintoolbar.AddItem(progID, -1, -1, false, 0,
-                esriCommandStyles.esriCommandStyleIconOnly);
+            //progID = "esriControlToolsGeneric.ControlsOpenDocCommand";
+            //maintoolbar.AddItem(progID, -1, -1, false, 0,
+            //    esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsGeneric.ControlsSaveAsDocCommand";
-            maintoolbar.AddItem(progID, -1, -1, false, 0,
-                esriCommandStyles.esriCommandStyleIconOnly);
+            //progID = "esriControlToolsGeneric.ControlsSaveAsDocCommand";
+            //maintoolbar.AddItem(progID, -1, -1, false, 0,
+            //    esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsGeneric.ControlsAddDataCommand";
-            maintoolbar.AddItem(progID, -1, -1, false, 0,
-                esriCommandStyles.esriCommandStyleIconOnly);
+            //progID = "esriControlToolsGeneric.ControlsAddDataCommand";
+            //maintoolbar.AddItem(progID, -1, -1, false, 0,
+            //    esriCommandStyles.esriCommandStyleIconOnly);
 
             // 增加地图导航命令
             progID = "esriControls.ControlsMapZoomInTool";

@@ -5,11 +5,11 @@ using ESRI.ArcGIS.Controls;
 
 namespace ArcGISFoundation
 {
-	public sealed class ZoomToLayer : BaseCommand  
+	public sealed class LayerZoomTo : BaseCommand  
 	{
 		private IMapControl3 m_mapControl;
 
-		public ZoomToLayer()
+		public LayerZoomTo()
 		{
 			base.m_caption = "缩放至当前图层";
 		}

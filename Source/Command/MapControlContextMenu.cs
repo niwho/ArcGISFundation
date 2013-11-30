@@ -26,6 +26,20 @@ namespace ArcGISFoundation
         int index = 0;
 
         m_menu = new ToolbarMenuClass();
+
+        string progID;
+        progID = "esriControls.ControlsMapZoomInTool";
+        m_menu.AddItem(progID, -1, -1, true, 0,
+            esriCommandStyles.esriCommandStyleIconOnly);
+
+        progID = "esriControls.ControlsMapZoomOutTool";
+        m_menu.AddItem(progID, -1, -1, false, 0,
+            esriCommandStyles.esriCommandStyleIconOnly);
+
+        progID = "esriControls.ControlsMapPanTool";
+        m_menu.AddItem(progID, -1, -1, false, 0,
+            esriCommandStyles.esriCommandStyleIconOnly);
+
         m_menu.AddSubMenu("esriControls.ControlsMapViewMenu", index++, false);
         //m_menu.AddMultiItem("esriControls.ControlsMapPanTool", index++, true);
         //Set the hook of each menu

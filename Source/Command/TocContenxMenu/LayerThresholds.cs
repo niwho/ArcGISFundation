@@ -6,12 +6,12 @@ using ESRI.ArcGIS.SystemUI;
 
 namespace ArcGISFoundation
 {
-	public class ScaleThresholds : BaseCommand, ICommandSubType
+	public class LayerThresholds : BaseCommand, ICommandSubType
 	{
 		private IMapControl3 m_mapControl;
 		private long m_subType;
 
-		public ScaleThresholds()
+		public LayerThresholds()
 		{
 
 		}
