@@ -31,13 +31,33 @@ namespace ArcGISFoundation
         public string m_query_name;
         public string m_mucao;
         public string m_layername;
+        public string m_range;
 
+        public QueryForm()
+        {
+            
+            InitializeComponent();
+            lvwColumnSorter = new sortListView.ListViewColumnSorter();
+            this.listView_data.ListViewItemSorter = lvwColumnSorter;
+        }
+        public void setPath(string path)
+        {
+            m_bin_path = path;
+        }
         public QueryForm(string path)
         {
             m_bin_path = path;
             InitializeComponent();
             lvwColumnSorter = new sortListView.ListViewColumnSorter();
             this.listView_data.ListViewItemSorter = lvwColumnSorter;
+
+            System.Windows.Forms.ListView listView_data = nw_getListView();
+           
+            listView_data.Columns.Add(m_range + "名", 120, HorizontalAlignment.Left);//省名,,
+            listView_data.Columns.Add("适宜面积比", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add("适宜面积", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add("次适宜面积比", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add("次适宜面积", 120, HorizontalAlignment.Left);
         }
        
         public System.Windows.Forms.ListView nw_getListView()
@@ -69,7 +89,8 @@ namespace ArcGISFoundation
             m_mapControl.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
             m_mapControl.Map.ClearSelection();      
             m_mapControl.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
-            this.Close();
+            //this.Close();
+            this.Hide();
         }
 
         private void close_MouseEnter(object sender, EventArgs e)

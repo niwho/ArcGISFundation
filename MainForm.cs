@@ -75,7 +75,7 @@ namespace ArcGISFoundation
             m_mapControl = (IMapControl3)axMapControl1.Object;
             m_isQuery = false;
             m_bin_path = System.Environment.CurrentDirectory +'\\';
-
+            m_qf = new QueryForm(m_bin_path);
             //init toc context menu
             InitTocContextMenu();
 
@@ -86,6 +86,7 @@ namespace ArcGISFoundation
             InitMainToolbar();
             // open map tree
             this.xPanderPanel_tree.Expand = true;
+            radioButton_sheng.Checked = true;
         }
 
         //toc context menu
@@ -472,7 +473,7 @@ namespace ArcGISFoundation
             //make sure that the user right clicked
             if (m_isQuery && 1 == e.button)
             {
-                m_isQuery = false;//暂时这样处理
+               // m_isQuery = false;//暂时这样处理
 
                 nw_query(e);
                 return;
@@ -601,19 +602,16 @@ namespace ArcGISFoundation
             //遍历FeatureCursor
             IFeature pFeature2 = pFeatureCursor2.NextFeature();
 
-            QueryForm qf = new QueryForm(m_bin_path);
-            qf.m_mapControl = axMapControl1;
-            qf.m_featureLayer = featureLayer;
-            qf.m_query_name = m_range_en;
-            qf.m_mucao = m_mucao;
+            //QueryForm qf = new QueryForm(m_bin_path);
+            m_qf.m_mapControl = axMapControl1;
+            m_qf.m_featureLayer = featureLayer;
+            m_qf.m_query_name = m_range_en;
+            m_qf.m_mucao = m_mucao;
             //qf.m_layername = "当前图层：" + layer.Name;
 
-            System.Windows.Forms.ListView listView_data = qf.nw_getListView();
-            listView_data.Columns.Add(m_range + "名", 120, HorizontalAlignment.Left);//省名,,
-            listView_data.Columns.Add("适宜面积比", 120, HorizontalAlignment.Left);
-            listView_data.Columns.Add("适宜面积", 120, HorizontalAlignment.Left);
-            listView_data.Columns.Add("次适宜面积比", 120, HorizontalAlignment.Left);
-            listView_data.Columns.Add("次适宜面积", 120, HorizontalAlignment.Left);
+            System.Windows.Forms.ListView listView_data = m_qf.nw_getListView();
+            listView_data.Items.Clear();
+            m_qf.m_range = m_range;
             string area1 = "area" + m_rate_en;
             string rate1 = "rate" + m_rate_en;
             string area2 = "area" + m_rate_en;
@@ -688,7 +686,7 @@ namespace ArcGISFoundation
 
             }
             axMapControl1.MousePointer = ESRI.ArcGIS.Controls.esriControlsMousePointer.esriPointerDefault;
-            qf.Show();
+            m_qf.Show();
             highLight(featureLayer);
 
         }

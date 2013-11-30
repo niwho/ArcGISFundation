@@ -29,6 +29,8 @@ namespace ArcGISFoundation
         private string m_mucao ="";
 
         private string m_nactcn = "";
+        QueryForm m_qf ;
+
         private void resolveNameRange(string layer_name)
         {
             if(layer_name.IndexOf("省")>-1)
@@ -198,19 +200,18 @@ namespace ArcGISFoundation
             //遍历FeatureCursor
             IFeature pFeature2 = pFeatureCursor2.NextFeature(); 
           
-            QueryForm qf =new QueryForm(m_bin_path);
-            qf.m_mapControl = axMapControl1;
-            qf.m_featureLayer = featureLayer;
-            qf.m_query_name = m_range_en;
-            qf.m_mucao = m_mucao;
+            //QueryForm qf =new QueryForm(m_bin_path);
+            m_qf.m_mapControl = axMapControl1;
+            m_qf.m_featureLayer = featureLayer;
+            m_qf.m_query_name = m_range_en;
+            m_qf.m_mucao = m_mucao;
+            
             //qf.m_layername = "当前图层：" + layer.Name;
 
-            System.Windows.Forms.ListView listView_data = qf.nw_getListView();
-            listView_data.Columns.Add(m_range+"名", 120,HorizontalAlignment.Left);//省名,,
-            listView_data.Columns.Add( "适宜面积比", 120, HorizontalAlignment.Left);
-            listView_data.Columns.Add("适宜面积", 120, HorizontalAlignment.Left);
-            listView_data.Columns.Add( "次适宜面积比", 120, HorizontalAlignment.Left);
-            listView_data.Columns.Add("次适宜面积", 120, HorizontalAlignment.Left);
+            System.Windows.Forms.ListView listView_data = m_qf.nw_getListView();
+            listView_data.Items.Clear();
+            m_qf.m_range = m_range;
+
             string area1 = "area" + m_rate_en;
             string rate1 = "rate" + m_rate_en;
             string area2 = "area" + m_rate_en;
@@ -285,7 +286,7 @@ namespace ArcGISFoundation
 
             }
             axMapControl1.MousePointer = ESRI.ArcGIS.Controls.esriControlsMousePointer.esriPointerDefault;
-            qf.Show();
+            m_qf.Show();
             highLight(featureLayer);
            /*  if (pFeature != null)
             {
@@ -339,7 +340,7 @@ namespace ArcGISFoundation
 
                 if (pEnve != null)
                 {
-                    pEnve.Expand(4.5, 4.5, true);
+                    pEnve.Expand(4.9, 4.9, true);
                     (axMapControl1.Map as IActiveView).Extent = pEnve;
                     (axMapControl1.Map as IActiveView).Refresh();
                 }
@@ -352,7 +353,7 @@ namespace ArcGISFoundation
                     //m_mapControl.Map.FeatureSelection.Clear();
                     sel.SelectFeatures(queryFilter, ESRI.ArcGIS.Carto.esriSelectionResultEnum.esriSelectionResultNew, false);
                     //m_mapControl.Map.SelectFeature(m_featureLayer as ILayer, feature);
-                    axMapControl1.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+                    axMapControl1.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
                    // axMapControl1.CenterAt(feature.Extent.LowerLeft);
 
                     //m_mapControl.MapScale = 0.1;
