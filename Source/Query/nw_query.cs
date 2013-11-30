@@ -21,7 +21,7 @@ namespace ArcGISFoundation
 {
     public sealed partial class MainForm : Form
     {
-      
+        private bool m_isQuery = false;
         private string m_range;
         private string m_range_en;
         private string m_rate;
