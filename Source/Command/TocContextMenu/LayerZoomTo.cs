@@ -16,8 +16,9 @@ namespace ArcGISFoundation
 	
 		public override void OnClick()
 		{
-			ILayer layer = (ILayer) m_mapControl.CustomProperty;
-			m_mapControl.Extent = layer.AreaOfInterest;
+            ILayer lyr = m_mapControl.CustomProperty as ILayer;
+
+            m_mapControl.Extent = lyr.AreaOfInterest;
 		}
 	
 		public override void OnCreate(object hook)
