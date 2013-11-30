@@ -156,14 +156,14 @@
     <Compile Include="QueryForm.Designer.cs">
       <DependentUpon>QueryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Command\MapControlContextMenu\MapZoomToLastExtentBack.cs" />
-    <Compile Include="Source\Command\MapControlContextMenu\MapZoomToLastExtentFoward.cs" />
-    <Compile Include="Source\Command\MapControlContextMenu\MapZoompan.cs" />
-    <Compile Include="Source\Command\MapControlContextMenu\MapZoomoutfixed.cs" />
-    <Compile Include="Source\Command\MapControlContextMenu\MapZoominfixed.cs" />
-    <Compile Include="Source\Command\MapControlContextMenu\MapZoomfullextent.cs" />
-    <Compile Include="Source\Command\MapControlContextMenu\MapZoomout.cs" />
-    <Compile Include="Source\Command\MapControlContextMenu\MapZoomin.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoomToLastExtentBack.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoomToLastExtentFoward.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoompan.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoomoutfixed.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoominfixed.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoomfullextent.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoomout.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoomin.cs" />
     <Compile Include="Source\Command\TocContextMenu\LayerProperty.cs" />
     <Compile Include="Source\Command\TocContextMenu\LayerAnnotation.cs" />
     <Compile Include="Source\Command\TocContextMenu\LayerSelectable.cs" />
@@ -173,7 +173,7 @@
     <Compile Include="Source\Command\TocContextMenu\TocLayerContextMenu.cs" />
     <Compile Include="Source\Command\TocContextMenu\TocMapContextMenu.cs" />
     <Compile Include="Source\Command\TocContextMenu\LayerZoomTo.cs" />
-    <Compile Include="Source\Command\MapControlContextMenu\MapControlContextMenu.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapControlContextMenu.cs" />
     <Compile Include="Source\DataSource\DataSource.cs" />
     <Compile Include="Source\ExcelImport\CreateShpFileForm.cs">
       <SubType>Form</SubType>
