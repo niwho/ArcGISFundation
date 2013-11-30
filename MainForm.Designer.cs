@@ -334,6 +334,7 @@ namespace ArcGISFoundation
             this.queryBtn.TabIndex = 20;
             this.queryBtn.Text = "≤È—Ø";
             this.queryBtn.UseVisualStyleBackColor = false;
+            this.queryBtn.Click += new System.EventHandler(this.queryBtn_Click);
             // 
             // label4
             // 

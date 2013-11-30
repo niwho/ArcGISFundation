@@ -119,6 +119,9 @@ namespace ArcGISFoundation
                     Pasture pasture = new Pasture();
                     pasture.strPasture = dir.Name;
                     pasture.strDataDir = dir.FullName;
+                    pasture.strMapDoc = string.Empty;
+                    pasture.strRasLyr = string.Empty;
+
 
                     FileInfo[] mxdfiles = dir.GetFiles("*.mxd");
                     if (mxdfiles.Length == 1)

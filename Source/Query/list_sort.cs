@@ -20,6 +20,7 @@ namespace sortListView
         // <returns>比较的结果.如果相等返回0，如果x大于y返回1，如果x小于y返回-1</returns>
         public int Compare(object x, object y)
         {
+            try {
             int compareResult;
             ListViewItem listviewX, listviewY;
             // 将比较对象转换为ListViewItem对象
@@ -52,6 +53,22 @@ namespace sortListView
             {
                 // 如果相等返回0
                 return 0;
+            }
+            }
+            catch (System.Exception ex)
+            {
+                if (OrderOfSort == SortOrder.Ascending)
+                {   // 因为是正序排序，所以直接返回结果
+                    return 1;
+                }
+                else if (OrderOfSort == SortOrder.Descending)
+                {  // 如果是反序排序，所以要取负值再返回
+                    return (-1);
+                }
+                else
+                {
+                    return 0;
+                }
             }
         }
         /// 获取或设置按照哪一列排序.        

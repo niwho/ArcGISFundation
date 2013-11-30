@@ -179,7 +179,15 @@ namespace ArcGISFoundation
             if (listView_data.SelectedIndices != null && listView_data.SelectedIndices.Count > 0)
             {
                 ListView.SelectedIndexCollection c = listView_data.SelectedIndices;
-                string str = this.listView_data.SelectedItems[0].SubItems[1].Text;
+                try
+                { 
+                    string str = this.listView_data.SelectedItems[0].SubItems[1].Text;
+                }
+                catch (System.Exception ex)
+                {
+                    return;
+                }
+               
                 //MessageBox.Show( listView_data.Items[c[0]].Text);
 
                 IFeatureClass featureClass = m_featureLayer.FeatureClass;

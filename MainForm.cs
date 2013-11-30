@@ -557,6 +557,141 @@ namespace ArcGISFoundation
                 m_query_area_detail = 2;
             }
         }
+
+        private void queryBtn_Click(object sender, EventArgs e)
+        {
+            m_nactcn = textBox1.Text;
+            ILayer layer = m_datasource.GetAdministrativeMap().get_Layer(m_query_area_detail);
+            ILayer layer_shiyi = null;// = axMapControl1.Map.get_Layer (m_selectedLayer);
+            ILayer layer_cishi = null;//= axMapControl1.Map.get_Layer(m_selectedLayer);
+            getLayer(m_query_area_detail, ref layer_shiyi, ref layer_cishi);
+            //resolveNameRate(layer.Name);
+            //resolveNameRange(layer.Name);
+
+            //layer_name[1];
+            //
+            axMapControl1.MousePointer = ESRI.ArcGIS.Controls.esriControlsMousePointer.esriPointerCrosshair;
+
+
+            IQueryFilter queryFilter = new QueryFilterClass();
+            //IFeatureCursor featureCusor;
+            queryFilter.WhereClause = m_range_en + " LIKE '%" + m_nactcn + "%'";
+
+            //获取FeatureCursor游标
+            IFeatureLayer featureLayer = layer as IFeatureLayer;
+            //获取featureLayer的featureClass 
+            IFeatureClass featureClass = featureLayer.FeatureClass;
+            IFeatureCursor pFeatureCursor = featureClass.Search(queryFilter, true);
+            //遍历FeatureCursor
+            IFeature pFeature = pFeatureCursor.NextFeature();
+
+            //获取FeatureCursor游标
+            IFeatureLayer featureLayer1 = layer_shiyi as IFeatureLayer;
+            //获取featureLayer的featureClass 
+            IFeatureClass featureClass1 = featureLayer1.FeatureClass;
+            IFeatureCursor pFeatureCursor1 = featureClass1.Search(queryFilter, true);
+            //遍历FeatureCursor
+            IFeature pFeature1 = pFeatureCursor1.NextFeature();
+
+            //获取FeatureCursor游标
+            IFeatureLayer featureLayer2 = layer_cishi as IFeatureLayer;
+            //获取featureLayer的featureClass 
+            IFeatureClass featureClass2 = featureLayer2.FeatureClass;
+            IFeatureCursor pFeatureCursor2 = featureClass2.Search(queryFilter, true);
+            //遍历FeatureCursor
+            IFeature pFeature2 = pFeatureCursor2.NextFeature();
+
+            QueryForm qf = new QueryForm(m_bin_path);
+            qf.m_mapControl = axMapControl1;
+            qf.m_featureLayer = featureLayer;
+            qf.m_query_name = m_range_en;
+            qf.m_mucao = m_mucao;
+            //qf.m_layername = "当前图层：" + layer.Name;
+
+            System.Windows.Forms.ListView listView_data = qf.nw_getListView();
+            listView_data.Columns.Add(m_range + "名", 120, HorizontalAlignment.Left);//省名,,
+            listView_data.Columns.Add("适宜面积比", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add("适宜面积", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add("次适宜面积比", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add("次适宜面积", 120, HorizontalAlignment.Left);
+            string area1 = "area" + m_rate_en;
+            string rate1 = "rate" + m_rate_en;
+            string area2 = "area" + m_rate_en;
+            string rate2 = "rate" + m_rate_en;
+            if (pFeature1 != null)
+            {
+                for (int i = 0; i < pFeature1.Fields.FieldCount; ++i)
+                {
+                    if (pFeature1.Fields.Field[i].Name.IndexOf("area_") > -1)
+                    {
+                        area1 = pFeature1.Fields.Field[i].Name;
+                    }
+                    else if (pFeature1.Fields.Field[i].Name.IndexOf("rate_") > -1)
+                    {
+                        rate1 = pFeature1.Fields.Field[i].Name;
+                    }
+
+                }
+            }
+            if (pFeature2 != null)
+            {
+                for (int i = 0; i < pFeature2.Fields.FieldCount; ++i)
+                {
+                    if (pFeature2.Fields.Field[i].Name.IndexOf("area_") > -1)
+                    {
+                        area2 = pFeature2.Fields.Field[i].Name;
+                    }
+                    else if (pFeature2.Fields.Field[i].Name.IndexOf("rate_") > -1)
+                    {
+                        rate2 = pFeature2.Fields.Field[i].Name;
+                    }
+
+                }
+            }
+            System.Collections.Generic.List<IFeature> pList = new System.Collections.Generic.List<IFeature>();
+
+            while (pFeature != null)
+            {
+
+                // ESRI.ArcGIS.Geodatabase.IField filed = pFeature.Fields.FindField("rate_shiyi");
+                //ESRI.ArcGIS.Geodatabase.IRowBuffer buff = (IRowBuffer)pFeature;
+                //string str = buff.Value[pFeature.Fields.FindField("NAME")].ToString();
+                //ESRI.ArcGIS.Geodatabase.IRow row = pFeature.Table.GetRow(pFeature.OID);
+                //string str = row.Value[].ToString();
+                //double a = System.Convert.ToDouble(row.get_Value(pFeature.Fields.FindField(nw_getQueryFiledName())));
+                //pList.Add()
+                //pList.Add(pFeature.);
+
+                ListViewItem lvi = new ListViewItem();
+                // ESRI.ArcGIS.Geodatabase.IRowBuffer buff = (IRowBuffer)pFeature;
+                m_nactcn = lvi.Text = pFeature.Value[pFeature.Fields.FindField(m_range_en)].ToString();
+                if (pFeature1 != null)
+                {
+                    lvi.SubItems.Add(pFeature1.Value[pFeature1.Fields.FindField(rate1)].ToString());//rate_shiyi
+                    lvi.SubItems.Add(System.Convert.ToDecimal(pFeature1.Value[pFeature1.Fields.FindField(area1)]).ToString("N"));//
+                }
+
+                if (pFeature2 != null)
+                {
+                    lvi.SubItems.Add(pFeature2.Value[pFeature2.Fields.FindField(rate2)].ToString());//rate_shiyi
+                    lvi.SubItems.Add(System.Convert.ToDecimal(pFeature2.Value[pFeature2.Fields.FindField(area2)]).ToString("N"));//
+                }
+
+
+                listView_data.Items.Add(lvi);
+
+                pFeature = pFeatureCursor.NextFeature();
+                if (pFeature1 != null)
+                    pFeature1 = pFeatureCursor1.NextFeature();
+                if (pFeature2 != null)
+                    pFeature2 = pFeatureCursor2.NextFeature();
+
+            }
+            axMapControl1.MousePointer = ESRI.ArcGIS.Controls.esriControlsMousePointer.esriPointerDefault;
+            qf.Show();
+            highLight(featureLayer);
+
+        }
        
     }
 }
