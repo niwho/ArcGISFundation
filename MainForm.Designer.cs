@@ -34,16 +34,17 @@ namespace ArcGISFoundation
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("白三叶");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("臂形草");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("扁穗牛鞭草");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("紫花苜蓿");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("所有牧草", new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12,
-            treeNode13,
-            treeNode14});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("白三叶");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("臂形草");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("扁穗牛鞭草");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("紫花苜蓿");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("所有牧草", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode4});
             this.licensecontrol = new ESRI.ArcGIS.Controls.AxLicenseControl();
             this.toccontrol = new ESRI.ArcGIS.Controls.AxTOCControl();
             this.axMapControl1 = new ESRI.ArcGIS.Controls.AxMapControl();
@@ -54,10 +55,11 @@ namespace ArcGISFoundation
             this.xPanderPanel_tree = new BSE.Windows.Forms.XPanderPanel();
             this.xPanderPanel_query = new BSE.Windows.Forms.XPanderPanel();
             this.treeView_all_cao = new System.Windows.Forms.TreeView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel_container = new System.Windows.Forms.Panel();
             this.panel_right_map = new System.Windows.Forms.Panel();
             this.panel_toolbar = new System.Windows.Forms.Panel();
-            this.m_LayerList = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel_left = new System.Windows.Forms.Panel();
             this.saveFileDialog_printer = new System.Windows.Forms.SaveFileDialog();
             this.panel_title_bar = new System.Windows.Forms.Panel();
@@ -75,7 +77,12 @@ namespace ArcGISFoundation
             this.min = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.radioButton_sheng = new System.Windows.Forms.RadioButton();
+            this.radioButton_shi = new System.Windows.Forms.RadioButton();
+            this.radioButton_xian = new System.Windows.Forms.RadioButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.queryBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.licensecontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
@@ -244,25 +251,35 @@ namespace ArcGISFoundation
             // 
             this.treeView_all_cao.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeView_all_cao.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView_all_cao.ImageIndex = 0;
+            this.treeView_all_cao.ImageList = this.imageList1;
             this.treeView_all_cao.ItemHeight = 24;
             this.treeView_all_cao.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(101)))), ((int)(((byte)(147)))), ((int)(((byte)(207)))));
             this.treeView_all_cao.Location = new System.Drawing.Point(0, 25);
             this.treeView_all_cao.Name = "treeView_all_cao";
-            treeNode11.Name = "节点1";
-            treeNode11.Text = "白三叶";
-            treeNode12.Name = "节点2";
-            treeNode12.Text = "臂形草";
-            treeNode13.Name = "节点3";
-            treeNode13.Text = "扁穗牛鞭草";
-            treeNode14.Name = "节点4";
-            treeNode14.Text = "紫花苜蓿";
-            treeNode15.Name = "节点0";
-            treeNode15.Text = "所有牧草";
+            treeNode1.Name = "节点1";
+            treeNode1.Text = "白三叶";
+            treeNode2.Name = "节点2";
+            treeNode2.Text = "臂形草";
+            treeNode3.Name = "节点3";
+            treeNode3.Text = "扁穗牛鞭草";
+            treeNode4.Name = "节点4";
+            treeNode4.Text = "紫花苜蓿";
+            treeNode5.Name = "节点0";
+            treeNode5.Text = "所有牧草";
             this.treeView_all_cao.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode15});
+            treeNode5});
+            this.treeView_all_cao.SelectedImageIndex = 0;
             this.treeView_all_cao.Size = new System.Drawing.Size(198, 400);
             this.treeView_all_cao.TabIndex = 0;
             this.treeView_all_cao.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_all_cao_NodeMouseDoubleClick);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "clover.png");
+            this.imageList1.Images.SetKeyName(1, "blue_folder.png");
             // 
             // panel_container
             // 
@@ -292,8 +309,13 @@ namespace ArcGISFoundation
             // 
             // panel_toolbar
             // 
+            this.panel_toolbar.Controls.Add(this.queryBtn);
+            this.panel_toolbar.Controls.Add(this.label4);
+            this.panel_toolbar.Controls.Add(this.textBox1);
+            this.panel_toolbar.Controls.Add(this.radioButton_xian);
+            this.panel_toolbar.Controls.Add(this.radioButton_shi);
+            this.panel_toolbar.Controls.Add(this.radioButton_sheng);
             this.panel_toolbar.Controls.Add(this.label3);
-            this.panel_toolbar.Controls.Add(this.m_LayerList);
             this.panel_toolbar.Controls.Add(this.maintoolbar);
             this.panel_toolbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_toolbar.Location = new System.Drawing.Point(203, 0);
@@ -301,18 +323,15 @@ namespace ArcGISFoundation
             this.panel_toolbar.Size = new System.Drawing.Size(768, 28);
             this.panel_toolbar.TabIndex = 21;
             // 
-            // m_LayerList
+            // label3
             // 
-            this.m_LayerList.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.m_LayerList.FormattingEnabled = true;
-            this.m_LayerList.IntegralHeight = false;
-            this.m_LayerList.ItemHeight = 17;
-            this.m_LayerList.Location = new System.Drawing.Point(350, 1);
-            this.m_LayerList.Name = "m_LayerList";
-            this.m_LayerList.Size = new System.Drawing.Size(115, 25);
-            this.m_LayerList.TabIndex = 13;
-            this.m_LayerList.DropDown += new System.EventHandler(this.m_LayerList_DropDown);
-            this.m_LayerList.SelectedIndexChanged += new System.EventHandler(this.m_LayerList_SelectedIndexChanged);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(264, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 17);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "指定查询区域:";
             // 
             // panel_left
             // 
@@ -532,15 +551,70 @@ namespace ArcGISFoundation
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // label3
+            // radioButton_sheng
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(264, 6);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 17);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "指定查询图层:";
+            this.radioButton_sheng.AutoSize = true;
+            this.radioButton_sheng.Location = new System.Drawing.Point(354, 6);
+            this.radioButton_sheng.Name = "radioButton_sheng";
+            this.radioButton_sheng.Size = new System.Drawing.Size(35, 16);
+            this.radioButton_sheng.TabIndex = 15;
+            this.radioButton_sheng.TabStop = true;
+            this.radioButton_sheng.Text = "省";
+            this.radioButton_sheng.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_shi
+            // 
+            this.radioButton_shi.AutoSize = true;
+            this.radioButton_shi.Location = new System.Drawing.Point(394, 6);
+            this.radioButton_shi.Name = "radioButton_shi";
+            this.radioButton_shi.Size = new System.Drawing.Size(35, 16);
+            this.radioButton_shi.TabIndex = 16;
+            this.radioButton_shi.TabStop = true;
+            this.radioButton_shi.Text = "市";
+            this.radioButton_shi.UseVisualStyleBackColor = true;
+            // 
+            // radioButton_xian
+            // 
+            this.radioButton_xian.AutoSize = true;
+            this.radioButton_xian.Location = new System.Drawing.Point(434, 6);
+            this.radioButton_xian.Name = "radioButton_xian";
+            this.radioButton_xian.Size = new System.Drawing.Size(35, 16);
+            this.radioButton_xian.TabIndex = 17;
+            this.radioButton_xian.TabStop = true;
+            this.radioButton_xian.Text = "县";
+            this.radioButton_xian.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(547, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.TabIndex = 18;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(483, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 17);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "输入区域:";
+            // 
+            // queryBtn
+            // 
+            this.queryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(220)))));
+            this.queryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.queryBtn.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.queryBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.queryBtn.Location = new System.Drawing.Point(653, 2);
+            this.queryBtn.Name = "queryBtn";
+            this.queryBtn.Size = new System.Drawing.Size(44, 22);
+            this.queryBtn.TabIndex = 20;
+            this.queryBtn.Text = "查询";
+            this.queryBtn.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 
@@ -621,8 +695,14 @@ namespace ArcGISFoundation
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.SaveFileDialog saveFileDialog_printer;
-        private System.Windows.Forms.ComboBox m_LayerList;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.RadioButton radioButton_xian;
+        private System.Windows.Forms.RadioButton radioButton_shi;
+        private System.Windows.Forms.RadioButton radioButton_sheng;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button queryBtn;
     }
 }
 
