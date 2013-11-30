@@ -484,7 +484,7 @@ namespace ArcGISFoundation
             if (m_isQuery && 1 == e.button)
             {
                 m_isQuery = false;//暂时这样处理
-                nw_query();
+                nw_query(e);
                 return;
             }
             if (2 != e.button)

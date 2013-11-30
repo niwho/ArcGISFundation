@@ -68,19 +68,42 @@ namespace ArcGISFoundation
             }
             
         }
-        private void nw_query()
+        private void getLayer(int tp,ref ILayer layer_shiyi, ref ILayer layer_cishi)
+        {
+            switch (tp)
+            {
+            case 0://省
+
+            	break;
+            case 1://市
+
+                break;
+            case 2://县
+
+                break;
+            default:
+                break;
+            }
+        }
+        private void nw_query(IMapControlEvents2_OnMouseDownEvent e)
         {
             //axMapControl1
-            ILayer layer = axMapControl1.get_Layer(m_selectedLayer);
-            resolveNameRate(layer.Name);
-            resolveNameRange(layer.Name);
+            ILayer layer_shiyi =null;// = axMapControl1.Map.get_Layer (m_selectedLayer);
+            ILayer layer_cishi = null;//= axMapControl1.Map.get_Layer(m_selectedLayer);
+            getLayer(0, ref layer_shiyi, ref layer_cishi);
+            //resolveNameRate(layer.Name);
+            //resolveNameRange(layer.Name);
             
             //layer_name[1];
             //
             axMapControl1.MousePointer = ESRI.ArcGIS.Controls.esriControlsMousePointer.esriPointerCrosshair;
             
             ESRI.ArcGIS.Geometry.IGeometry geometry = null;
-            geometry = axMapControl1.TrackRectangle();
+            ESRI.ArcGIS.Geometry.Point pt = new ESRI.ArcGIS.Geometry.Point();
+            pt.X = e.mapX;
+            pt.Y = e.mapY;
+            geometry = pt as ESRI.ArcGIS.Geometry.IGeometry;
+            //geometry = axMapControl1.TrackRectangle();
             IFeatureLayer featureLayer = layer as IFeatureLayer;
             //获取featureLayer的featureClass 
             IFeatureClass featureClass = featureLayer.FeatureClass;
@@ -104,8 +127,10 @@ namespace ArcGISFoundation
 
             System.Windows.Forms.ListView listView_data = qf.nw_getListView();
             listView_data.Columns.Add(m_range+"名", 120,HorizontalAlignment.Left);//省名,,
-            listView_data.Columns.Add(m_rate + "度", 120, HorizontalAlignment.Left);
-            listView_data.Columns.Add(m_rate+"面积", 130, HorizontalAlignment.Left);
+            listView_data.Columns.Add( "适宜面积比", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add(m_rate+"适宜面积", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add(m_rate + "次适宜面积比", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add(m_rate + "次适宜面积", 120, HorizontalAlignment.Left);
             string area = "area" + m_rate_en;
             string rate = "rate" + m_rate_en;
             if(pFeature != null)
