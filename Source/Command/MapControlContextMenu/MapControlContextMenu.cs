@@ -26,8 +26,14 @@ namespace ArcGISFoundation
         int index = 0;
 
         m_menu = new ToolbarMenuClass();
-        m_menu.AddSubMenu("esriControls.ControlsMapViewMenu", index++, false);
-        //m_menu.AddMultiItem("esriControls.ControlsMapPanTool", index++, true);
+        m_menu.AddItem(new MapZoomin(), -1, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new MapZoomout(), -1, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new MapZoominFixed(), -1, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new MapZoomoutFixed(), -1, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new MapZoompan(), -1, index++, true, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new MapZoomToLastExtentBack(), -1, index++, true, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new MapZoomToLastExtentFoward(), -1, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new MapZoomfullextent(), -1, index++, true, esriCommandStyles.esriCommandStyleTextOnly);
         //Set the hook of each menu
         m_menu.SetHook(hook);
     }

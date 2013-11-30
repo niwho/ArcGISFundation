@@ -20,9 +20,9 @@ namespace ArcGISFoundation
 
         public override void OnClick()
         {
-            ILayer lyr = m_mapControl.CustomProperty as ILayer;
-
-            m_mapControl.Extent = lyr.AreaOfInterest;
+            ICommand cmd = new ControlsMapZoomInToolClass();
+            cmd.OnCreate(m_mapControl);
+            m_mapControl.CurrentTool = cmd as ITool;
         }
 
         public override void OnCreate(object hook)

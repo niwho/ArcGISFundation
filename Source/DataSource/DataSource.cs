@@ -65,25 +65,21 @@ namespace ArcGISFoundation
                 (IFeatureWorkspace)workspaceFactory.OpenFromFile(m_adminDir, 
                                                             m_mapcontrol.hWnd);
 
-            bool bInitShow = false;
+            int index = 0;
 
             DirectoryInfo adminDir = new DirectoryInfo(m_adminDir);
             FileInfo[] files = adminDir.GetFiles("*.shp");
             foreach (FileInfo file in files)
             {
-               
                 IFeatureLayer featureLayer = new FeatureLayerClass();
                 featureLayer.Name = file.Name;
-                featureLayer.Visible = !bInitShow;
+                featureLayer.Visible = (++index == files.Length);
                 featureLayer.FeatureClass = workspace.OpenFeatureClass(file.Name);
 
                 ILayerEffects layereffect = featureLayer as ILayerEffects;
                 layereffect.Transparency = 60;
 
                 m_adminMap.AddLayer(featureLayer);
-
-                if (!bInitShow)
-                    bInitShow = true;
             }
 
             m_mapcontrol.Map = m_adminMap;
