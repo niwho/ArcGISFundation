@@ -32,7 +32,8 @@ namespace ArcGISFoundation
         m_menu.AddItem(new LayerSelectable(), 2, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
         m_menu.AddItem(new LayerZoomTo()    ,-1, index++, true, esriCommandStyles.esriCommandStyleTextOnly);
         m_menu.AddItem(new LayerAnnotation(), 1, index++, true, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new LayerAnnotation(), 2, index++, true, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new LayerAnnotation(), 2, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        //m_menu.AddItem(new LayerProperty(), -1, index++, true, esriCommandStyles.esriCommandStyleTextOnly);
 
         //Set the hook of each menu
         m_menu.SetHook(hook);
