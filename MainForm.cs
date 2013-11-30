@@ -117,13 +117,15 @@ namespace ArcGISFoundation
         //init data source
         private void InitDataSouce()
         {
-            string strDataRoot = m_bin_path + @"..\data\牧草数据\";
+            string strPastureData = m_bin_path + @"..\data\牧草数据\";
+            string strAdminData = m_bin_path + @"..\data\行政图\";
             string strInitData =  @"白三叶";
             m_datasource = new DataSource();
-            m_datasource.Init(strDataRoot, m_mapControl, treeView_all_cao);
-            m_datasource.Refresh();
+            m_datasource.Init(strAdminData,strPastureData, m_mapControl, treeView_all_cao);
+            m_datasource.RefreshAdministrative();
+            m_datasource.RefreshPasture();
 
-            if (m_datasource.Switch(strInitData))
+            if (m_datasource.SwitchPasture(strInitData))
             {
                 this.xPanderPanel_tree.Text =
                "图层管理--" + strInitData;
@@ -136,15 +138,15 @@ namespace ArcGISFoundation
         {
             // 增加打开档命令
             string progID;
-            progID = "esriControlToolsGeneric.ControlsOpenDocCommand";
+            progID = "esriControls.ControlsOpenDocCommand";
             maintoolbar.AddItem(progID, -1, -1, true, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsGeneric.ControlsSaveAsDocCommand";
+            progID = "esriControls.ControlsSaveAsDocCommand";
             maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsGeneric.ControlsAddDataCommand";
+            progID = "esriControls.ControlsAddDataCommand";
             maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
@@ -166,6 +168,10 @@ namespace ArcGISFoundation
                 esriCommandStyles.esriCommandStyleIconOnly);
 
             progID = "esriControls.ControlsMapHyperlinkTool";
+            maintoolbar.AddItem(progID, -1, -1, false, 0,
+                esriCommandStyles.esriCommandStyleIconOnly);
+
+            progID = "esriControls.ControlsMapIdentifyTool";
             maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
@@ -405,7 +411,7 @@ namespace ArcGISFoundation
         {
             if (e.Button == MouseButtons.Left &&
                 e.Node.Level > 1 &&
-                m_datasource.Switch(e.Node.Text))
+                m_datasource.SwitchPasture(e.Node.Text))
             {
                 Pasture pasture= m_datasource.GetActivePasture();
 
