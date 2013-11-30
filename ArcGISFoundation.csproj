@@ -140,13 +140,14 @@
     <Compile Include="QueryForm.Designer.cs">
       <DependentUpon>QueryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Source\Command\TocContenxMenu\LayerAnnotation.cs" />
     <Compile Include="Source\Command\TocContenxMenu\LayerSelectable.cs" />
     <Compile Include="Source\Command\TocContenxMenu\LayerVisibility.cs" />
-    <Compile Include="Source\Command\TocContenxMenu\RemoveLayer.cs" />
-    <Compile Include="Source\Command\TocContenxMenu\ScaleThresholds.cs" />
+    <Compile Include="Source\Command\TocContenxMenu\LayerRemove.cs" />
+    <Compile Include="Source\Command\TocContenxMenu\LayerThresholds.cs" />
     <Compile Include="Source\Command\TocContenxMenu\TocLayerContextMenu.cs" />
     <Compile Include="Source\Command\TocContenxMenu\TocMapContextMenu.cs" />
-    <Compile Include="Source\Command\TocContenxMenu\ZoomToLayer.cs" />
+    <Compile Include="Source\Command\TocContenxMenu\LayerZoomTo.cs" />
     <Compile Include="Source\Command\MapControlContextMenu.cs" />
     <Compile Include="Source\DataSource\DataSource.cs" />
     <Compile Include="Source\ExcelImport\CreateShpFileForm.cs">

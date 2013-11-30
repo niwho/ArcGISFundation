@@ -23,15 +23,11 @@ namespace ArcGISFoundation
     /// <param name="hook"></param>
     public MapControlContextMenu(object hook)
     {
-        m_menu = new ToolbarMenuClass();
-        m_menu.AddItem(new RemoveLayer()    ,-1, 0, false, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new ScaleThresholds(), 1, 1, true, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new ScaleThresholds(), 2, 2, false, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new ScaleThresholds(), 3, 3, false, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new LayerSelectable(), 1, 4, true, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new LayerSelectable(), 2, 5, false, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new ZoomToLayer()    ,-1, 6, true, esriCommandStyles.esriCommandStyleTextOnly);
+        int index = 0;
 
+        m_menu = new ToolbarMenuClass();
+        m_menu.AddSubMenu("esriControls.ControlsMapViewMenu", index++, false);
+        //m_menu.AddMultiItem("esriControls.ControlsMapPanTool", index++, true);
         //Set the hook of each menu
         m_menu.SetHook(hook);
     }

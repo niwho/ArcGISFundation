@@ -23,10 +23,11 @@ namespace ArcGISFoundation
     public sealed partial class MainForm : Form
     {
         #region private members
-        private IMapControl3 m_mapControl = null;
+        IMapControl3 m_mapControl = null;
         TocMapContextMenu m_tocMapContextMenu = null;
         TocLayerContextMenu m_tocLayerContextMenu = null;
         MapControlContextMenu m_mapControlContextMenu = null;
+
         DataSource m_datasource = null;
         int m_selectedLayer = 0;
         #endregion
@@ -77,11 +78,15 @@ namespace ArcGISFoundation
             //init toc context menu
             InitTocContextMenu();
 
+            //init map control context menu
+            InitMapControlContextMenu();
+
             //init data source 
             InitDataSouce();
 
             //init main tool bar
             InitMainToolbar();
+
             // open map tree
             this.xPanderPanel_tree.Expand = true;
         }
@@ -125,19 +130,20 @@ namespace ArcGISFoundation
         //toc context menu
         private void InitMainToolbar()
         {
-            // 增加打开档命令
             string progID;
-            progID = "esriControlToolsGeneric.ControlsOpenDocCommand";
-            maintoolbar.AddItem(progID, -1, -1, false, 0,
-                esriCommandStyles.esriCommandStyleIconOnly);
+            // 增加打开档命令
+           
+            //progID = "esriControlToolsGeneric.ControlsOpenDocCommand";
+            //maintoolbar.AddItem(progID, -1, -1, false, 0,
+            //    esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsGeneric.ControlsSaveAsDocCommand";
-            maintoolbar.AddItem(progID, -1, -1, false, 0,
-                esriCommandStyles.esriCommandStyleIconOnly);
+            //progID = "esriControlToolsGeneric.ControlsSaveAsDocCommand";
+            //maintoolbar.AddItem(progID, -1, -1, false, 0,
+            //    esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsGeneric.ControlsAddDataCommand";
-            maintoolbar.AddItem(progID, -1, -1, false, 0,
-                esriCommandStyles.esriCommandStyleIconOnly);
+            //progID = "esriControlToolsGeneric.ControlsAddDataCommand";
+            //maintoolbar.AddItem(progID, -1, -1, false, 0,
+            //    esriCommandStyles.esriCommandStyleIconOnly);
 
             // 增加地图导航命令
             progID = "esriControls.ControlsMapZoomInTool";
@@ -471,11 +477,11 @@ namespace ArcGISFoundation
                 nw_query();
                 return;
             }
-            if (2 != e.button)
-                return;
-
-            m_mapControlContextMenu.PopupMenu(e.x, e.y, axMapControl1.hWnd);
-
+           
+            if (e.button == 2)
+            {
+                m_mapControlContextMenu.PopupMenu(e.x, e.y, m_mapControl.hWnd);
+            }
         }
 
         private void axMapControl1_OnMouseMove(object sender, IMapControlEvents2_OnMouseMoveEvent e)

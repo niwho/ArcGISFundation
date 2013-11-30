@@ -23,14 +23,16 @@ namespace ArcGISFoundation
     /// <param name="hook"></param>
     public TocLayerContextMenu(object hook)
     {
+        int index = 0;
         m_menu = new ToolbarMenuClass();
-        m_menu.AddItem(new RemoveLayer()    ,-1, 0, false, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new ScaleThresholds(), 1, 1, true, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new ScaleThresholds(), 2, 2, false, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new ScaleThresholds(), 3, 3, false, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new LayerSelectable(), 1, 4, true, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new LayerSelectable(), 2, 5, false, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new ZoomToLayer()    ,-1, 6, true, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new LayerThresholds(), 1, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new LayerThresholds(), 2, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new LayerThresholds(), 3, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new LayerSelectable(), 1, index++, true, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new LayerSelectable(), 2, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new LayerZoomTo()    ,-1, index++, true, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new LayerAnnotation(), 1, index++, true, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new LayerAnnotation(), 2, index++, true, esriCommandStyles.esriCommandStyleTextOnly);
 
         //Set the hook of each menu
         m_menu.SetHook(hook);
