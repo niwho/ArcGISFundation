@@ -127,10 +127,6 @@ namespace ArcGISFoundation
                     pasture.strDataDir = dir.FullName;
                     pasture.strMapDoc = string.Empty;
                     pasture.strRasLyr = string.Empty;
-<<<<<<< HEAD
-=======
-
->>>>>>> 82ee1ba18020cdcdfcb58dcfe49f1c422c9d0426
 
                     FileInfo[] mxdfiles = dir.GetFiles("*.mxd");
                     if (mxdfiles.Length == 1)
