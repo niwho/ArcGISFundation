@@ -59,6 +59,12 @@ namespace ArcGISFoundation
             this.panel_container = new System.Windows.Forms.Panel();
             this.panel_right_map = new System.Windows.Forms.Panel();
             this.panel_toolbar = new System.Windows.Forms.Panel();
+            this.queryBtn = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.radioButton_xian = new System.Windows.Forms.RadioButton();
+            this.radioButton_shi = new System.Windows.Forms.RadioButton();
+            this.radioButton_sheng = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.panel_left = new System.Windows.Forms.Panel();
             this.saveFileDialog_printer = new System.Windows.Forms.SaveFileDialog();
@@ -77,12 +83,6 @@ namespace ArcGISFoundation
             this.min = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.radioButton_sheng = new System.Windows.Forms.RadioButton();
-            this.radioButton_shi = new System.Windows.Forms.RadioButton();
-            this.radioButton_xian = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.queryBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.licensecontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
@@ -178,7 +178,6 @@ namespace ArcGISFoundation
             this.panel_map_tree.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel_map_tree.Image = null;
             this.panel_map_tree.InnerBorderColor = System.Drawing.Color.White;
-            this.panel_map_tree.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.panel_map_tree.Location = new System.Drawing.Point(0, 0);
             this.panel_map_tree.Name = "panel_map_tree";
             this.panel_map_tree.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
@@ -322,6 +321,73 @@ namespace ArcGISFoundation
             this.panel_toolbar.Name = "panel_toolbar";
             this.panel_toolbar.Size = new System.Drawing.Size(768, 28);
             this.panel_toolbar.TabIndex = 21;
+            // 
+            // queryBtn
+            // 
+            this.queryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(220)))));
+            this.queryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.queryBtn.Font = new System.Drawing.Font("Œ¢»Ì—≈∫⁄", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.queryBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.queryBtn.Location = new System.Drawing.Point(653, 2);
+            this.queryBtn.Name = "queryBtn";
+            this.queryBtn.Size = new System.Drawing.Size(44, 22);
+            this.queryBtn.TabIndex = 20;
+            this.queryBtn.Text = "≤È—Ø";
+            this.queryBtn.UseVisualStyleBackColor = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Œ¢»Ì—≈∫⁄", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(483, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 17);
+            this.label4.TabIndex = 19;
+            this.label4.Text = " ‰»Î«¯”Ú:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(547, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.TabIndex = 18;
+            // 
+            // radioButton_xian
+            // 
+            this.radioButton_xian.AutoSize = true;
+            this.radioButton_xian.Location = new System.Drawing.Point(434, 6);
+            this.radioButton_xian.Name = "radioButton_xian";
+            this.radioButton_xian.Size = new System.Drawing.Size(35, 16);
+            this.radioButton_xian.TabIndex = 17;
+            this.radioButton_xian.TabStop = true;
+            this.radioButton_xian.Text = "œÿ";
+            this.radioButton_xian.UseVisualStyleBackColor = true;
+            this.radioButton_xian.CheckedChanged += new System.EventHandler(this.radioButton_xian_CheckedChanged);
+            // 
+            // radioButton_shi
+            // 
+            this.radioButton_shi.AutoSize = true;
+            this.radioButton_shi.Location = new System.Drawing.Point(394, 6);
+            this.radioButton_shi.Name = "radioButton_shi";
+            this.radioButton_shi.Size = new System.Drawing.Size(35, 16);
+            this.radioButton_shi.TabIndex = 16;
+            this.radioButton_shi.TabStop = true;
+            this.radioButton_shi.Text = " –";
+            this.radioButton_shi.UseVisualStyleBackColor = true;
+            this.radioButton_shi.CheckedChanged += new System.EventHandler(this.radioButton_shi_CheckedChanged);
+            // 
+            // radioButton_sheng
+            // 
+            this.radioButton_sheng.AutoSize = true;
+            this.radioButton_sheng.Location = new System.Drawing.Point(354, 6);
+            this.radioButton_sheng.Name = "radioButton_sheng";
+            this.radioButton_sheng.Size = new System.Drawing.Size(35, 16);
+            this.radioButton_sheng.TabIndex = 15;
+            this.radioButton_sheng.TabStop = true;
+            this.radioButton_sheng.Text = " °";
+            this.radioButton_sheng.UseVisualStyleBackColor = true;
+            this.radioButton_sheng.CheckedChanged += new System.EventHandler(this.radioButton_sheng_CheckedChanged);
             // 
             // label3
             // 
@@ -550,71 +616,6 @@ namespace ArcGISFoundation
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // radioButton_sheng
-            // 
-            this.radioButton_sheng.AutoSize = true;
-            this.radioButton_sheng.Location = new System.Drawing.Point(354, 6);
-            this.radioButton_sheng.Name = "radioButton_sheng";
-            this.radioButton_sheng.Size = new System.Drawing.Size(35, 16);
-            this.radioButton_sheng.TabIndex = 15;
-            this.radioButton_sheng.TabStop = true;
-            this.radioButton_sheng.Text = " °";
-            this.radioButton_sheng.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_shi
-            // 
-            this.radioButton_shi.AutoSize = true;
-            this.radioButton_shi.Location = new System.Drawing.Point(394, 6);
-            this.radioButton_shi.Name = "radioButton_shi";
-            this.radioButton_shi.Size = new System.Drawing.Size(35, 16);
-            this.radioButton_shi.TabIndex = 16;
-            this.radioButton_shi.TabStop = true;
-            this.radioButton_shi.Text = " –";
-            this.radioButton_shi.UseVisualStyleBackColor = true;
-            // 
-            // radioButton_xian
-            // 
-            this.radioButton_xian.AutoSize = true;
-            this.radioButton_xian.Location = new System.Drawing.Point(434, 6);
-            this.radioButton_xian.Name = "radioButton_xian";
-            this.radioButton_xian.Size = new System.Drawing.Size(35, 16);
-            this.radioButton_xian.TabIndex = 17;
-            this.radioButton_xian.TabStop = true;
-            this.radioButton_xian.Text = "œÿ";
-            this.radioButton_xian.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(547, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 18;
-           // this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Œ¢»Ì—≈∫⁄", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(483, 5);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 17);
-            this.label4.TabIndex = 19;
-            this.label4.Text = " ‰»Î«¯”Ú:";
-            // 
-            // queryBtn
-            // 
-            this.queryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(220)))));
-            this.queryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.queryBtn.Font = new System.Drawing.Font("Œ¢»Ì—≈∫⁄", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.queryBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.queryBtn.Location = new System.Drawing.Point(653, 2);
-            this.queryBtn.Name = "queryBtn";
-            this.queryBtn.Size = new System.Drawing.Size(44, 22);
-            this.queryBtn.TabIndex = 20;
-            this.queryBtn.Text = "≤È—Ø";
-            this.queryBtn.UseVisualStyleBackColor = false;
             // 
             // MainForm
             // 

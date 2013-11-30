@@ -70,16 +70,66 @@ namespace ArcGISFoundation
         }
         private void getLayer(int tp,ref ILayer layer_shiyi, ref ILayer layer_cishi)
         {
+            int n = 0;
             switch (tp)
             {
             case 0://省
 
+                    for (int i = 0; i < axMapControl1.Map.LayerCount;++i )
+                    {
+                        if (n > 1) break;
+                        if (axMapControl1.Map.get_Layer(i).Name.IndexOf("省") > -1)
+                        {
+                            if (axMapControl1.Map.get_Layer(i).Name.IndexOf("次适宜") > -1)//必须先判断这个
+                            {
+                                layer_cishi = axMapControl1.Map.get_Layer(i);
+                                ++n;
+                            }
+                            else if (axMapControl1.Map.get_Layer(i).Name.IndexOf("适宜") > -1)
+                            {
+                                layer_shiyi = axMapControl1.Map.get_Layer(i);
+                                ++n;
+                            }
+                        }
+                    }
             	break;
             case 1://市
-
+                for (int i = 0; i < axMapControl1.Map.LayerCount; ++i)
+                {
+                    if (n > 1) break;
+                    if (axMapControl1.Map.get_Layer(i).Name.IndexOf("市") > -1)
+                    {
+                        if (axMapControl1.Map.get_Layer(i).Name.IndexOf("次适宜") > -1)//必须先判断这个
+                        {
+                            layer_cishi = axMapControl1.Map.get_Layer(i);
+                            ++n;
+                        }
+                        else if (axMapControl1.Map.get_Layer(i).Name.IndexOf("适宜") > -1)
+                        {
+                            layer_shiyi = axMapControl1.Map.get_Layer(i);
+                            ++n;
+                        }
+                    }
+                }
                 break;
             case 2://县
-
+                for (int i = 0; i < axMapControl1.Map.LayerCount; ++i)
+                {
+                    if (n > 1) break;
+                    if (axMapControl1.Map.get_Layer(i).Name.IndexOf("县") > -1)
+                    {
+                        if (axMapControl1.Map.get_Layer(i).Name.IndexOf("次适宜") > -1)//必须先判断这个
+                        {
+                            layer_cishi = axMapControl1.Map.get_Layer(i);
+                            ++n;
+                        }
+                        else if (axMapControl1.Map.get_Layer(i).Name.IndexOf("适宜") > -1)
+                        {
+                            layer_shiyi = axMapControl1.Map.get_Layer(i);
+                            ++n;
+                        }
+                    }
+                }
                 break;
             default:
                 break;
@@ -91,7 +141,7 @@ namespace ArcGISFoundation
             ILayer layer = null;
             ILayer layer_shiyi =null;// = axMapControl1.Map.get_Layer (m_selectedLayer);
             ILayer layer_cishi = null;//= axMapControl1.Map.get_Layer(m_selectedLayer);
-            getLayer(0, ref layer_shiyi, ref layer_cishi);
+            getLayer(m_query_area_detail, ref layer_shiyi, ref layer_cishi);
             //resolveNameRate(layer.Name);
             //resolveNameRange(layer.Name);
             
@@ -105,7 +155,7 @@ namespace ArcGISFoundation
             pt.Y = e.mapY;
             geometry = pt as ESRI.ArcGIS.Geometry.IGeometry;
             //geometry = axMapControl1.TrackRectangle();
-            IFeatureLayer featureLayer = layer as IFeatureLayer;
+            IFeatureLayer featureLayer = layer_shiyi as IFeatureLayer;
             //获取featureLayer的featureClass 
             IFeatureClass featureClass = featureLayer.FeatureClass;
             ISpatialFilter pSpatialFilter = new SpatialFilterClass();

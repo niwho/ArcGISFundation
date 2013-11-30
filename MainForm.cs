@@ -38,6 +38,8 @@ namespace ArcGISFoundation
         //当前路径
         private string currPath = "";
 
+        private int m_query_area_detail = 0;
+
         const int CS_DropSHADOW = 0x20000;
         const int GCL_STYLE = (-26);
         //声明Win32 API
@@ -552,6 +554,30 @@ namespace ArcGISFoundation
             }
             /* axMapControl1.Map.SelectByShape(geometry, null, false);
              axMapControl1.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);*/
+        }
+
+        private void radioButton_shi_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_shi.Checked)
+            {
+                m_query_area_detail = 1;
+            }
+        }
+
+        private void radioButton_sheng_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_sheng.Checked)
+            {
+                m_query_area_detail = 0;
+            }
+        }
+
+        private void radioButton_xian_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButton_xian.Checked)
+            {
+                m_query_area_detail = 2;
+            }
         }
        
     }
