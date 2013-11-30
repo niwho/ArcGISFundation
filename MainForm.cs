@@ -511,14 +511,7 @@ namespace ArcGISFoundation
 
         #endregion
 
-        private void pictureBox_tools1_Click(object sender, EventArgs e)
-        {
-            m_isQuery = true;
-            return;
-
-            // MessageBox.Show("query");
-           
-        }
+       
 
         private void nw_query()
         {
@@ -560,19 +553,6 @@ namespace ArcGISFoundation
             /* axMapControl1.Map.SelectByShape(geometry, null, false);
              axMapControl1.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);*/
         }
-        private string nw_getQueryFiledName(int ty =0)
-        {
-            //根据当前的查询，适宜，次适宜
-            switch (ty)
-            {
-                case 0:
-                    return "rate_shiyi";
-                case 1:
-                    return "rate_cishiyi";
-                default:
-                    return "rate_shiyi";
-            }
-
-        }
+       
     }
 }

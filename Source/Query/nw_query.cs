@@ -21,7 +21,7 @@ namespace ArcGISFoundation
 {
     public sealed partial class MainForm : Form
     {
-        private bool m_isQuery ;
+      
         private string m_range;
         private string m_range_en;
         private string m_rate;
@@ -88,6 +88,7 @@ namespace ArcGISFoundation
         private void nw_query(IMapControlEvents2_OnMouseDownEvent e)
         {
             //axMapControl1
+            ILayer layer = null;
             ILayer layer_shiyi =null;// = axMapControl1.Map.get_Layer (m_selectedLayer);
             ILayer layer_cishi = null;//= axMapControl1.Map.get_Layer(m_selectedLayer);
             getLayer(0, ref layer_shiyi, ref layer_cishi);
