@@ -34,7 +34,6 @@ namespace ArcGISFoundation
         #region For UI
         //临时位置
         private Point temp_point;
-        private bool m_isQuery;
         //当前路径
         private string currPath = "";
 
@@ -87,15 +86,6 @@ namespace ArcGISFoundation
             InitMainToolbar();
             // open map tree
             this.xPanderPanel_tree.Expand = true;
-
-            //m_LayerList.Items.Clear();
-            //for (int i = 0; i < m_mapControl.LayerCount; ++i)
-            //{
-            //    //string layername = m_mapControl.Layer[i].Name;
-            //    m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
-            //}
-            //m_LayerList.SelectedIndex = 0;
-
         }
 
         //toc context menu
@@ -118,13 +108,15 @@ namespace ArcGISFoundation
         //init data source
         private void InitDataSouce()
         {
-            string strDataRoot = m_bin_path + @"..\data\牧草数据\";
-            string strInitData =  @"白三叶";
+            string strPastureData = m_bin_path + @"..\data\牧草数据\";
+            string strAdministrativeData = m_bin_path + @"..\data\行政图\";
             m_datasource = new DataSource();
-            m_datasource.Init(strDataRoot, m_mapControl, treeView_all_cao);
-            m_datasource.Refresh();
+            m_datasource.Init(strAdministrativeData, strPastureData, m_mapControl, treeView_all_cao);
+            m_datasource.RefreshAdministrative();
+            m_datasource.RefreshPasture();
 
-            if (m_datasource.Switch(strInitData))
+            string strInitData = @"白三叶";
+            if (m_datasource.SwitchPasture(strInitData))
             {
                 this.xPanderPanel_tree.Text =
                "图层管理--" + strInitData;
@@ -177,28 +169,14 @@ namespace ArcGISFoundation
             progID = "esriControls.ControlsMapIdentifyTool";
             maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
-
-            //
-           /* progID = "esriControls.ControlsLayerListToolControl";
-            maintoolbar.AddItem(progID, -1, -1, true, 0,
-                esriCommandStyles.esriCommandStyleIconOnly);*/
-
-           /* progID = "ArcGISFoundation.Source.Query.Command1";
-            maintoolbar.AddItem(progID, -1, -1, true, 0,
-               esriCommandStyles.esriCommandStyleIconOnly);            progID = "nw_query.nw_query";
-            ICommand command = new nw_query.nw_query(axMapControl1);
-            maintoolbar.AddItem(progIDcommand, -1, -1, true, 0,
-               esriCommandStyles.esriCommandStyleIconOnly);*/
         }
         #endregion
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
            
-
-            //
-            //MessageBox.Show(System.Environment.CurrentDirectory);
         }
+
         //窗体改变大小时
         private void MainForm_Resize(object sender, EventArgs e)
         {
@@ -413,7 +391,7 @@ namespace ArcGISFoundation
         {
             if (e.Button == MouseButtons.Left &&
                 e.Node.Level > 1 &&
-                m_datasource.Switch(e.Node.Text))
+                m_datasource.SwitchPasture(e.Node.Text))
             {
                 Pasture pasture= m_datasource.GetActivePasture();
 
