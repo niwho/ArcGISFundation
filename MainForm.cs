@@ -75,6 +75,7 @@ namespace ArcGISFoundation
             m_isQuery = false;
             m_bin_path = System.Environment.CurrentDirectory +'\\';
             m_qf = new QueryForm(m_bin_path);
+            m_qf.Owner = this;
             //init toc context menu
             InitTocContextMenu();
 
