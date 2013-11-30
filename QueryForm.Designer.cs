@@ -66,6 +66,7 @@
             this.query_panel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.query_panel.Image = null;
             this.query_panel.InnerBorderColor = System.Drawing.Color.White;
+            this.query_panel.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.query_panel.Location = new System.Drawing.Point(3, 0);
             this.query_panel.Name = "query_panel";
             this.query_panel.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
