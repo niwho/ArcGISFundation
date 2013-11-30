@@ -81,6 +81,20 @@ namespace ArcGISFoundation.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap create_shape_title {
+            get {
+                object obj = ResourceManager.GetObject("create_shape_title", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap import_logo_title {
+            get {
+                object obj = ResourceManager.GetObject("import_logo_title", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap logo_title {
             get {
                 object obj = ResourceManager.GetObject("logo_title", resourceCulture);
@@ -119,6 +133,13 @@ namespace ArcGISFoundation.Properties {
         internal static System.Drawing.Bitmap title_banners {
             get {
                 object obj = ResourceManager.GetObject("title_banners", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap tool_map_printer {
+            get {
+                object obj = ResourceManager.GetObject("tool_map_printer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

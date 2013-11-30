@@ -17,6 +17,7 @@ using ESRI.ArcGIS.DataSourcesFile;
 using ESRI.ArcGIS.Geodatabase;
 using ESRI.ArcGIS.Display;
 
+
 namespace ArcGISFoundation
 {
     public sealed partial class MainForm : Form
@@ -26,6 +27,8 @@ namespace ArcGISFoundation
         TocMapContextMenu m_tocMapContextMenu = null;
         TocLayerContextMenu m_tocLayerContextMenu = null;
         MapControlContextMenu m_mapControlContextMenu = null;
+        DataSource m_datasource = null;
+        int m_selectedLayer = 0;
         #endregion
 
         #region For UI
@@ -33,7 +36,7 @@ namespace ArcGISFoundation
         private Point temp_point;
         private bool m_isQuery;
         //当前路径
-        private string currPath  = "";
+        private string currPath = "";
 
         const int CS_DropSHADOW = 0x20000;
         const int GCL_STYLE = (-26);
@@ -65,20 +68,32 @@ namespace ArcGISFoundation
         #region MainForm Function
         #region MainForm_Load
         //MainForm_Load
+        private string m_bin_path;
         private void MainForm_Load(object sender, EventArgs e)
         {
             m_mapControl = (IMapControl3)axMapControl1.Object;
             m_isQuery = false;
+            m_bin_path = System.Environment.CurrentDirectory +'\\';
+
             //init toc context menu
             InitTocContextMenu();
 
-            //init map doc
-            InitMapDoc();
+            //init data source 
+            InitDataSouce();
 
             //init main tool bar
             InitMainToolbar();
             // open map tree
             this.xPanderPanel_tree.Expand = true;
+
+            m_LayerList.Items.Clear();
+            for (int i = 0; i < m_mapControl.LayerCount; ++i)
+            {
+                //string layername = m_mapControl.Layer[i].Name;
+                m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
+            }
+            m_LayerList.SelectedIndex = 0;
+
         }
 
         //toc context menu
@@ -98,26 +113,20 @@ namespace ArcGISFoundation
             m_mapControlContextMenu = new MapControlContextMenu(m_mapControl);
         }
 
-        //toc context menu
-        private void InitMapDoc()
+        //init data source
+        private void InitDataSouce()
         {
-            //map doc file path
-            string filePath = @"..\data\白三叶\白三叶.mxd";
-            IMapDocument mapDoc = new MapDocumentClass();
-            if (mapDoc.get_IsPresent(filePath) &&
-                !mapDoc.get_IsPasswordProtected(filePath))
+            string strDataRoot = m_bin_path + @"..\data\牧草数据\";
+            string strInitData =  @"白三叶";
+            m_datasource = new DataSource();
+            m_datasource.Init(strDataRoot, m_mapControl, treeView_all_cao);
+            m_datasource.Refresh();
+
+            if (m_datasource.Switch(strInitData))
             {
-                mapDoc.Open(filePath, string.Empty);
-
-                // set the first map as the active view
-                IMap map = mapDoc.get_Map(0);
-                mapDoc.SetActiveView((IActiveView)map);
-
-                //assign the opened map to the MapControl
-                m_mapControl.DocumentFilename = filePath;
-                m_mapControl.Map = map;
-
-                mapDoc.Close();
+                this.xPanderPanel_tree.Text =
+               "图层管理--" + strInitData;
+                m_mucao = strInitData;
             }
         }
 
@@ -139,49 +148,47 @@ namespace ArcGISFoundation
                 esriCommandStyles.esriCommandStyleIconOnly);
 
             // 增加地图导航命令
-            progID = "esriControlToolsMapNavigation.ControlsMapZoomInTool";
+            progID = "esriControls.ControlsMapZoomInTool";
             maintoolbar.AddItem(progID, -1, -1, true, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsMapNavigation.ControlsMapZoomOutTool";
+            progID = "esriControls.ControlsMapZoomOutTool";
             maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsMapNavigation.ControlsMapPanTool";
+            progID = "esriControls.ControlsMapPanTool";
             maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
-            progID = "esriControlToolsMapNavigation.ControlsMapFullExtentCommand";
+            progID = "esriControls.ControlsMapFullExtentCommand";
+            maintoolbar.AddItem(progID, -1, -1, false, 0,
+                esriCommandStyles.esriCommandStyleIconOnly);
+
+            progID = "esriControls.ControlsMapHyperlinkTool";
+            maintoolbar.AddItem(progID, -1, -1, false, 0,
+                esriCommandStyles.esriCommandStyleIconOnly);
+
+            progID = "esriControls.ControlsMapIdentifyTool";
             maintoolbar.AddItem(progID, -1, -1, false, 0,
                 esriCommandStyles.esriCommandStyleIconOnly);
 
             //
-            progID = "esriControls.ControlsLayerListToolControl";
+           /* progID = "esriControls.ControlsLayerListToolControl";
             maintoolbar.AddItem(progID, -1, -1, true, 0,
-                esriCommandStyles.esriCommandStyleIconOnly);
+                esriCommandStyles.esriCommandStyleIconOnly);*/
+
+           /* progID = "ArcGISFoundation.Source.Query.Command1";
+            maintoolbar.AddItem(progID, -1, -1, true, 0,
+               esriCommandStyles.esriCommandStyleIconOnly);            progID = "nw_query.nw_query";
+            ICommand command = new nw_query.nw_query(axMapControl1);
+            maintoolbar.AddItem(progIDcommand, -1, -1, true, 0,
+               esriCommandStyles.esriCommandStyleIconOnly);*/
         }
         #endregion
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            //Warn users if the ArcGIS Engine samples used by this application have not been compiled
-            ArrayList checkList = new ArrayList();
-            checkList.Add("ReshapePolylineEditTask_CS.ReshapePolylineEditTask");
-            checkList.Add("VertexCommands_CS.UsingOutOfBoxVertexCommands");
-
-            Type t = null;
-            bool success = true;
-
-            foreach (string item in checkList)
-            {
-                t = Type.GetTypeFromProgID(item);
-
-                if (t == null)
-                {
-                    success = false;
-                    break;
-                }
-            }
+           
 
             //
             //MessageBox.Show(System.Environment.CurrentDirectory);
@@ -223,23 +230,23 @@ namespace ArcGISFoundation
 
         private void close_MouseEnter(object sender, EventArgs e)
         {
-            this.close.Image = Image.FromFile(@"..\images\close_hover.png");
+            this.close.Image = Image.FromFile(m_bin_path+@"..\images\close_hover.png");
         }
 
         private void close_MouseLeave(object sender, EventArgs e)
         {
-            this.close.Image = Image.FromFile(@"..\images\close.png");
+            this.close.Image = Image.FromFile(m_bin_path+@"..\images\close.png");
         }
 
         private void max_MouseEnter(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
             {
-                this.max.Image = Image.FromFile(@"..\images\max_hover.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\max_hover.png");
             }
             else
             {
-                this.max.Image = Image.FromFile(@"..\images\yuan_hover.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\yuan_hover.png");
             }
         }
 
@@ -247,11 +254,11 @@ namespace ArcGISFoundation
         {
             if (this.WindowState == FormWindowState.Normal)
             {
-                this.max.Image = Image.FromFile(@"..\images\max.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\max.png");
             }
             else
             {
-                this.max.Image = Image.FromFile(@"..\images\yuan.png ");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\yuan.png ");
             }
         }
 
@@ -271,12 +278,12 @@ namespace ArcGISFoundation
 
         private void min_MouseEnter(object sender, EventArgs e)
         {
-            this.min.Image = Image.FromFile(@"..\images\min_hover.png");
+            this.min.Image = Image.FromFile(m_bin_path+@"..\images\min_hover.png");
         }
 
         private void min_MouseLeave(object sender, EventArgs e)
         {
-            this.min.Image = Image.FromFile(@"..\images\min.png");
+            this.min.Image = Image.FromFile(m_bin_path+@"..\images\min.png");
         }
 
         private void panel_title_bar_MouseDown(object sender, MouseEventArgs e)
@@ -291,12 +298,12 @@ namespace ArcGISFoundation
                 this.FormBorderStyle = FormBorderStyle.None;
                 this.MaximumSize = new Size(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
                 //设置还原图片
-                this.max.Image = Image.FromFile(@"..\images\yuan.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\yuan.png");
                 this.WindowState = FormWindowState.Maximized;
             }
             else
             {
-                this.max.Image = Image.FromFile(@"..\images\max.png");
+                this.max.Image = Image.FromFile(m_bin_path+@"..\images\max.png");
                 this.WindowState = FormWindowState.Normal;
             }
 
@@ -329,6 +336,109 @@ namespace ArcGISFoundation
                                 1,
                                 ButtonBorderStyle.Solid);
 
+        }
+
+        private void panel_right_map_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox_tools1_Click(object sender, EventArgs e)
+        {
+            this.axMapControl1.CurrentTool = null;
+          //  this.axMapControl1.ActiveView.Selection.
+            m_isQuery = true;
+            return;
+        }
+
+        private void pictureBox_query_Click(object sender, EventArgs e)
+        {
+            string strImageName = @"MapPrameter";
+            string strImageType = @"JPG";
+            string strImageDir = m_bin_path + @"../Output";
+            string localFilePath = "";
+
+            string strImagePath = m_bin_path + @"../Output/Map.JPG";
+
+            Size size = new Size(3474,1479);
+
+            //this.folderBrowserDialog_printer.Filter = "Special Files(*.png)|*.jpg|All files (*.*)|*.*";
+
+            //this.openFileDialog_printer.Description = "请选择路径";
+            this.saveFileDialog_printer.Filter = "jpg files (*.jpg)|*.jpg|png files (*.png)|*.png|gif files(*.gif)|*.gif|bmp files (*.bmp)|*.bmp|tiff files (*.tiff)|*.tiff";
+            this.saveFileDialog_printer.FilterIndex = 1;
+            //this.openFileDialog_printer.RootFolder = Environment.SpecialFolder.Desktop;
+            DialogResult result = this.saveFileDialog_printer.ShowDialog();
+            //保存对话框是否记忆上次打开的目录  
+            this.saveFileDialog_printer.RestoreDirectory = true;
+
+            if (result == DialogResult.OK)
+            {
+                //获得文件路径
+                localFilePath = this.saveFileDialog_printer.FileName.ToString();  
+                //获取文件名，不带路径  
+                strImageName = localFilePath.Substring(localFilePath.LastIndexOf("\\") + 1);
+
+                strImageType = strImageName.Substring(strImageName.LastIndexOf(".") + 1);
+                strImageName = strImageName.Substring(0,strImageName.LastIndexOf("."));
+                //获取文件路径，不带文件名  
+                strImageDir = localFilePath.Substring(0, localFilePath.LastIndexOf("\\")); 
+
+                //this.folderBrowserDialog_printer.
+                PrintHelper.ExportActiveView(m_mapControl.ActiveView, 300, 5, strImageType, strImageDir, strImageName, true, m_mapControl.ActiveView.Extent);
+            }
+           
+            //PrintHelper.ExportActiveView(m_mapControl.ActiveView, size, strImagePath);        
+        }
+
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            ExcelImportForm form = new ExcelImportForm(m_bin_path);
+            form.ShowDialog(this);
+        }
+
+        private void maintoolbar_OnItemClick(object sender, IToolbarControlEvents_OnItemClickEvent e)
+        {
+            m_isQuery = false;
+        }
+
+        private void treeView_all_cao_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left &&
+                e.Node.Level > 1 &&
+                m_datasource.Switch(e.Node.Text))
+            {
+                Pasture pasture= m_datasource.GetActivePasture();
+
+                this.xPanderPanel_tree.Text = "图层管理--" + pasture.strPasture;
+                this.xPanderPanel_tree.Expand = true;
+                this.xPanderPanel_query.Expand = false;
+
+                m_LayerList.Items.Clear();
+                for (int i = 0; i < m_mapControl.LayerCount; ++i)
+                {
+                    //string layername = m_mapControl.Layer[i].Name;
+                    m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
+                }
+                m_LayerList.SelectedIndex = 0;
+                m_mucao = pasture.strPasture;
+            }
+        }
+
+        private void m_LayerList_DropDown(object sender, EventArgs e)
+        {
+            m_LayerList.Items.Clear();
+            for (int i = 0; i < m_mapControl.LayerCount; ++i)
+            {
+                //string layername = m_mapControl.Layer[i].Name;
+                m_LayerList.Items.Add(m_mapControl.Layer[i].Name);
+            }
+        }
+
+        private void m_LayerList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            m_selectedLayer = m_LayerList.SelectedIndex;
         }
 
         #endregion
@@ -388,7 +498,7 @@ namespace ArcGISFoundation
 
         private void axMapControl1_OnMouseMove(object sender, IMapControlEvents2_OnMouseMoveEvent e)
         {
-            this.coorText.Text = string.Format("{0}{1}{2}{3} {4}","坐标：", e.mapX.ToString("#######.###"),"，", e.mapY.ToString("#######.###"), axMapControl1.MapUnits.ToString().Substring(4));
+            this.coorText.Text = string.Format("{0}{1}{2}{3} {4}", "坐标：", e.mapX.ToString("#######.###"), "，", e.mapY.ToString("#######.###"), axMapControl1.MapUnits.ToString().Substring(4));
         }
 
         #endregion
