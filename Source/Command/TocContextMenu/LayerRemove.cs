@@ -5,11 +5,11 @@ using ESRI.ArcGIS.Controls;
 
 namespace ArcGISFoundation
 {
-	public sealed class RemoveLayer : BaseCommand  
+	public sealed class LayerRemove : BaseCommand  
 	{
 		private IMapControl3 m_mapControl;
 
-		public RemoveLayer()
+		public LayerRemove()
 		{
 			base.m_caption = "ÒÆ³ý";
 		}
