@@ -62,12 +62,24 @@
     <Reference Include="ESRI.ArcGIS.ADF.Local, Version=10.0.0.2168, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="ESRI.ArcGIS.ArcMapUI, Version=10.0.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="ESRI.ArcGIS.AxControls, Version=9.3.0.1552, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Carto, Version=9.3.0.1549, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\WINDOWS\assembly\GAC_MSIL\ESRI.ArcGIS.Carto\9.3.0.1549__8fc3cc631e44ad86\ESRI.ArcGIS.Carto.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.CartoUI, Version=10.0.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.CartoXUI, Version=10.0.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Controls, Version=9.3.0.1549, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -83,6 +95,10 @@
     <Reference Include="ESRI.ArcGIS.Display, Version=9.3.0.1549, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\WINDOWS\assembly\GAC_MSIL\ESRI.ArcGIS.Display\9.3.0.1549__8fc3cc631e44ad86\ESRI.ArcGIS.Display.dll</HintPath>
+    </Reference>
+    <Reference Include="ESRI.ArcGIS.Framework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="ESRI.ArcGIS.Geodatabase, Version=9.3.0.1549, Culture=neutral, PublicKeyToken=8fc3cc631e44ad86, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -128,7 +144,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources3.Designer.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -140,14 +156,24 @@
     <Compile Include="QueryForm.Designer.cs">
       <DependentUpon>QueryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Command\TocContenxMenu\LayerSelectable.cs" />
-    <Compile Include="Source\Command\TocContenxMenu\LayerVisibility.cs" />
-    <Compile Include="Source\Command\TocContenxMenu\RemoveLayer.cs" />
-    <Compile Include="Source\Command\TocContenxMenu\ScaleThresholds.cs" />
-    <Compile Include="Source\Command\TocContenxMenu\TocLayerContextMenu.cs" />
-    <Compile Include="Source\Command\TocContenxMenu\TocMapContextMenu.cs" />
-    <Compile Include="Source\Command\TocContenxMenu\ZoomToLayer.cs" />
-    <Compile Include="Source\Command\MapControlContextMenu.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoomToLastExtentBack.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoomToLastExtentFoward.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoompan.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoomoutfixed.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoominfixed.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoomfullextent.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoomout.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapZoomin.cs" />
+    <Compile Include="Source\Command\TocContextMenu\LayerProperty.cs" />
+    <Compile Include="Source\Command\TocContextMenu\LayerAnnotation.cs" />
+    <Compile Include="Source\Command\TocContextMenu\LayerSelectable.cs" />
+    <Compile Include="Source\Command\TocContextMenu\LayerVisibility.cs" />
+    <Compile Include="Source\Command\TocContextMenu\LayerRemove.cs" />
+    <Compile Include="Source\Command\TocContextMenu\LayerThresholds.cs" />
+    <Compile Include="Source\Command\TocContextMenu\TocLayerContextMenu.cs" />
+    <Compile Include="Source\Command\TocContextMenu\TocMapContextMenu.cs" />
+    <Compile Include="Source\Command\TocContextMenu\LayerZoomTo.cs" />
+    <Compile Include="Source\Command\MapContextMenu\MapControlContextMenu.cs" />
     <Compile Include="Source\DataSource\DataSource.cs" />
     <Compile Include="Source\ExcelImport\CreateShpFileForm.cs">
       <SubType>Form</SubType>
@@ -186,7 +212,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources3.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -255,14 +281,23 @@
     <Folder Include="Source\Widget\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\blue_folder.png" />
     <Content Include="images\close_hover.png" />
     <None Include="images\create_shape_title.png" />
+    <Content Include="images\clover.png" />
+    <Content Include="images\FixedZoomIn.bmp" />
+    <Content Include="images\FixedZoomOut.bmp" />
+    <Content Include="images\FullExtent.bmp" />
     <Content Include="images\green_flower_title.png" />
     <None Include="images\import_logo_title.png" />
+    <Content Include="images\Identify.bmp" />
     <Content Include="images\max_hover.png" />
     <Content Include="images\min_hover.png" />
     <None Include="images\query_logo_title.png" />
     <None Include="images\tool_map_printer.png" />
+    <Content Include="images\NextExtent.ico" />
+    <Content Include="images\Pan.bmp" />
+    <Content Include="images\PreviousExtent.ico" />
     <Content Include="images\yuan.png" />
     <Content Include="images\yuan_hover.png" />
   </ItemGroup>

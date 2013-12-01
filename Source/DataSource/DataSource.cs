@@ -64,14 +64,16 @@ namespace ArcGISFoundation
             IFeatureWorkspace workspace = 
                 (IFeatureWorkspace)workspaceFactory.OpenFromFile(m_adminDir, 
                                                             m_mapcontrol.hWnd);
-            
+
+            int index = 0;
+
             DirectoryInfo adminDir = new DirectoryInfo(m_adminDir);
             FileInfo[] files = adminDir.GetFiles("*.shp");
             foreach (FileInfo file in files)
             {
                 IFeatureLayer featureLayer = new FeatureLayerClass();
                 featureLayer.Name = file.Name;
-                featureLayer.Visible = true;
+                featureLayer.Visible = (++index == files.Length);
                 featureLayer.FeatureClass = workspace.OpenFeatureClass(file.Name);
 
                 ILayerEffects layereffect = featureLayer as ILayerEffects;
@@ -121,7 +123,6 @@ namespace ArcGISFoundation
                     pasture.strDataDir = dir.FullName;
                     pasture.strMapDoc = string.Empty;
                     pasture.strRasLyr = string.Empty;
-
 
                     FileInfo[] mxdfiles = dir.GetFiles("*.mxd");
                     if (mxdfiles.Length == 1)

@@ -5,19 +5,20 @@ using ESRI.ArcGIS.Controls;
 
 namespace ArcGISFoundation
 {
-	public sealed class ZoomToLayer : BaseCommand  
+	public sealed class LayerZoomTo : BaseCommand  
 	{
 		private IMapControl3 m_mapControl;
 
-		public ZoomToLayer()
+		public LayerZoomTo()
 		{
 			base.m_caption = "缩放至当前图层";
 		}
 	
 		public override void OnClick()
 		{
-			ILayer layer = (ILayer) m_mapControl.CustomProperty;
-			m_mapControl.Extent = layer.AreaOfInterest;
+            ILayer lyr = m_mapControl.CustomProperty as ILayer;
+
+            m_mapControl.Extent = lyr.AreaOfInterest;
 		}
 	
 		public override void OnCreate(object hook)

@@ -23,15 +23,17 @@ namespace ArcGISFoundation
     /// <param name="hook"></param>
     public MapControlContextMenu(object hook)
     {
-        m_menu = new ToolbarMenuClass();
-        m_menu.AddItem(new RemoveLayer()    ,-1, 0, false, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new ScaleThresholds(), 1, 1, true, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new ScaleThresholds(), 2, 2, false, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new ScaleThresholds(), 3, 3, false, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new LayerSelectable(), 1, 4, true, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new LayerSelectable(), 2, 5, false, esriCommandStyles.esriCommandStyleTextOnly);
-        m_menu.AddItem(new ZoomToLayer()    ,-1, 6, true, esriCommandStyles.esriCommandStyleTextOnly);
+        int index = 0;
 
+        m_menu = new ToolbarMenuClass();
+        m_menu.AddItem(new MapZoomin(), -1, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new MapZoomout(), -1, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new MapZoominFixed(), -1, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new MapZoomoutFixed(), -1, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new MapZoompan(), -1, index++, true, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new MapZoomToLastExtentBack(), -1, index++, true, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new MapZoomToLastExtentFoward(), -1, index++, false, esriCommandStyles.esriCommandStyleTextOnly);
+        m_menu.AddItem(new MapZoomfullextent(), -1, index++, true, esriCommandStyles.esriCommandStyleTextOnly);
         //Set the hook of each menu
         m_menu.SetHook(hook);
     }
