@@ -484,7 +484,7 @@ namespace ArcGISFoundation
             }
             if (2 != e.button)
                 return;
-
+            m_isQuery = false;
             m_mapControlContextMenu.PopupMenu(e.x, e.y, axMapControl1.hWnd);
 
         }

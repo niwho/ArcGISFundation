@@ -124,7 +124,7 @@ namespace ArcGISFoundation
             this.toccontrol.Location = new System.Drawing.Point(0, 25);
             this.toccontrol.Name = "toccontrol";
             this.toccontrol.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("toccontrol.OcxState")));
-            this.toccontrol.Size = new System.Drawing.Size(198, 0);
+            this.toccontrol.Size = new System.Drawing.Size(198, 400);
             this.toccontrol.TabIndex = 12;
             this.toccontrol.OnMouseDown += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnMouseDownEventHandler(this.axTOCControl1_OnMouseDown);
             // 
@@ -142,7 +142,7 @@ namespace ArcGISFoundation
             // coorText
             // 
             this.coorText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.coorText.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.coorText.Font = new System.Drawing.Font("ËÎÌå", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.coorText.Location = new System.Drawing.Point(508, 423);
             this.coorText.Name = "coorText";
             this.coorText.Padding = new System.Windows.Forms.Padding(3, 2, 0, 2);
@@ -164,7 +164,7 @@ namespace ArcGISFoundation
             // 
             this.panel_map_tree.BackColor = System.Drawing.Color.Transparent;
             this.panel_map_tree.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.panel_map_tree.CaptionFont = new System.Drawing.Font("Microsoft YaHei", 10.5F, System.Drawing.FontStyle.Bold);
+            this.panel_map_tree.CaptionFont = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 10.5F, System.Drawing.FontStyle.Bold);
             this.panel_map_tree.CaptionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_map_tree.CloseIconForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel_map_tree.CollapsedCaptionForeColor = System.Drawing.SystemColors.ControlText;
@@ -205,7 +205,7 @@ namespace ArcGISFoundation
             // 
             this.xPanderPanel_tree.BackColor = System.Drawing.Color.Transparent;
             this.xPanderPanel_tree.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.xPanderPanel_tree.CaptionFont = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Bold);
+            this.xPanderPanel_tree.CaptionFont = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 8F, System.Drawing.FontStyle.Bold);
             this.xPanderPanel_tree.CaptionForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_tree.CloseIconForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.xPanderPanel_tree.ColorCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
@@ -214,12 +214,13 @@ namespace ArcGISFoundation
             this.xPanderPanel_tree.ColorFlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.xPanderPanel_tree.ColorFlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.xPanderPanel_tree.Controls.Add(this.toccontrol);
+            this.xPanderPanel_tree.Expand = true;
             this.xPanderPanel_tree.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_tree.Image = null;
             this.xPanderPanel_tree.InnerBorderColor = System.Drawing.Color.White;
             this.xPanderPanel_tree.Name = "xPanderPanel_tree";
             this.xPanderPanel_tree.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel_tree.Size = new System.Drawing.Size(198, 25);
+            this.xPanderPanel_tree.Size = new System.Drawing.Size(198, 425);
             this.xPanderPanel_tree.TabIndex = 0;
             this.xPanderPanel_tree.Text = "Í¼²ã¹ÜÀí";
             // 
@@ -227,7 +228,7 @@ namespace ArcGISFoundation
             // 
             this.xPanderPanel_query.BackColor = System.Drawing.Color.Transparent;
             this.xPanderPanel_query.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.xPanderPanel_query.CaptionFont = new System.Drawing.Font("Microsoft YaHei", 8F, System.Drawing.FontStyle.Bold);
+            this.xPanderPanel_query.CaptionFont = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 8F, System.Drawing.FontStyle.Bold);
             this.xPanderPanel_query.CaptionForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_query.CloseIconForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.xPanderPanel_query.ColorCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
@@ -236,13 +237,12 @@ namespace ArcGISFoundation
             this.xPanderPanel_query.ColorFlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.xPanderPanel_query.ColorFlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.xPanderPanel_query.Controls.Add(this.treeView_all_cao);
-            this.xPanderPanel_query.Expand = true;
             this.xPanderPanel_query.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_query.Image = null;
             this.xPanderPanel_query.InnerBorderColor = System.Drawing.Color.White;
             this.xPanderPanel_query.Name = "xPanderPanel_query";
             this.xPanderPanel_query.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel_query.Size = new System.Drawing.Size(198, 425);
+            this.xPanderPanel_query.Size = new System.Drawing.Size(198, 25);
             this.xPanderPanel_query.TabIndex = 1;
             this.xPanderPanel_query.Text = "ÄÁ²ÝµØÍ¼ÇÐ»»";
             // 
@@ -269,7 +269,7 @@ namespace ArcGISFoundation
             this.treeView_all_cao.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode5});
             this.treeView_all_cao.SelectedImageIndex = 0;
-            this.treeView_all_cao.Size = new System.Drawing.Size(198, 400);
+            this.treeView_all_cao.Size = new System.Drawing.Size(198, 0);
             this.treeView_all_cao.TabIndex = 0;
             this.treeView_all_cao.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_all_cao_NodeMouseDoubleClick);
             // 
@@ -326,7 +326,7 @@ namespace ArcGISFoundation
             // 
             this.queryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(220)))));
             this.queryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.queryBtn.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.queryBtn.Font = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.queryBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.queryBtn.Location = new System.Drawing.Point(653, 2);
             this.queryBtn.Name = "queryBtn";
@@ -339,7 +339,7 @@ namespace ArcGISFoundation
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Font = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label4.Location = new System.Drawing.Point(483, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 17);
@@ -394,7 +394,7 @@ namespace ArcGISFoundation
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Font = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.Location = new System.Drawing.Point(264, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 17);
@@ -469,7 +469,7 @@ namespace ArcGISFoundation
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Font = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(57)))), ((int)(((byte)(82)))));
             this.label2.Location = new System.Drawing.Point(846, 54);
             this.label2.Name = "label2";
@@ -508,7 +508,7 @@ namespace ArcGISFoundation
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Font = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(57)))), ((int)(((byte)(82)))));
             this.label1.Location = new System.Drawing.Point(685, 55);
             this.label1.Name = "label1";
@@ -546,7 +546,7 @@ namespace ArcGISFoundation
             // 
             this.label.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label.BackColor = System.Drawing.Color.Transparent;
-            this.label.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label.Font = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(57)))), ((int)(((byte)(82)))));
             this.label.Location = new System.Drawing.Point(519, 55);
             this.label.Name = "label";
