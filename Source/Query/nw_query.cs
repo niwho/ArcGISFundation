@@ -337,13 +337,15 @@ namespace ArcGISFoundation
                 {
                     pEnve.Union(pFeat.Extent);
                 }
-
-                if (pEnve != null)
+                
+                if (!pEnve.IsEmpty)
                 {
                     pEnve.Expand(4.9, 4.9, true);
                     (axMapControl1.Map as IActiveView).Extent = pEnve;
                     (axMapControl1.Map as IActiveView).Refresh();
                 }
+                else
+                    return;
                 sel.SelectFeatures(queryFilter, ESRI.ArcGIS.Carto.esriSelectionResultEnum.esriSelectionResultXOR, false);
                 if (feature != null)
                 {
