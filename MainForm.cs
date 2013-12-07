@@ -544,6 +544,10 @@ namespace ArcGISFoundation
             if (radioButton_shi.Checked)
             {
                 m_query_area_detail = 1;
+                axMapControl1.Map.Layer[0].Visible = false;
+                axMapControl1.Map.Layer[1].Visible = true;
+                axMapControl1.Map.Layer[2].Visible = false;
+                axMapControl1.ActiveView.Refresh();
             }
         }
 
@@ -552,6 +556,10 @@ namespace ArcGISFoundation
             if (radioButton_sheng.Checked)
             {
                 m_query_area_detail = 0;
+                axMapControl1.Map.Layer[0].Visible =true ;
+                axMapControl1.Map.Layer[1].Visible = false;
+                axMapControl1.Map.Layer[2].Visible = false;
+                axMapControl1.ActiveView.Refresh();
             }
         }
 
@@ -560,6 +568,10 @@ namespace ArcGISFoundation
             if (radioButton_xian.Checked)
             {
                 m_query_area_detail = 2;
+                axMapControl1.Map.Layer[0].Visible = false;
+                axMapControl1.Map.Layer[1].Visible = false;
+                axMapControl1.Map.Layer[2].Visible =true ;
+                axMapControl1.ActiveView.Refresh();
             }
         }
 
