@@ -28,22 +28,6 @@ namespace ArcGISFoundation
 
             if (m_subType == 1)
             {
-                string strField = @"NAME";
-                ITable table = geolyr as ITable;
-                IField field = null;
-                for (int i = 0; i < table.Fields.FieldCount; i++)
-                {
-                    field = table.Fields.get_Field(i);
-                    if (field.Name == @"NAME" ||
-                        field.Name == @"CITY" ||
-                        field.Name == @"COUNTY")
-                    {
-                        strField = field.Name;
-                    }
-                }
-
-                SetLayerAnnotation(geolyr, strField);
-
                 geolyr.DisplayAnnotation = true;
                 m_mapControl.Refresh(esriViewDrawPhase.esriViewGeography, null, null);
             }
@@ -96,22 +80,6 @@ namespace ArcGISFoundation
                     return "²»±ê×¢";
 			}
 		}
-
-        protected void SetLayerAnnotation(IGeoFeatureLayer geolyr,string field)
-        {
-            geolyr.AnnotationProperties.Clear();
-            IBasicOverposterLayerProperties pBasic = new BasicOverposterLayerPropertiesClass();
-            ILabelEngineLayerProperties pLableEngine = new LabelEngineLayerPropertiesClass();
-            ITextSymbol textSymbol = new TextSymbolClass();
-
-            string lable = "[" + field + "]";
-            pLableEngine.Expression = lable;
-            pLableEngine.IsExpressionSimple = true;
-            pBasic.NumLabelsOption = esriBasicNumLabelsOption.esriOneLabelPerShape;
-            pLableEngine.BasicOverposterLayerProperties = pBasic;
-            pLableEngine.Symbol = textSymbol;
-            geolyr.AnnotationProperties.Add(pLableEngine as IAnnotateLayerProperties);
-        }
 	}
 }
 
