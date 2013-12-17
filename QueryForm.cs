@@ -51,13 +51,13 @@ namespace ArcGISFoundation
             lvwColumnSorter = new sortListView.ListViewColumnSorter();
             this.listView_data.ListViewItemSorter = lvwColumnSorter;
 
-            System.Windows.Forms.ListView listView_data = nw_getListView();
+            /*System.Windows.Forms.ListView listView_data = nw_getListView();
            
             listView_data.Columns.Add(m_range + "名", 120, HorizontalAlignment.Left);//省名,,
             listView_data.Columns.Add("适宜面积比", 120, HorizontalAlignment.Left);
             listView_data.Columns.Add("适宜面积", 120, HorizontalAlignment.Left);
             listView_data.Columns.Add("次适宜面积比", 120, HorizontalAlignment.Left);
-            listView_data.Columns.Add("次适宜面积", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add("次适宜面积", 120, HorizontalAlignment.Left);*/
         }
        
         public System.Windows.Forms.ListView nw_getListView()

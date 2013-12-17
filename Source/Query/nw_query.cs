@@ -212,6 +212,13 @@ namespace ArcGISFoundation
             listView_data.Items.Clear();
             m_qf.m_range = m_range;
 
+            listView_data.Columns.Clear();
+            listView_data.Columns.Add(m_range + "名", 120, HorizontalAlignment.Left);//省名,,
+            listView_data.Columns.Add("适宜面积比", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add("适宜面积", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add("次适宜面积比", 120, HorizontalAlignment.Left);
+            listView_data.Columns.Add("次适宜面积", 120, HorizontalAlignment.Left);
+
             string area1 = "area" + m_rate_en;
             string rate1 = "rate" + m_rate_en;
             string area2 = "area" + m_rate_en;
@@ -246,8 +253,9 @@ namespace ArcGISFoundation
 
                 }
             }
-            System.Collections.Generic.List<IFeature> pList = new System.Collections.Generic.List<IFeature>(); 
-          
+            System.Collections.Generic.List<IFeature> pList = new System.Collections.Generic.List<IFeature>();
+
+           
             while(pFeature != null)
             {
                
@@ -274,9 +282,19 @@ namespace ArcGISFoundation
                     lvi.SubItems.Add(pFeature2.Value[pFeature2.Fields.FindField(rate2)].ToString());//rate_shiyi
                     lvi.SubItems.Add(System.Convert.ToDecimal(pFeature2.Value[pFeature2.Fields.FindField(area2)]).ToString("N"));//
                 }
-    
+                bool isNotAllNull = false;
+                for (int i=1;i<lvi.SubItems.Count;++i)
+                {
+                    if(lvi.SubItems[i].Text.Trim() != "")
+                    {
+                        //MessageBox.Show(lvi.SubItems[i].Text.Trim());
+                        isNotAllNull = true;
+                        break;
+                    }
+                }
                 
-                listView_data.Items.Add(lvi);
+                if(isNotAllNull)
+                    listView_data.Items.Add(lvi);
 
                pFeature = pFeatureCursor.NextFeature();
                 if(pFeature1 != null)
@@ -284,6 +302,11 @@ namespace ArcGISFoundation
                 if (pFeature2 != null)
                 pFeature2 = pFeatureCursor2.NextFeature(); 
 
+            }
+            if (listView_data.Items.Count == 0)
+            {
+                MessageBox.Show("暂无数据！");
+                return; 
             }
             axMapControl1.MousePointer = ESRI.ArcGIS.Controls.esriControlsMousePointer.esriPointerDefault;
             m_qf.Show();
