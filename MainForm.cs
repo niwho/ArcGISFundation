@@ -671,9 +671,12 @@ namespace ArcGISFoundation
                         }
 
                     }
-                    lvi.SubItems.Add(pFeature1.Value[pFeature1.Fields.FindField(rate1)].ToString());//rate_shiyi
-                    lvi.SubItems.Add(System.Convert.ToDecimal(pFeature1.Value[pFeature1.Fields.FindField(area1)]).ToString("N"));//
-  
+
+                    if (area1 != "" && rate1 != "")
+                    {
+                        lvi.SubItems.Add(pFeature1.Value[pFeature1.Fields.FindField(rate1)].ToString());//rate_shiyi
+                        lvi.SubItems.Add(System.Convert.ToDecimal(pFeature1.Value[pFeature1.Fields.FindField(area1)]).ToString("N"));//
+                    }            
                 }
 
                 if(k%2 != 0 && myflag)

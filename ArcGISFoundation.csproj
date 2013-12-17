@@ -10,7 +10,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ArcGISFoundation</RootNamespace>
     <AssemblyName>ArcGISFoundation</AssemblyName>
-    <ApplicationIcon>green_flower_icon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -281,7 +282,6 @@
     <Folder Include="Source\Widget\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="green_flower_icon.ico" />
     <Content Include="images\blue_folder.png" />
     <Content Include="images\close_hover.png" />
     <None Include="images\create_shape_title.png" />
