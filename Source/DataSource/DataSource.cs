@@ -178,6 +178,39 @@ namespace ArcGISFoundation
             return new Pasture();
         }
 
+        public IMap GetPastureByFilter(string strFilter)
+        {
+            string strSearchePattern = @"*" + strFilter + ".shp";
+            IMap pastureMap = new Map();
+            pastureMap.Name = strFilter;
+            IWorkspaceFactory workspaceFactory = new ShapefileWorkspaceFactoryClass();
+
+            foreach (GrassFamily family in m_grassFamilys)
+            {
+                foreach (Pasture pasture in family.pastures)
+                {
+                    IFeatureWorkspace workspace =
+                            (IFeatureWorkspace)workspaceFactory.OpenFromFile(pasture.strDataDir, 0);
+
+                    DirectoryInfo pastureDir = new DirectoryInfo(pasture.strDataDir);
+                    FileInfo[] files = pastureDir.GetFiles(strSearchePattern);
+                    foreach (FileInfo file in files)
+                    {
+                        IFeatureLayer featureLayer = new FeatureLayerClass();
+                        featureLayer.Name = pasture.strPasture+"_"+file.Name;
+                        featureLayer.Visible = true;
+                        featureLayer.FeatureClass = workspace.OpenFeatureClass(file.Name);
+
+                        pastureMap.AddLayer(featureLayer);
+                    }
+                }
+            }
+
+            //m_mapcontrol.Map = pastureMap;
+
+            return pastureMap;
+        }
+
         public bool SwitchPasture(string strName)
         {
             m_activePasture = GetPastureByName(strName);

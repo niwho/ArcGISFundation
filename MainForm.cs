@@ -127,6 +127,8 @@ namespace ArcGISFoundation
                "Õº≤„π‹¿Ì--" + strInitData;
                 m_mucao = strInitData;
             }
+
+            //m_datasource.GetPastureByFilter(" °");
         }
 
         //toc context menu
