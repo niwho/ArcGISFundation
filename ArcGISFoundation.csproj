@@ -187,6 +187,7 @@
     <Compile Include="Source\ExcelImport\ExcelImportForm.designer.cs">
       <DependentUpon>ExcelImportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Source\Helper\LayerHelper.cs" />
     <Compile Include="Source\Helper\PrintHelper.cs" />
     <Compile Include="Source\Query\list_sort.cs" />
     <Compile Include="Source\Query\nw_query.cs">

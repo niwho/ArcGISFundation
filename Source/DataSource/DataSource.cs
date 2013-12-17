@@ -79,6 +79,24 @@ namespace ArcGISFoundation
                 ILayerEffects layereffect = featureLayer as ILayerEffects;
                 layereffect.Transparency = 60;
 
+                IGeoFeatureLayer geoLayer = featureLayer as IGeoFeatureLayer;
+
+                string strField = @"NAME";
+                ITable table = featureLayer as ITable;
+                IField field = null;
+                for (int i = 0; i < table.Fields.FieldCount; i++)
+                {
+                    field = table.Fields.get_Field(i);
+                    if (field.Name == @"NAME" ||
+                        field.Name == @"CITY" ||
+                        field.Name == @"COUNTY")
+                    {
+                        strField = field.Name;
+                    }
+                }
+
+                LayerHelper.SetLayerAnnotation(geoLayer, strField);
+                geoLayer.DisplayAnnotation = true;
                 m_adminMap.AddLayer(featureLayer);
             }
 
