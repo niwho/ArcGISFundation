@@ -68,6 +68,10 @@ namespace ArcGISFoundation
         {
             query_panel.Text =m_layername+ "    牧草：" +m_mucao;
         }
+        public void QueryForm_SetText(string text)
+        {
+            query_panel.Text =text;
+        }
 
         private void min_Click(object sender, EventArgs e)
         {
@@ -86,11 +90,19 @@ namespace ArcGISFoundation
 
         private void close_Click(object sender, EventArgs e)
         {
-            m_mapControl.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
+            try
+            {
+                m_mapControl.Refresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
             m_mapControl.Map.ClearSelection();      
             m_mapControl.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGeoSelection, null, null);
             //this.Close();
-            this.Hide();
+           
+            }
+            catch (System.Exception ex)
+            {
+            	
+            }
+             this.Hide();
         }
 
         private void close_MouseEnter(object sender, EventArgs e)

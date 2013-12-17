@@ -149,7 +149,8 @@ namespace ArcGISFoundation
 
         private void nw_query(IMapControlEvents2_OnMouseDownEvent e)
         {
-           
+            
+
             //axMapControl1
             ILayer layer = m_datasource.GetAdministrativeMap().get_Layer(m_query_area_detail);
             ILayer layer_shiyi =null;// = axMapControl1.Map.get_Layer (m_selectedLayer);
@@ -205,7 +206,7 @@ namespace ArcGISFoundation
             m_qf.m_featureLayer = featureLayer;
             m_qf.m_query_name = m_range_en;
             m_qf.m_mucao = m_mucao;
-            
+            m_qf.QueryForm_SetText( m_mucao);
             //qf.m_layername = "当前图层：" + layer.Name;
 
             System.Windows.Forms.ListView listView_data = m_qf.nw_getListView();
