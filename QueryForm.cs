@@ -220,7 +220,9 @@ namespace ArcGISFoundation
                 {
                     return;
                 }
-               
+
+                if (m_featureLayer == null)
+                    return;
                 //MessageBox.Show( listView_data.Items[c[0]].Text);
                 if (m_featureLayer == null)
                     return; 

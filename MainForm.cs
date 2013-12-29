@@ -661,7 +661,11 @@ namespace ArcGISFoundation
                     myflag = true;
                     for (int i = 0; i < pFeature1.Fields.FieldCount; ++i)
                     {
-                        if (pFeature1.Fields.Field[i].Name.IndexOf("area_") > -1)
+                        if (pFeature1.Fields.Field[i].Name == "area_cis_1")
+                        {
+                            rate1 = pFeature1.Fields.Field[i].Name;
+                        }
+                        else if (pFeature1.Fields.Field[i].Name.IndexOf("area_") > -1)
                         {
                             area1 = pFeature1.Fields.Field[i].Name;
                         }
@@ -669,11 +673,13 @@ namespace ArcGISFoundation
                         {
                             rate1 = pFeature1.Fields.Field[i].Name;
                         }
-
                     }
-                    lvi.SubItems.Add(pFeature1.Value[pFeature1.Fields.FindField(rate1)].ToString());//rate_shiyi
-                    lvi.SubItems.Add(System.Convert.ToDecimal(pFeature1.Value[pFeature1.Fields.FindField(area1)]).ToString("N"));//
-  
+
+                    if (area1 != "" && rate1 != "")
+                    {
+                        lvi.SubItems.Add(pFeature1.Value[pFeature1.Fields.FindField(rate1)].ToString());//rate_shiyi
+                        lvi.SubItems.Add(System.Convert.ToDecimal(pFeature1.Value[pFeature1.Fields.FindField(area1)]).ToString("N"));//
+                    }            
                 }
 
                 if(k%2 != 0 && myflag)
