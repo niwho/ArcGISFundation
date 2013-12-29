@@ -32,10 +32,17 @@ namespace ArcGISFoundation
         public string m_mucao;
         public string m_layername;
         public string m_range;
-
+        private bool m_cl = false;
         public QueryForm()
         {
             
+            InitializeComponent();
+            lvwColumnSorter = new sortListView.ListViewColumnSorter();
+            this.listView_data.ListViewItemSorter = lvwColumnSorter;
+        }
+        public QueryForm(bool cl)
+        {
+            m_cl = cl;
             InitializeComponent();
             lvwColumnSorter = new sortListView.ListViewColumnSorter();
             this.listView_data.ListViewItemSorter = lvwColumnSorter;
@@ -66,11 +73,12 @@ namespace ArcGISFoundation
         }
         private void QueryForm_Load(object sender, EventArgs e)
         {
-            query_panel.Text =m_layername+ "    牧草：" +m_mucao;
+           // query_panel.Text =m_layername+ "    牧草：" +m_mucao;
         }
         public void QueryForm_SetText(string text)
         {
             query_panel.Text =text;
+           // MessageBox.Show(text);
         }
 
         private void min_Click(object sender, EventArgs e)
@@ -102,7 +110,10 @@ namespace ArcGISFoundation
             {
             	
             }
-             this.Hide();
+            if (m_cl)
+                this.Close();
+            else
+                this.Hide();
         }
 
         private void close_MouseEnter(object sender, EventArgs e)

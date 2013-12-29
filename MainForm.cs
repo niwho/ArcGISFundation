@@ -71,18 +71,20 @@ namespace ArcGISFoundation
         #region MainForm_Load
         //MainForm_Load
         private string m_bin_path;
+        ArcGISFoundation.Source.Query.DecisionMaking_query m_dmq = new ArcGISFoundation.Source.Query.DecisionMaking_query();
         private void MainForm_Load(object sender, EventArgs e)
         {
             //test_start
 
-            ArcGISFoundation.Source.Query.DecisionMaking_query dmq = new ArcGISFoundation.Source.Query.DecisionMaking_query();
-            dmq.init("../data/  “À«¯ƒ¡≤›.xlsx");
+            m_dmq = new ArcGISFoundation.Source.Query.DecisionMaking_query();
+            m_dmq.init("../data/ƒ¡≤› ˝æ›.xlsx","../data/¥Œ  “À«¯ƒ¡≤›.xlsx");
             //test_end
             m_mapControl = (IMapControl3)axMapControl1.Object;
             m_isQuery = false;
             m_bin_path = System.Environment.CurrentDirectory +'\\';
             m_qf = new QueryForm(m_bin_path);
             m_qf.Owner = this;
+
             //init toc context menu
             InitTocContextMenu();
 
@@ -644,7 +646,7 @@ namespace ArcGISFoundation
             m_qf.m_query_name = m_range_en;
             m_qf.m_mucao = m_mucao;
             //qf.m_layername = "µ±«∞Õº≤„£∫" + layer.Name;
-
+            m_qf.QueryForm_SetText(/*m_layername +*/ "    ƒ¡≤›£∫" + m_mucao);
             System.Windows.Forms.ListView listView_data = m_qf.nw_getListView();
             listView_data.Items.Clear();
             listView_data.Columns.Clear();
@@ -859,6 +861,8 @@ namespace ArcGISFoundation
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             m_qinput_f = new QueryInput(m_bin_path);
+            m_qinput_f.m_dmq = m_dmq;
+            m_qinput_f.m_qf = m_qf;
             m_qinput_f.Show();
         }
     }

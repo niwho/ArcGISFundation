@@ -19,6 +19,8 @@ namespace ArcGISFoundation
         //临时位置
         private System.Drawing.Point temp_point;
         private string m_bin_path;
+        public ArcGISFoundation.Source.Query.DecisionMaking_query m_dmq;
+        public ArcGISFoundation.QueryForm m_qf;
 
         public QueryInput(string path)
         {
@@ -70,6 +72,33 @@ namespace ArcGISFoundation
         private void panel_title_bar_MouseDown(object sender, MouseEventArgs e)
         {
             temp_point = new System.Drawing.Point(e.X, e.Y);
+        }
+
+        private void queryBtn_Click(object sender, EventArgs e)//行政区域
+        {
+            if (textBox1.Text.Trim() == "")
+                /*{
+                    MessageBox.Show("NULL");
+                }*/
+                return;
+            m_dmq.m_qf = m_qf;
+           // m_qf.QueryForm_SetText(textBox1.Text.Trim());
+            m_dmq.Query(textBox1.Text.Trim());
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)//牧草名称
+        {
+           // textBox2.Text;
+            if (textBox2.Text.Trim() == "")
+                /*{
+                    MessageBox.Show("NULL");
+                }*/
+                return;
+            m_dmq.m_qf = m_qf;
+            m_dmq.Query2(textBox2.Text.Trim());
+            this.Close();
+        
         }
 
 

@@ -30,25 +30,25 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QueryInput));
             this.panel_main = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.groupBox_xingzheng = new System.Windows.Forms.GroupBox();
+            this.queryBtn = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel_title_bar = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.close = new System.Windows.Forms.PictureBox();
             this.min = new System.Windows.Forms.PictureBox();
-            this.groupBox_xingzheng = new System.Windows.Forms.GroupBox();
-            this.queryBtn = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.panel_main.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox_xingzheng.SuspendLayout();
             this.panel_title_bar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.min)).BeginInit();
-            this.groupBox_xingzheng.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_main
@@ -60,6 +60,72 @@
             this.panel_main.Name = "panel_main";
             this.panel_main.Size = new System.Drawing.Size(375, 183);
             this.panel_main.TabIndex = 3;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Location = new System.Drawing.Point(12, 89);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(351, 79);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "输入牧草名称查询";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(220)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.Location = new System.Drawing.Point(287, 47);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(44, 22);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "查询";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Location = new System.Drawing.Point(26, 20);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(305, 21);
+            this.textBox2.TabIndex = 21;
+            // 
+            // groupBox_xingzheng
+            // 
+            this.groupBox_xingzheng.Controls.Add(this.queryBtn);
+            this.groupBox_xingzheng.Controls.Add(this.textBox1);
+            this.groupBox_xingzheng.Location = new System.Drawing.Point(12, 6);
+            this.groupBox_xingzheng.Name = "groupBox_xingzheng";
+            this.groupBox_xingzheng.Size = new System.Drawing.Size(351, 79);
+            this.groupBox_xingzheng.TabIndex = 0;
+            this.groupBox_xingzheng.TabStop = false;
+            this.groupBox_xingzheng.Text = "输入行政名称查询";
+            // 
+            // queryBtn
+            // 
+            this.queryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(220)))));
+            this.queryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.queryBtn.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.queryBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.queryBtn.Location = new System.Drawing.Point(287, 47);
+            this.queryBtn.Name = "queryBtn";
+            this.queryBtn.Size = new System.Drawing.Size(44, 22);
+            this.queryBtn.TabIndex = 22;
+            this.queryBtn.Text = "查询";
+            this.queryBtn.UseVisualStyleBackColor = false;
+            this.queryBtn.Click += new System.EventHandler(this.queryBtn_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(26, 20);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(305, 21);
+            this.textBox1.TabIndex = 21;
             // 
             // panel_title_bar
             // 
@@ -131,70 +197,6 @@
             this.min.MouseEnter += new System.EventHandler(this.min_MouseEnter);
             this.min.MouseLeave += new System.EventHandler(this.min_MouseLeave);
             // 
-            // groupBox_xingzheng
-            // 
-            this.groupBox_xingzheng.Controls.Add(this.queryBtn);
-            this.groupBox_xingzheng.Controls.Add(this.textBox1);
-            this.groupBox_xingzheng.Location = new System.Drawing.Point(12, 6);
-            this.groupBox_xingzheng.Name = "groupBox_xingzheng";
-            this.groupBox_xingzheng.Size = new System.Drawing.Size(351, 79);
-            this.groupBox_xingzheng.TabIndex = 0;
-            this.groupBox_xingzheng.TabStop = false;
-            this.groupBox_xingzheng.Text = "输入行政名称查询";
-            // 
-            // queryBtn
-            // 
-            this.queryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(220)))));
-            this.queryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.queryBtn.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.queryBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.queryBtn.Location = new System.Drawing.Point(287, 47);
-            this.queryBtn.Name = "queryBtn";
-            this.queryBtn.Size = new System.Drawing.Size(44, 22);
-            this.queryBtn.TabIndex = 22;
-            this.queryBtn.Text = "查询";
-            this.queryBtn.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(26, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(305, 21);
-            this.textBox1.TabIndex = 21;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Location = new System.Drawing.Point(12, 89);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(351, 79);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "输入牧草名称查询";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(220)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(287, 47);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(44, 22);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "查询";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(26, 20);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(305, 21);
-            this.textBox2.TabIndex = 21;
-            // 
             // QueryInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -206,15 +208,15 @@
             this.Name = "QueryInput";
             this.Text = "QueryInput";
             this.panel_main.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox_xingzheng.ResumeLayout(false);
+            this.groupBox_xingzheng.PerformLayout();
             this.panel_title_bar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.min)).EndInit();
-            this.groupBox_xingzheng.ResumeLayout(false);
-            this.groupBox_xingzheng.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
