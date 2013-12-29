@@ -137,6 +137,13 @@ namespace ArcGISFoundation.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap query_param {
+            get {
+                object obj = ResourceManager.GetObject("query_param", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap shiyingxing_title {
             get {
                 object obj = ResourceManager.GetObject("shiyingxing_title", resourceCulture);

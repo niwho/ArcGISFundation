@@ -156,6 +156,12 @@
     <Compile Include="QueryForm.Designer.cs">
       <DependentUpon>QueryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="QueryInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryInput.Designer.cs">
+      <DependentUpon>QueryInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\Command\MapContextMenu\MapZoomToLastExtentBack.cs" />
     <Compile Include="Source\Command\MapContextMenu\MapZoomToLastExtentFoward.cs" />
     <Compile Include="Source\Command\MapContextMenu\MapZoompan.cs" />
@@ -200,6 +206,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QueryForm.resx">
       <DependentUpon>QueryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryInput.resx">
+      <DependentUpon>QueryInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\ExcelImport\CreateShpFileForm.resx">
       <DependentUpon>CreateShpFileForm.cs</DependentUpon>
@@ -303,6 +312,7 @@
     <None Include="images\shiyingxing_title.png" />
     <None Include="images\yingzhong_title.png" />
     <None Include="images\tools2.png" />
+    <None Include="images\query_param.png" />
     <Content Include="images\yuan.png" />
     <Content Include="images\yuan_hover.png" />
   </ItemGroup>
