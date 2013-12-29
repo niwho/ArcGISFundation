@@ -286,6 +286,7 @@
     <Content Include="images\close_hover.png" />
     <None Include="images\create_shape_title.png" />
     <Content Include="images\clover.png" />
+    <None Include="images\fenbutu_title.png" />
     <Content Include="images\FixedZoomIn.bmp" />
     <Content Include="images\FixedZoomOut.bmp" />
     <Content Include="images\FullExtent.bmp" />
@@ -299,6 +300,9 @@
     <Content Include="images\NextExtent.ico" />
     <Content Include="images\Pan.bmp" />
     <Content Include="images\PreviousExtent.ico" />
+    <None Include="images\shiyingxing_title.png" />
+    <None Include="images\yingzhong_title.png" />
+    <None Include="images\tools2.png" />
     <Content Include="images\yuan.png" />
     <Content Include="images\yuan_hover.png" />
   </ItemGroup>
