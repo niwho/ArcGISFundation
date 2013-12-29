@@ -39,7 +39,7 @@ namespace ArcGISFoundation
     /// <param name="hWndParent"></param>
     public void PopupMenu(int X, int Y, int hWndParent)
     {
-      m_menu.PopupMenu(X, Y, hWndParent);
+       m_menu.PopupMenu(X, Y, hWndParent);
     }
   }
 }
