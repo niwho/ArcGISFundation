@@ -71,6 +71,11 @@ namespace ArcGISFoundation
         private string m_bin_path;
         private void MainForm_Load(object sender, EventArgs e)
         {
+            //test_start
+
+            ArcGISFoundation.Source.Query.DecisionMaking_query dmq = new ArcGISFoundation.Source.Query.DecisionMaking_query();
+            dmq.init("../data/  “À«¯ƒ¡≤›.xlsx");
+            //test_end
             m_mapControl = (IMapControl3)axMapControl1.Object;
             m_isQuery = false;
             m_bin_path = System.Environment.CurrentDirectory +'\\';

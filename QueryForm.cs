@@ -131,7 +131,7 @@ namespace ArcGISFoundation
 
         private void listView_data_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            if (e.Column == 1 ||e.Column == 2)
+            if (e.Column > 0)
             {
                 lvwColumnSorter.SortColumn = e.Column;
                 // 重新设置此列的排序方法.

@@ -189,6 +189,7 @@
     </Compile>
     <Compile Include="Source\Helper\LayerHelper.cs" />
     <Compile Include="Source\Helper\PrintHelper.cs" />
+    <Compile Include="Source\Query\DecisionMaking_query.cs" />
     <Compile Include="Source\Query\list_sort.cs" />
     <Compile Include="Source\Query\nw_query.cs">
       <SubType>Form</SubType>
