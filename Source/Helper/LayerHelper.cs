@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Collections;
 using System.Text;
 
 using ESRI.ArcGIS.ADF.BaseClasses;
@@ -49,9 +50,19 @@ namespace ArcGISFoundation
         }
 
         public static void SetLayerColor(IRasterLayer raslyr)
+        { 
+            IRasterRenderer rasterRenderer = null;
+            
+            rasterRenderer = UniqueValueRenderer(raslyr,"RATE");
+
+            if (rasterRenderer != null)
+                raslyr.Renderer = rasterRenderer;
+        }
+
+        public static IRasterRenderer ClassifyRenderer(IRasterLayer raslyr,IRgbColor start_clr,IRgbColor end_clr,int count)
         {
             IRasterClassifyColorRampRenderer pRClassRend = new RasterClassifyColorRampRendererClass();
-            IRasterRenderer pRRend = pRClassRend as IRasterRenderer;
+            IRasterRenderer rasterRenderer = pRClassRend as IRasterRenderer;
 
             IRaster pRaster = raslyr.Raster;
             IRasterBandCollection pRBandCol = pRaster as IRasterBandCollection;
@@ -60,23 +71,14 @@ namespace ArcGISFoundation
             {
                 pRBand.ComputeStatsAndHist();
             }
-            pRRend.Raster = pRaster;
-            pRClassRend.ClassCount = 10;
-            pRRend.Update();
-
-            IRgbColor pFromColor = new RgbColorClass();
-            pFromColor.Red = 255;
-            pFromColor.Green = 0;
-            pFromColor.Blue = 0;
-            IRgbColor pToColor = new RgbColorClass();
-            pToColor.Red = 0;
-            pToColor.Green = 255;
-            pToColor.Blue = 255;
+            rasterRenderer.Raster = pRaster;
+            pRClassRend.ClassCount = count;
+            rasterRenderer.Update();
 
             IAlgorithmicColorRamp colorRamp = new AlgorithmicColorRampClass();
-            colorRamp.Size = 10;
-            colorRamp.FromColor = pFromColor;
-            colorRamp.ToColor = pToColor;
+            colorRamp.Size = count;
+            colorRamp.FromColor = start_clr;
+            colorRamp.ToColor = end_clr;
             bool createColorRamp;
             colorRamp.CreateRamp(out createColorRamp);
 
@@ -87,9 +89,86 @@ namespace ArcGISFoundation
                 pRClassRend.set_Symbol(i, fillSymbol as ISymbol);
                 pRClassRend.set_Label(i, pRClassRend.get_Break(i).ToString("0.00"));
             }
-            raslyr.Renderer = pRRend;
+            return rasterRenderer;
         }
 
+        public static IRasterRenderer UniqueValueRenderer(IRasterLayer pRLayer, string strfield)
+        {
+            try
+            {
+                //Get the raster attribute table and the size of the table.
+                IRaster2 raster = pRLayer.Raster as IRaster2;
+                ITable rasterTable = (pRLayer as IAttributeTable) as ITable;
+                if (rasterTable == null)
+                {
+                    return null;
+                }
+                int tableRows = rasterTable.RowCount(null);
+                //Create colors for each unique value.
+                ArrayList arr = new ArrayList();
+                for (int i = 0; i < rasterTable.RowCount(null); i++)
+                {
+                    IRow row1 = rasterTable.GetRow(i);
+                    string aa = row1.get_Value(row1.Fields.FindField(strfield)).ToString();
+                    if (arr.Contains(aa))
+                    {
+                        ;
+                    }
+                    else
+                    {
+                        arr.Add(aa);
+                    }
+                }
+               
+                //Create a unique value renderer.
+                IRasterUniqueValueRenderer uvRenderer = new RasterUniqueValueRendererClass();
+                IRasterRenderer rasterRenderer = (IRasterRenderer)uvRenderer;
+                rasterRenderer.Raster = raster as IRaster;
+                rasterRenderer.Update();
+                //Set the renderer properties.
+                uvRenderer.HeadingCount = 1;
+                //uvRenderer.set_Heading(0, "所有类别");
+                uvRenderer.set_ClassCount(0, arr.Count);
+                uvRenderer.Field = "VALUE"; //Or any other field in the table.
+                IRow row;
+                ISimpleFillSymbol fillSymbol;
+                for (int i = 0; i < tableRows; i++)
+                {
+                    row = rasterTable.GetRow(i);
+                    for (int nm = 0; nm < arr.Count; nm++)
+                    {
+                        string aa = arr[nm].ToString();
+                        string bb = row.get_Value((row.Fields.FindField(strfield))).ToString();
+
+                        if (aa == bb)
+                        {
+                            uvRenderer.AddValue(0, nm, row.get_Value(1));
+
+                            uvRenderer.set_Label(0, nm, row.get_Value(row.Fields.FindField(strfield)).ToString());
+                            fillSymbol = new SimpleFillSymbolClass();
+
+                            if (aa == "不适宜区")
+                                fillSymbol.Color = CvtRGB(255, 255, 255);
+                            else if (aa == "次适宜区")
+                                fillSymbol.Color = CvtRGB(76, 230, 0);             
+                            else
+                                fillSymbol.Color = CvtRGB(38, 115, 0);
+
+                            uvRenderer.set_Symbol(0, nm, (ISymbol)fillSymbol);
+                        }
+                    }
+                }
+
+                return rasterRenderer;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return null;
+            }
+
+        }
+ 
         public static void ShowLayerAttribute(IRasterLayer raslyr)
         {
             IRaster pRaster = raslyr.Raster;

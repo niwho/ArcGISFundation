@@ -22,26 +22,36 @@ namespace ArcGISFoundation
 
             if (raslyr != null )
             {
-                LayerHelper.SetLayerColor(raslyr);
+                //LayerHelper.SetLayerColor(raslyr);
                 //LayerHelper.ShowLayerAttribute(raslyr);
-                m_mapControl.Refresh(esriViewDrawPhase.esriViewGeography, null, null);
+                //m_mapControl.Refresh(esriViewDrawPhase.esriViewGeography, null, null);
             }
             else
             {
                 IGeoFeatureLayer geolyr = fealyr as IGeoFeatureLayer;
 
                 ColorDialog clrDlg = new ColorDialog();
-                //clrDlg.AllowFullOpen = false;
-                //clrDlg.ShowHelp = true;
-
+          
                 if (clrDlg.ShowDialog() == DialogResult.OK)
                 {
                     LayerHelper.SetLayerColor(geolyr, clrDlg.Color.R, clrDlg.Color.G, clrDlg.Color.B);
 
                     m_mapControl.Refresh(esriViewDrawPhase.esriViewGeography, null, null);
                 }
+            }   
+        }
+
+        public override bool Enabled
+        {
+            get
+            {
+                IFeatureLayer lyr = m_mapControl.CustomProperty as IFeatureLayer;
+
+                if (lyr == null)
+                    return false;
+
+                return true;
             }
-           
         }
 
         public override void OnCreate(object hook)
