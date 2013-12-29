@@ -105,18 +105,18 @@ namespace ArcGISFoundation
                 }
                 int tableRows = rasterTable.RowCount(null);
                 //Create colors for each unique value.
-                ArrayList arr = new ArrayList();
+                ArrayList value_array = new ArrayList();
                 for (int i = 0; i < rasterTable.RowCount(null); i++)
                 {
-                    IRow row1 = rasterTable.GetRow(i);
-                    string aa = row1.get_Value(row1.Fields.FindField(strfield)).ToString();
-                    if (arr.Contains(aa))
+                    IRow row = rasterTable.GetRow(i);
+                    string value = row.get_Value(row.Fields.FindField(strfield)).ToString();
+                    if (value_array.Contains(value))
                     {
                         ;
                     }
                     else
                     {
-                        arr.Add(aa);
+                        value_array.Add(value);
                     }
                 }
                
@@ -128,33 +128,33 @@ namespace ArcGISFoundation
                 //Set the renderer properties.
                 uvRenderer.HeadingCount = 1;
                 //uvRenderer.set_Heading(0, "所有类别");
-                uvRenderer.set_ClassCount(0, arr.Count);
+                uvRenderer.set_ClassCount(0, value_array.Count);
                 uvRenderer.Field = "VALUE"; //Or any other field in the table.
-                IRow row;
+
                 ISimpleFillSymbol fillSymbol;
                 for (int i = 0; i < tableRows; i++)
                 {
-                    row = rasterTable.GetRow(i);
-                    for (int nm = 0; nm < arr.Count; nm++)
+                    IRow row = rasterTable.GetRow(i);
+                    for (int value_index = 0; value_index < value_array.Count; value_index++)
                     {
-                        string aa = arr[nm].ToString();
-                        string bb = row.get_Value((row.Fields.FindField(strfield))).ToString();
+                        string value = value_array[value_index].ToString();
+                        string field = row.get_Value((row.Fields.FindField(strfield))).ToString();
 
-                        if (aa == bb)
+                        if (value == field)
                         {
-                            uvRenderer.AddValue(0, nm, row.get_Value(1));
+                            uvRenderer.AddValue(0, value_index, row.get_Value(1));
 
-                            uvRenderer.set_Label(0, nm, row.get_Value(row.Fields.FindField(strfield)).ToString());
+                            uvRenderer.set_Label(0, value_index, row.get_Value(row.Fields.FindField(strfield)).ToString());
                             fillSymbol = new SimpleFillSymbolClass();
 
-                            if (aa == "不适宜区")
+                            if (value == "不适宜区")
                                 fillSymbol.Color = CvtRGB(255, 255, 255);
-                            else if (aa == "次适宜区")
+                            else if (value == "次适宜区")
                                 fillSymbol.Color = CvtRGB(76, 230, 0);             
                             else
                                 fillSymbol.Color = CvtRGB(38, 115, 0);
 
-                            uvRenderer.set_Symbol(0, nm, (ISymbol)fillSymbol);
+                            uvRenderer.set_Symbol(0, value_index, (ISymbol)fillSymbol);
                         }
                     }
                 }
