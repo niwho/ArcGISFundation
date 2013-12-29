@@ -1,6 +1,6 @@
 ﻿namespace ArcGISFoundation
 {
-    partial class QueryForm
+    partial class QueryInput
     {
         /// <summary>
         /// Required designer variable.
@@ -28,86 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QueryForm));
-            this.query_panel = new BSE.Windows.Forms.Panel();
-            this.listView_data = new System.Windows.Forms.ListView();
-            this.imageList_hide = new System.Windows.Forms.ImageList(this.components);
-            this.query_panel_container = new System.Windows.Forms.Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(QueryInput));
+            this.panel_main = new System.Windows.Forms.Panel();
             this.panel_title_bar = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.close = new System.Windows.Forms.PictureBox();
             this.min = new System.Windows.Forms.PictureBox();
-            this.query_panel.SuspendLayout();
-            this.query_panel_container.SuspendLayout();
+            this.groupBox_xingzheng = new System.Windows.Forms.GroupBox();
+            this.queryBtn = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.panel_main.SuspendLayout();
             this.panel_title_bar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.min)).BeginInit();
+            this.groupBox_xingzheng.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // query_panel
+            // panel_main
             // 
-            this.query_panel.BackColor = System.Drawing.Color.Transparent;
-            this.query_panel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.query_panel.CaptionFont = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold);
-            this.query_panel.CaptionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.query_panel.CloseIconForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.query_panel.CollapsedCaptionForeColor = System.Drawing.SystemColors.ControlText;
-            this.query_panel.ColorCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.query_panel.ColorCaptionGradientEnd = System.Drawing.SystemColors.ButtonShadow;
-            this.query_panel.ColorCaptionGradientMiddle = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.query_panel.ColorContentPanelGradientBegin = System.Drawing.Color.Empty;
-            this.query_panel.ColorContentPanelGradientEnd = System.Drawing.Color.Empty;
-            this.query_panel.Controls.Add(this.listView_data);
-            this.query_panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.query_panel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.query_panel.Image = null;
-            this.query_panel.InnerBorderColor = System.Drawing.Color.White;
-            this.query_panel.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.query_panel.Location = new System.Drawing.Point(3, 0);
-            this.query_panel.Name = "query_panel";
-            this.query_panel.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.query_panel.Size = new System.Drawing.Size(632, 381);
-            this.query_panel.TabIndex = 0;
-            this.query_panel.Text = "牧草查询结果";
-            // 
-            // listView_data
-            // 
-            this.listView_data.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView_data.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listView_data.FullRowSelect = true;
-            this.listView_data.GridLines = true;
-            this.listView_data.Location = new System.Drawing.Point(1, 26);
-            this.listView_data.Name = "listView_data";
-            this.listView_data.Size = new System.Drawing.Size(630, 354);
-            this.listView_data.SmallImageList = this.imageList_hide;
-            this.listView_data.TabIndex = 0;
-            this.listView_data.TileSize = new System.Drawing.Size(128, 45);
-            this.listView_data.UseCompatibleStateImageBehavior = false;
-            this.listView_data.View = System.Windows.Forms.View.Details;
-            this.listView_data.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listView_data_ColumnClick);
-            this.listView_data.SelectedIndexChanged += new System.EventHandler(this.listView_data_SelectedIndexChanged);
-            this.listView_data.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_data_MouseDoubleClick);
-            // 
-            // imageList_hide
-            // 
-            this.imageList_hide.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList_hide.ImageSize = new System.Drawing.Size(1, 24);
-            this.imageList_hide.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // query_panel_container
-            // 
-            this.query_panel_container.BackColor = System.Drawing.Color.Transparent;
-            this.query_panel_container.Controls.Add(this.query_panel);
-            this.query_panel_container.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.query_panel_container.Location = new System.Drawing.Point(0, 65);
-            this.query_panel_container.Name = "query_panel_container";
-            this.query_panel_container.Padding = new System.Windows.Forms.Padding(3, 0, 3, 3);
-            this.query_panel_container.Size = new System.Drawing.Size(638, 384);
-            this.query_panel_container.TabIndex = 2;
+            this.panel_main.Controls.Add(this.groupBox1);
+            this.panel_main.Controls.Add(this.groupBox_xingzheng);
+            this.panel_main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_main.Location = new System.Drawing.Point(0, 65);
+            this.panel_main.Name = "panel_main";
+            this.panel_main.Size = new System.Drawing.Size(375, 183);
+            this.panel_main.TabIndex = 3;
             // 
             // panel_title_bar
             // 
@@ -121,18 +73,18 @@
             this.panel_title_bar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_title_bar.Location = new System.Drawing.Point(0, 0);
             this.panel_title_bar.Name = "panel_title_bar";
-            this.panel_title_bar.Size = new System.Drawing.Size(638, 65);
-            this.panel_title_bar.TabIndex = 1;
+            this.panel_title_bar.Size = new System.Drawing.Size(375, 65);
+            this.panel_title_bar.TabIndex = 2;
             this.panel_title_bar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseDown);
             this.panel_title_bar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseMove);
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::ArcGISFoundation.Properties.Resources.query_logo_title;
+            this.pictureBox2.Image = global::ArcGISFoundation.Properties.Resources.query_param;
             this.pictureBox2.Location = new System.Drawing.Point(66, 17);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(213, 34);
+            this.pictureBox2.Size = new System.Drawing.Size(143, 34);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
@@ -154,7 +106,7 @@
             this.close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.close.BackColor = System.Drawing.Color.Transparent;
             this.close.Image = global::ArcGISFoundation.Properties.Resources.close;
-            this.close.Location = new System.Drawing.Point(599, -1);
+            this.close.Location = new System.Drawing.Point(336, -1);
             this.close.Name = "close";
             this.close.Size = new System.Drawing.Size(27, 22);
             this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -169,7 +121,7 @@
             this.min.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.min.BackColor = System.Drawing.Color.Transparent;
             this.min.Image = global::ArcGISFoundation.Properties.Resources.min;
-            this.min.Location = new System.Drawing.Point(565, -1);
+            this.min.Location = new System.Drawing.Point(302, -1);
             this.min.Name = "min";
             this.min.Size = new System.Drawing.Size(27, 22);
             this.min.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -179,38 +131,108 @@
             this.min.MouseEnter += new System.EventHandler(this.min_MouseEnter);
             this.min.MouseLeave += new System.EventHandler(this.min_MouseLeave);
             // 
-            // QueryForm
+            // groupBox_xingzheng
+            // 
+            this.groupBox_xingzheng.Controls.Add(this.queryBtn);
+            this.groupBox_xingzheng.Controls.Add(this.textBox1);
+            this.groupBox_xingzheng.Location = new System.Drawing.Point(12, 6);
+            this.groupBox_xingzheng.Name = "groupBox_xingzheng";
+            this.groupBox_xingzheng.Size = new System.Drawing.Size(351, 79);
+            this.groupBox_xingzheng.TabIndex = 0;
+            this.groupBox_xingzheng.TabStop = false;
+            this.groupBox_xingzheng.Text = "输入行政名称查询";
+            // 
+            // queryBtn
+            // 
+            this.queryBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(220)))));
+            this.queryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.queryBtn.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.queryBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.queryBtn.Location = new System.Drawing.Point(287, 47);
+            this.queryBtn.Name = "queryBtn";
+            this.queryBtn.Size = new System.Drawing.Size(44, 22);
+            this.queryBtn.TabIndex = 22;
+            this.queryBtn.Text = "查询";
+            this.queryBtn.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Location = new System.Drawing.Point(26, 20);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(305, 21);
+            this.textBox1.TabIndex = 21;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Location = new System.Drawing.Point(12, 89);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(351, 79);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "输入牧草名称查询";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(155)))), ((int)(((byte)(220)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.Location = new System.Drawing.Point(287, 47);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(44, 22);
+            this.button1.TabIndex = 22;
+            this.button1.Text = "查询";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Location = new System.Drawing.Point(26, 20);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(305, 21);
+            this.textBox2.TabIndex = 21;
+            // 
+            // QueryInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(638, 449);
-            this.Controls.Add(this.query_panel_container);
+            this.ClientSize = new System.Drawing.Size(375, 248);
+            this.Controls.Add(this.panel_main);
             this.Controls.Add(this.panel_title_bar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "QueryForm";
-            this.Text = "QueryForm";
-            this.Load += new System.EventHandler(this.QueryForm_Load);
-            this.query_panel.ResumeLayout(false);
-            this.query_panel_container.ResumeLayout(false);
+            this.Name = "QueryInput";
+            this.Text = "QueryInput";
+            this.panel_main.ResumeLayout(false);
             this.panel_title_bar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.min)).EndInit();
+            this.groupBox_xingzheng.ResumeLayout(false);
+            this.groupBox_xingzheng.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private BSE.Windows.Forms.Panel query_panel;
         private System.Windows.Forms.Panel panel_title_bar;
-        private System.Windows.Forms.PictureBox close;
-        private System.Windows.Forms.PictureBox min;
-        private System.Windows.Forms.Panel query_panel_container;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ListView listView_data;
-        private System.Windows.Forms.ImageList imageList_hide;
+        private System.Windows.Forms.PictureBox close;
+        private System.Windows.Forms.PictureBox min;
+        private System.Windows.Forms.Panel panel_main;
+        private System.Windows.Forms.GroupBox groupBox_xingzheng;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button queryBtn;
+        private System.Windows.Forms.TextBox textBox1;
+
     }
 }
