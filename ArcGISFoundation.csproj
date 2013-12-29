@@ -170,6 +170,7 @@
     <Compile Include="Source\Command\MapContextMenu\MapZoomfullextent.cs" />
     <Compile Include="Source\Command\MapContextMenu\MapZoomout.cs" />
     <Compile Include="Source\Command\MapContextMenu\MapZoomin.cs" />
+    <Compile Include="Source\Command\TocContextMenu\LayerColor.cs" />
     <Compile Include="Source\Command\TocContextMenu\LayerProperty.cs" />
     <Compile Include="Source\Command\TocContextMenu\LayerAnnotation.cs" />
     <Compile Include="Source\Command\TocContextMenu\LayerSelectable.cs" />

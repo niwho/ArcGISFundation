@@ -264,6 +264,7 @@ namespace ArcGISFoundation
 
                 IRasterLayer rasLyr = new RasterLayerClass();
                 rasLyr.CreateFromDataset(rasDataset);
+                LayerHelper.SetLayerColor(rasLyr);
 
                 if (m_adminMap.LayerCount == 3)
                 {
