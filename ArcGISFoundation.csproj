@@ -39,7 +39,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;e</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
@@ -156,6 +156,12 @@
     <Compile Include="QueryForm.Designer.cs">
       <DependentUpon>QueryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="QueryInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryInput.Designer.cs">
+      <DependentUpon>QueryInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\Command\MapContextMenu\MapZoomToLastExtentBack.cs" />
     <Compile Include="Source\Command\MapContextMenu\MapZoomToLastExtentFoward.cs" />
     <Compile Include="Source\Command\MapContextMenu\MapZoompan.cs" />
@@ -201,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QueryForm.resx">
       <DependentUpon>QueryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QueryInput.resx">
+      <DependentUpon>QueryInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\ExcelImport\CreateShpFileForm.resx">
       <DependentUpon>CreateShpFileForm.cs</DependentUpon>
@@ -287,6 +296,7 @@
     <Content Include="images\close_hover.png" />
     <None Include="images\create_shape_title.png" />
     <Content Include="images\clover.png" />
+    <None Include="images\fenbutu_title.png" />
     <Content Include="images\FixedZoomIn.bmp" />
     <Content Include="images\FixedZoomOut.bmp" />
     <Content Include="images\FullExtent.bmp" />
@@ -300,6 +310,10 @@
     <Content Include="images\NextExtent.ico" />
     <Content Include="images\Pan.bmp" />
     <Content Include="images\PreviousExtent.ico" />
+    <None Include="images\shiyingxing_title.png" />
+    <None Include="images\yingzhong_title.png" />
+    <None Include="images\tools2.png" />
+    <None Include="images\query_param.png" />
     <Content Include="images\yuan.png" />
     <Content Include="images\yuan_hover.png" />
   </ItemGroup>

@@ -224,6 +224,8 @@ namespace ArcGISFoundation
                 if (m_featureLayer == null)
                     return;
                 //MessageBox.Show( listView_data.Items[c[0]].Text);
+                if (m_featureLayer == null)
+                    return; 
 
                 IFeatureClass featureClass = m_featureLayer.FeatureClass;
                 IFeatureSelection sel = m_featureLayer as IFeatureSelection;

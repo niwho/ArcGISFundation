@@ -27,6 +27,8 @@ namespace ArcGISFoundation
         TocLayerContextMenu m_tocLayerContextMenu = null;
         MapControlContextMenu m_mapControlContextMenu = null;
         DataSource m_datasource = null;
+
+        private QueryInput m_qinput_f;
         int m_selectedLayer = 0;
         #endregion
 
@@ -698,6 +700,12 @@ namespace ArcGISFoundation
                 queryBtn_Click(sender, e);
 
             }
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            m_qinput_f = new QueryInput(m_bin_path);
+            m_qinput_f.Show();
         }
     }
 }
