@@ -69,10 +69,15 @@ namespace ArcGISFoundation
             this.panel_left = new System.Windows.Forms.Panel();
             this.saveFileDialog_printer = new System.Windows.Forms.SaveFileDialog();
             this.panel_title_bar = new System.Windows.Forms.Panel();
+            this.pictureBox_tools2 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox_tools2 = new System.Windows.Forms.PictureBox();
             this.pictureBox_querytitle = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox_tools1 = new System.Windows.Forms.PictureBox();
@@ -81,8 +86,6 @@ namespace ArcGISFoundation
             this.close = new System.Windows.Forms.PictureBox();
             this.max = new System.Windows.Forms.PictureBox();
             this.min = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.licensecontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toccontrol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMapControl1)).BeginInit();
@@ -96,17 +99,19 @@ namespace ArcGISFoundation
             this.panel_toolbar.SuspendLayout();
             this.panel_left.SuspendLayout();
             this.panel_title_bar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_tools2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_tools2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_querytitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_tools1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.min)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // licensecontrol
@@ -124,7 +129,7 @@ namespace ArcGISFoundation
             this.toccontrol.Location = new System.Drawing.Point(0, 25);
             this.toccontrol.Name = "toccontrol";
             this.toccontrol.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("toccontrol.OcxState")));
-            this.toccontrol.Size = new System.Drawing.Size(198, 0);
+            this.toccontrol.Size = new System.Drawing.Size(198, 400);
             this.toccontrol.TabIndex = 12;
             this.toccontrol.OnMouseDown += new ESRI.ArcGIS.Controls.ITOCControlEvents_Ax_OnMouseDownEventHandler(this.axTOCControl1_OnMouseDown);
             // 
@@ -178,6 +183,7 @@ namespace ArcGISFoundation
             this.panel_map_tree.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel_map_tree.Image = null;
             this.panel_map_tree.InnerBorderColor = System.Drawing.Color.White;
+            this.panel_map_tree.LinearGradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
             this.panel_map_tree.Location = new System.Drawing.Point(0, 0);
             this.panel_map_tree.Name = "panel_map_tree";
             this.panel_map_tree.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
@@ -214,18 +220,18 @@ namespace ArcGISFoundation
             this.xPanderPanel_tree.ColorFlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.xPanderPanel_tree.ColorFlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.xPanderPanel_tree.Controls.Add(this.toccontrol);
+            this.xPanderPanel_tree.Expand = true;
             this.xPanderPanel_tree.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_tree.Image = null;
             this.xPanderPanel_tree.InnerBorderColor = System.Drawing.Color.White;
             this.xPanderPanel_tree.Name = "xPanderPanel_tree";
             this.xPanderPanel_tree.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel_tree.Size = new System.Drawing.Size(198, 25);
+            this.xPanderPanel_tree.Size = new System.Drawing.Size(198, 425);
             this.xPanderPanel_tree.TabIndex = 0;
             this.xPanderPanel_tree.Text = "Í¼²ã¹ÜÀí";
             // 
             // xPanderPanel_query
             // 
-            this.xPanderPanel_query.BackColor = System.Drawing.Color.Transparent;
             this.xPanderPanel_query.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.xPanderPanel_query.CaptionFont = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 8F, System.Drawing.FontStyle.Bold);
             this.xPanderPanel_query.CaptionForeColor = System.Drawing.SystemColors.ControlText;
@@ -236,15 +242,14 @@ namespace ArcGISFoundation
             this.xPanderPanel_query.ColorFlatCaptionGradientBegin = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
             this.xPanderPanel_query.ColorFlatCaptionGradientEnd = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.xPanderPanel_query.Controls.Add(this.treeView_all_cao);
-            this.xPanderPanel_query.Expand = true;
             this.xPanderPanel_query.ForeColor = System.Drawing.SystemColors.ControlText;
             this.xPanderPanel_query.Image = null;
             this.xPanderPanel_query.InnerBorderColor = System.Drawing.Color.White;
             this.xPanderPanel_query.Name = "xPanderPanel_query";
             this.xPanderPanel_query.PanelStyle = BSE.Windows.Forms.PanelStyle.Office2007;
-            this.xPanderPanel_query.Size = new System.Drawing.Size(198, 425);
+            this.xPanderPanel_query.Size = new System.Drawing.Size(198, 25);
             this.xPanderPanel_query.TabIndex = 1;
-            this.xPanderPanel_query.Text = "ÄÁ²ÝµØÍ¼ÇÐ»»";
+            this.xPanderPanel_query.Text = "ÄÁ²ÝÇÐ»»";
             // 
             // treeView_all_cao
             // 
@@ -269,7 +274,7 @@ namespace ArcGISFoundation
             this.treeView_all_cao.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode5});
             this.treeView_all_cao.SelectedImageIndex = 0;
-            this.treeView_all_cao.Size = new System.Drawing.Size(198, 400);
+            this.treeView_all_cao.Size = new System.Drawing.Size(198, 0);
             this.treeView_all_cao.TabIndex = 0;
             this.treeView_all_cao.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_all_cao_NodeMouseDoubleClick);
             // 
@@ -415,10 +420,15 @@ namespace ArcGISFoundation
             this.panel_title_bar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(164)))), ((int)(((byte)(228)))));
             this.panel_title_bar.BackgroundImage = global::ArcGISFoundation.Properties.Resources.banners;
             this.panel_title_bar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel_title_bar.Controls.Add(this.pictureBox_tools2);
+            this.panel_title_bar.Controls.Add(this.label5);
+            this.panel_title_bar.Controls.Add(this.pictureBox6);
+            this.panel_title_bar.Controls.Add(this.pictureBox7);
+            this.panel_title_bar.Controls.Add(this.pictureBox2);
+            this.panel_title_bar.Controls.Add(this.pictureBox1);
             this.panel_title_bar.Controls.Add(this.pictureBox4);
             this.panel_title_bar.Controls.Add(this.pictureBox5);
             this.panel_title_bar.Controls.Add(this.label2);
-            this.panel_title_bar.Controls.Add(this.pictureBox_tools2);
             this.panel_title_bar.Controls.Add(this.pictureBox_querytitle);
             this.panel_title_bar.Controls.Add(this.label1);
             this.panel_title_bar.Controls.Add(this.pictureBox_tools1);
@@ -427,8 +437,6 @@ namespace ArcGISFoundation
             this.panel_title_bar.Controls.Add(this.close);
             this.panel_title_bar.Controls.Add(this.max);
             this.panel_title_bar.Controls.Add(this.min);
-            this.panel_title_bar.Controls.Add(this.pictureBox2);
-            this.panel_title_bar.Controls.Add(this.pictureBox1);
             this.panel_title_bar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_title_bar.Location = new System.Drawing.Point(0, 0);
             this.panel_title_bar.Name = "panel_title_bar";
@@ -438,13 +446,87 @@ namespace ArcGISFoundation
             this.panel_title_bar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseDown);
             this.panel_title_bar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_title_bar_MouseMove);
             // 
+            // pictureBox_tools2
+            // 
+            this.pictureBox_tools2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox_tools2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox_tools2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox_tools2.Image = global::ArcGISFoundation.Properties.Resources.tools_query;
+            this.pictureBox_tools2.Location = new System.Drawing.Point(649, 27);
+            this.pictureBox_tools2.Name = "pictureBox_tools2";
+            this.pictureBox_tools2.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox_tools2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_tools2.TabIndex = 7;
+            this.pictureBox_tools2.TabStop = false;
+            this.pictureBox_tools2.Click += new System.EventHandler(this.pictureBox_query_Click);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(57)))), ((int)(((byte)(82)))));
+            this.label5.Location = new System.Drawing.Point(554, 57);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(99, 40);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "¿É°´ÕÕÄÁ²ÝÃû³ÆºÍÐÐÕþµ¥Ôª²éÑ¯";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox6.Image = global::ArcGISFoundation.Properties.Resources.tools2;
+            this.pictureBox6.Location = new System.Drawing.Point(492, 29);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 14;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox7.Image = global::ArcGISFoundation.Properties.Resources.yingzhong_title;
+            this.pictureBox7.Location = new System.Drawing.Point(546, 32);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(80, 25);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox7.TabIndex = 15;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::ArcGISFoundation.Properties.Resources.logo_title;
+            this.pictureBox2.Location = new System.Drawing.Point(67, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(254, 104);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(93, 102);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // pictureBox4
             // 
             this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::ArcGISFoundation.Properties.Resources.tools_help;
-            this.pictureBox4.Location = new System.Drawing.Point(785, 27);
+            this.pictureBox4.Location = new System.Drawing.Point(821, 27);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(60, 60);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -458,7 +540,7 @@ namespace ArcGISFoundation
             this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox5.Image = global::ArcGISFoundation.Properties.Resources.tools_help_title;
-            this.pictureBox5.Location = new System.Drawing.Point(842, 32);
+            this.pictureBox5.Location = new System.Drawing.Point(878, 32);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(68, 22);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -471,35 +553,21 @@ namespace ArcGISFoundation
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(57)))), ((int)(((byte)(82)))));
-            this.label2.Location = new System.Drawing.Point(846, 54);
+            this.label2.Location = new System.Drawing.Point(882, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 40);
             this.label2.TabIndex = 13;
             this.label2.Text = "¿Éµ¼ÈëÄÁ²ÝÊý¾Ý";
-            // 
-            // pictureBox_tools2
-            // 
-            this.pictureBox_tools2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox_tools2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox_tools2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox_tools2.Image = global::ArcGISFoundation.Properties.Resources.tools_query;
-            this.pictureBox_tools2.Location = new System.Drawing.Point(624, 27);
-            this.pictureBox_tools2.Name = "pictureBox_tools2";
-            this.pictureBox_tools2.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox_tools2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_tools2.TabIndex = 7;
-            this.pictureBox_tools2.TabStop = false;
-            this.pictureBox_tools2.Click += new System.EventHandler(this.pictureBox_query_Click);
             // 
             // pictureBox_querytitle
             // 
             this.pictureBox_querytitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox_querytitle.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_querytitle.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox_querytitle.Image = global::ArcGISFoundation.Properties.Resources.tool_map_printer;
-            this.pictureBox_querytitle.Location = new System.Drawing.Point(680, 31);
+            this.pictureBox_querytitle.Image = global::ArcGISFoundation.Properties.Resources.fenbutu_title1;
+            this.pictureBox_querytitle.Location = new System.Drawing.Point(709, 31);
             this.pictureBox_querytitle.Name = "pictureBox_querytitle";
-            this.pictureBox_querytitle.Size = new System.Drawing.Size(71, 26);
+            this.pictureBox_querytitle.Size = new System.Drawing.Size(107, 26);
             this.pictureBox_querytitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox_querytitle.TabIndex = 8;
             this.pictureBox_querytitle.TabStop = false;
@@ -510,7 +578,7 @@ namespace ArcGISFoundation
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(57)))), ((int)(((byte)(82)))));
-            this.label1.Location = new System.Drawing.Point(685, 55);
+            this.label1.Location = new System.Drawing.Point(710, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 40);
             this.label1.TabIndex = 12;
@@ -522,7 +590,7 @@ namespace ArcGISFoundation
             this.pictureBox_tools1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox_tools1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox_tools1.Image = global::ArcGISFoundation.Properties.Resources.tools1;
-            this.pictureBox_tools1.Location = new System.Drawing.Point(457, 27);
+            this.pictureBox_tools1.Location = new System.Drawing.Point(335, 27);
             this.pictureBox_tools1.Name = "pictureBox_tools1";
             this.pictureBox_tools1.Size = new System.Drawing.Size(60, 60);
             this.pictureBox_tools1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -534,8 +602,8 @@ namespace ArcGISFoundation
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = global::ArcGISFoundation.Properties.Resources.tools_query_title;
-            this.pictureBox3.Location = new System.Drawing.Point(512, 27);
+            this.pictureBox3.Image = global::ArcGISFoundation.Properties.Resources.shiyingxing_title;
+            this.pictureBox3.Location = new System.Drawing.Point(396, 31);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(80, 25);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -548,11 +616,11 @@ namespace ArcGISFoundation
             this.label.BackColor = System.Drawing.Color.Transparent;
             this.label.Font = new System.Drawing.Font("Î¢ÈíÑÅºÚ", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(57)))), ((int)(((byte)(82)))));
-            this.label.Location = new System.Drawing.Point(519, 55);
+            this.label.Location = new System.Drawing.Point(397, 55);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(99, 40);
             this.label.TabIndex = 11;
-            this.label.Text = "¿ÉÀ­¿ò²éÑ¯ÄÁ²ÝÊÊÒËÇé¿ö";
+            this.label.Text = "Êó±êµã»÷²éÑ¯ÄÁ²ÝÊÊÒËÇé¿ö";
             // 
             // close
             // 
@@ -596,29 +664,6 @@ namespace ArcGISFoundation
             this.min.MouseEnter += new System.EventHandler(this.min_MouseEnter);
             this.min.MouseLeave += new System.EventHandler(this.min_MouseLeave);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::ArcGISFoundation.Properties.Resources.logo_title;
-            this.pictureBox2.Location = new System.Drawing.Point(76, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(287, 104);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(93, 102);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -649,17 +694,19 @@ namespace ArcGISFoundation
             this.panel_toolbar.PerformLayout();
             this.panel_left.ResumeLayout(false);
             this.panel_title_bar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_tools2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_tools2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_querytitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_tools1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.min)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -706,6 +753,9 @@ namespace ArcGISFoundation
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button queryBtn;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Label label5;
     }
 }
 
